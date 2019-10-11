@@ -5,10 +5,10 @@ HPC and UQ Training
 The training material for the PRACE training on High Performance Computing in Uncertainty Quantification.
 
 Contacts
-- EDF : Anne Dutfoy (anne.dutfoy@edf.fr), Michaël Baudin (michael.baudin@edf.fr), Roman Sueur (roman.sueur@edf.fr), Ovidiu Mircescu (ovidiu.mircescu@edf.fr)
-- Phiméca Engineering : Gaëtan Blondet
-- IMACS : Kieran Delamotte (delamotte@imacs.polytechnique.fr)
-- CEA : Jean-Baptiste Blanchard (jean-baptiste.blanchard@cea.fr), Fabrice Gaudier (fabrice.gaudier@cea.fr)
+ - EDF : Anne Dutfoy (anne.dutfoy@edf.fr), Michaël Baudin (michael.baudin@edf.fr), Roman Sueur (roman.sueur@edf.fr), Ovidiu Mircescu (ovidiu.mircescu@edf.fr)
+ - Phiméca Engineering : Gaëtan Blondet
+ - IMACS : Kieran Delamotte (delamotte@imacs.polytechnique.fr)
+ - CEA : Jean-Baptiste Blanchard (jean-baptiste.blanchard@cea.fr), Fabrice Gaudier (fabrice.gaudier@cea.fr)
 
 Partnership for Advanced Computing in Europe (PRACE)
 OpenTURNS  Consortium and CEA
@@ -34,6 +34,4 @@ La prochaine session aura lieu :
 
 Le programme est disponible ici :
 
-https://github.com/mbaudin47/hpcuqtraining/2020/Programme/ProgrammePRACE_HPC_Uncertainty_2020.odt
-
-
+https://github.com/mbaudin47/hpcuqtraining/blob/master/2020/Programme/ProgrammePRACE_HPC_Uncertainty_2020.odt
