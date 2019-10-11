@@ -24,7 +24,7 @@ La formation détaillera aussi les besoins en calcul haute performance du domain
 
 La formation est gratuite, ouverte à tous. Elle se déroule sur 3 jours à la Maison de la Simulation, sur le plateau de Saclay. L’inscription est obligatoire à l’adresse :
 
-https://events.prace-ri.eu/
+https://events.prace-ri.eu/event/931/
 
 Si nécessaire, elle se déroule en langue anglaise.
 
