@@ -1,0 +1,19 @@
+#!/bin/bash
+#@ class            = clallmds
+#@ job_name         = ipcluster-ot
+#@ total_tasks      = 20
+#@ node             = 4
+#@ wall_clock_limit = 2:00:00
+#@ output           = $(job_name).o$(jobid)
+#@ error            = $(job_name).e$(jobid)
+#@ job_type         = mpich
+#@ environment      = COPY_ALL
+#@ queue
+#
+
+# module load python/anaconda2-4.3.1
+# unset LD_PRELOAD
+# module load openmpi/1.8.4_gnu49
+# python -c "import time; time.sleep(10)"
+# python wrapper.py -N 21 -n_cpus=20
+# mpirun -report-bindings -bycore -bind-to-core python wrapper.py -N 32 -n_cpus=20
