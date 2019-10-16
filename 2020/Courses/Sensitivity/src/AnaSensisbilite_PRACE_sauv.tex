@@ -1,0 +1,545 @@
+\documentclass[8pt]{beamer}
+
+  \setbeamertemplate{background canvas}[vertical shading][bottom=cyan!10,top=blue!10]
+
+  \usetheme{Warsaw}
+  \usefonttheme[onlysmall]{structurebold}
+
+% pour le fichiers .pdf
+\usepackage{graphicx}
+\usepackage{color}
+% pour les fichiers .png
+\usepackage{pgf,pgfarrows}
+\usepackage{pgf,pgfarrows}
+\usepackage{amsmath,amssymb}
+\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{textcomp}
+\usepackage{Math_Notations}
+\usepackage{multitoc}
+\usepackage{mdwtab}
+\setbeamercovered{dynamic}
+
+\title[Analyses de Sensibilité et de Corrélation / Facteurs d'importance - Implémentation dans Open TURNS]{Analyses de Sensibilité et de Corrélation / Facteurs d'importance\\ Implémentation dans Open TURNS}
+\author[A. Dutfoy.]{
+ {\bf Anne DUTFOY} (EDF R\&D)  \\
+MRI \\
+anne.dutfoy@edf.fr }
+
+
+
+\date[8 juillet 2010]{
+8 juillet 2010
+\begin{center}
+        \includegraphics[height=2cm]{logoOpenTURNS.pdf}
+\end{center}
+
+}
+
+
+
+\subject{Pres Sensibilités}
+
+\AtBeginSection[]{
+\begin{frame}<beamer>
+  \frametitle{Sensibilités / Corrélations / Facteurs d'importance}
+  %\small
+  \tableofcontents[current]
+\end{frame}
+}
+
+%\part<presentation>{Corps de presentation}
+
+\begin{document}
+
+% pour la tom multi colonne
+% Attention : necessite la derniere ligne
+% \addtocontents{toc}{\protect\begin{multicols}{2}}
+\frame{\titlepage}
+
+
+% necessaire pour la table des matieres
+\part{Partie principale}
+
+
+
+
+
+% table des matieres
+\begin{frame} 
+  \frametitle{Sensibilités / Corrélations / Facteurs d'importance dans Open TURNS}
+%  \small
+  \tableofcontents
+%  \tableofcontents[part=1,pausesections]
+\end{frame}
+
+
+
+%//=====================================================================
+%//=====================================================================
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section[Introduction]{Introduction}
+ 
+
+\begin{frame}
+  \frametitle{Contexte}
+  \begin{block}{Etudes de traitement des incertitudes}
+\small{
+    \alert{\bf L'objectif des études de traitement des incertitudes est de propager les incertitudes entâchant certaines données d'entrée d'un modèle numérique jusqu'à un grandeur dite d'{\itshape intérêt}}.\\
+    \vspace*{0.2cm}
+On considère : $Y=f(X_1, \dots, X_n)$ où :
+\begin{itemize}
+  \item $g$ est un {\bf modèle} (code de calcul, expression analytique, ...)
+  \item $(X_1, \dots, X_n)$ est l'ensemble  {\bf des paramètres incertains} que l'on modélise par une loi de probabilité
+  \item $Y$ est la {\bf grandeur d'intérêt} évaluée par le modèle, supposée ici scalaire.
+\end{itemize}
+\vspace*{0.2cm}
+Une fois les incertitudes quantifiées et propagées jusqu'au critère final (tendance centrale, dépasssement de seuil), la dernière étape de la {\bf Méthodologie Globale de Traitement des Incertitudes} est de hiérarchiser les sources d'incertitudes entre elle.
+}
+\end{block}
+
+\begin{block}{Trois notions}
+\small{
+Les \alert{\bf facteurs d'importance} se rattachent à la {\bf décomposition de la variance} et permettent d'expliquer la variabilité de $Y$ en fonction des variabilités des entrées $X_i$.\\
+Les \alert{\bf corrélations} sont des indicateurs de {\bf relation linéaire} entre $Y$ et les entrées $X_i$.\\
+Les \alert{\bf sensibilités} sont des indicateurs de {\bf dépendance locale} reposant sur l'évaluation de {\bf gradients} par rapport à des grandeurs caractéristiques des entrées.\\
+Selon la {\bf structure du modèle}$f$, les indices sont définis différemment.
+}
+\end{block}
+\end{frame}
+
+
+\section[Facteurs d'importance]{Facteurs d'importance}
+
+\begin{frame}
+\frametitle{Facteurs d'importance}
+\begin{block}{Décomposition de la variance}
+De manière très générale, si $Y=f(\vect{X})$, alors on peut décomposer la variance comme suit : 
+\begin{equation}
+\label{decompVar}
+Var(Y) = \sum_i \Var{\Expect{Y|X_i}} + \sum_{i \neq j} \Var{\Expect{Y|X_i,X_j}} + \dots + \underbrace{\Var{\Expect{Y|X_1,\dots, X_n}}}_{=0}
+\end{equation}
+\end{block}
+
+
+\begin{block}{Indices de Sobol}
+L'\alert{\bf indice de Sobol d'ordre $k$} donne la variance résiduelle de $Y$ lorsque les entrées $X_{i_1},\dots, X_{i_k}$ sont connues (et donc plus aléatoires) :
+
+\begin{equation}
+\label{SobolOrdrek}
+\displaystyle S_{i_1, \dots, i_k} =\frac{\Var{\Eexpect{Y|X_{i_1}, \dots, X_{i_k}}}}{\Var{Y}}
+\end{equation}
+
+L'\alert{\bf indice total de Sobol d'ordre $k$} donne la variance  de $Y$ due aux entrées $X_{i_1},\dots, X_{i_k}$ lorsque toutes les autres sont connues (et donc plus aléatoires) :
+\begin{equation}
+\label{SobolTotalOrdrek}
+\displaystyle S^T_{i_1, \dots, i_k} =\frac{\sum_I\Var{\Eexpect{Y|X_{I}}}}{\Var{Y}},\, \, I\subset \{1, \dots, n \}-\{i_1, \dots, i_k\}
+\end{equation}
+
+\end{block}
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Facteurs d'importance}
+\begin{block}{Décomposition de Sobol d'une fonction intégrable sur $[0,1]^n$}
+Pour calculer (\ref{SobolOrdrek}) et (\ref{SobolTotalOrdrek}), on utilise le résultat général dû à Sobol : \\
+\textit{Si $f$ est intégrable sur $[0,1]^n$, elle admet une unique décompositin du type : }
+\begin{equation}
+\label{decompSobol}
+ f(x_1, \dots, x_n) = f_0 + \sum_{i=1}^{i=n}f_i(x_i) + \sum_{1\leq i < j \leq n} f_{i,j} (x_i, x_j) + \dots + f_{1, \dots, n}(x_1, \dots, x_n)
+\end{equation}
+\textit{où} $f_0 = cst$ \textit{et les fonctions de la décomposition sont orthogonales entre elles par rapport à la mesure de Lebesgue sur} $[0,1]^n$ : 
+\begin{equation}
+\label{decompSobolCondOrthog}
+ \int_0^1 f_{i_1, \dots, i_s}(x_{i_1}, \dots, x_{i_s})f_{j_1, \dots, j_k}(x_{j1}, \dots, x_{j_k}) d\vect{x} = 0
+\end{equation}
+\textit{dès lors que} $(i_1, \dots, i_s) \neq (j_1, \dots, j_k)$.
+\end{block}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Facteurs d'importance}
+  \begin{block}{Comment utiliser ce résultat ?}
+    \small
+      On aimerait décomposer le modèle $f$ selon la décomposition de Sobol ... mais : \\
+      \begin{enumerate}
+      \item  \alert{\bf Les entrées de $f$ ne sont pas sur $[0,1]^n$} :  dans le cas général, $Y=f(\vect{X})$ où $\vect{X}$ est défini sur $\mathbb{R}$.
+      \end{enumerate}
+      \alert{$\Longrightarrow$} Si on pose 
+       \begin{equation}
+         \label{phi}
+         \vect{U} = (F_1(X_1), \dots, F_n(X_n))^t) = \phi^{-1}(\vect{X})
+       \end{equation}
+       alors on montre que $\vect{U}$ a une loi jointe de marginales uniformes et de copule celle de $\vect{X}$.\\
+       En posant $Y = f(\vect{X}) = f \circ \phi (\vect{U})$, alors {\bf on peut utiliser la décomposition de Sobol sur $f \circ \phi$}.
+      
+       \begin{enumerate}
+       \item  \alert{\bf Les indices de Sobol par rapport aux $U_i$ sont-ils les mêmes que ceux par rapport aux $X_i$ ?}
+       \end{enumerate}
+       \alert{$\Longrightarrow$} Rappel : Si $\vect{U} = \psi(\vect{X})$ où $\psi$ est un difféomorphisme et $Y=f(\vect{X})$ alors : 
+      
+       \begin{equation}
+         \label{varCond}
+         \Expect{Y|\vect{U}} = \Expect{Y|\vect{X}}
+       \end{equation}
+       En effet : $\Expect{Y|\vect{U}} = \Expect{Y|\psi(\vect{X})}$ est le projeté orthogonal au sens $L_2$ de $Y$ sur l'espace engendré par $\psi(\vect{X})$, ie celui engendré par $\vect{X}$, d'où l'égalité des variables aléatoires (\ref{varCond}).\\
+       Comme la transformation $\phi$ (\ref{phi}) agit composante par composante ($U_i \leftrightarrow X_i$) alors on a l'égalité des indicateurs de type : 
+       \begin{equation}
+         \label{varCond}
+         \Var{\Expect{Y|U_{i_1}, \dots, U_{i_k}}} = \Var{\Expect{Y|X_{i_1}, \dots, X_{i_k}}}
+       \end{equation}
+       d'où {\bf l'égalité des indices de Sobol par rapport aux $U_i$ et aux $X_i$}.
+  \end{block}
+\end{frame}
+
+
+
+\begin{frame}
+  \frametitle{Facteurs d'importance}
+  \begin{block}{Interprétation probabiliste de la décomposition de Sobol}
+    \alert{\bf Supposons, sans perdre en généralité, que les variables $X_i$ soient à support $[0,1]$}. Alors en décomposant le modèle $f$ selon la décomposition de Sobol (\ref{decompSobol}), on écrit : 
+    \begin{equation}
+      \label{decompSobolY}
+      Y = f(\vect{X}) = f_0 + \sum_{i=1}^{i=n}f_i(X_i) + \sum_{1\leq i < j \leq n} f_{i,j} (X_i, X_j) + \dots + f_{1, \dots, n}(X_1, \dots, X_n)
+    \end{equation}
+    {\bf La condition d'orthogonalité (\ref{decompSobolCondOrthog}) des $f_{i_1, \dots, i_k}$  par rapport à la mesure de Lebesgue sur $[0,1]^n$ s'interprète comme un calcul d'expérance si les $X_i$ sont indépendantes}.\\
+    \alert{$\Longrightarrow$} On suppose donc que dans la suite, les $X_i$ sont \alert{\bf indépendantes}.\\
+    
+    \alert{\bf Conclusion} : \\
+    Y se décompose sous la forme d'une somme de {\bf variables aléatoires orthogonales} entre elles : 
+    \begin{equation}
+      \label{decompSobolY2}
+      \boldsymbol{ Y = f(\vect{X}) = Z_0 + \sum_{i=1}^{i=n}Z_i + \sum_{1\leq i < j \leq n} Z_{i,j}  + \dots + Z_{1,} \dots, n}
+    \end{equation}
+    où $Z_0 = cst$ et $Z_{i_1, \dots, i_s} \bot  Z_{j_1, \dots, j_k}$ (ie $\Expect{Z_{i_1, \dots, i_s}.Z_{j_1, \dots, j_k}}=0$).
+  \end{block}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Facteurs d'importance}
+  \begin{block}{Calcul des Indices de Sobol}
+    \small{
+      Grâce à la décomposition probabiliste (\ref{decompSobolY2}), on calcule $\Expect{Y}$ et $\Var{Y}$ aisément : 
+      $$
+      \left\{
+        \begin{array}{l}
+          \Expect{Y}  =  Z_0 + \sum_{i=1}^{i=n}\underbrace{\Expect{Z_i}}_{=0 \mbox{ car } \bot Z_0} + \sum_{1\leq i < j \leq n} \underbrace{\Expect{Z_{i,j}}}_{=0 \mbox{ car } \bot Z_0}  + \dots + \underbrace{\Expect{Z_{1,} \dots, n}}_{=0 \mbox{ car } \bot Z_0}  \\[2em]
+          \Expect{Y^2}   =   \sum_{I \neq J} \underbrace{\Expect{Z_IZ_J}}_{=0 \mbox{ car } \bot \mbox{ des } Z_I} + \sum_I \Expect{Z_I^2}  \sum_I \Expect{Z_I^2}
+        \end{array}
+      \right.
+      $$
+      \begin{eqnarray}
+        \label{VarY}
+        \Longrightarrow \boldsymbol{\Var{Y} = \sum_{i=1}^{i=n} V_i + \sum_{1\leq i < j \leq n} V_{i,j}  + \dots + V_{1, \dots, n}}
+      \end{eqnarray}
+      où $V_{i_1, \dots, i_k} = \Var{Z_{i_1, \dots, i_k}} = \Var{f_{i_1, \dots, i_k}(X_{i_1}, \dots, X_{i_k})}$.
+    }
+  \end{block}
+\end{frame}
+
+
+
+
+\begin{frame}
+\frametitle{Facteurs d'importance}
+  \begin{block}{Calcul des Indices de Sobol}
+\alert{\bf Les indices de Sobol (\ref{SobolOrdrek}) et (\ref{SobolTotalOrdrek}) s'expriment en fonction des $V_{i_1, \dots, i_k}$} : 
+
+      \begin{eqnarray}
+        \label{SobolOrdrekViCalcul}
+        \displaystyle S_{i_1, \dots, i_k} & = & \frac{\Var{ \Expect{Y|X_{i_1}, \dots, X_{i_k}} }}{\Var{Y}} = \frac{ \sum_{I \subset \{i_1, \dots, i_k\}} V_I}{\Var{Y}} \\
+        \label{SobolTotalOrdrekCalcul}
+        \displaystyle S^T_{i_1, \dots, i_k} & =& \frac{\sum_I\Var{\Expect{Y|X_{I}}}}{\Var{Y}} =   \frac{\sum_I \sum_J V_J}{\Var{Y}} \\
+        & \mbox{où} & I\subset \{1, \dots, n \},  I \cap \{i_1, \dots, i_k\} \neq \emptyset , J \subset I
+      \end{eqnarray}
+    
+  \end{block}
+\end{frame}
+
+
+
+
+
+\begin{frame}
+  \frametitle{Facteurs d'importance}
+  \begin{block}{Si le modèle $f$ est affine : SRC}
+  \small{
+  Si $\alert{\boldsymbol{Y = \alpha_0 + \sum_i \alpha_i X_i}}$, avec les \alert{\bf $X_i$ indépendantes}, alors on définit le  \alert{\bf Standard Regression Coefficient (SRC)} : 
+    \begin{equation}
+      SRC_i = \displaystyle \frac{\alpha_i^2 \Var{X_i}}{\Var{Y}}
+    \end{equation}
+    Donc {\bf $SRC $ est un indice de Sobol} à l'ordre 1 de $X_i$ : $\boldsymbol{    SRC (Y / X_i) = S_i(Y / X_i)}$.
+} 
+ \end{block}
+ 
+ \begin{block}{Si le modèle $f$ est {\itshape monotone par marginale} : SRRC}
+ \small{
+   Si $Y = f(\vect{X})$ avec les \alert{\bf $X_i$ indépendantes} et si $f$ est monotone par rapport à chaque $X_i$, en posant $\vect{U} = (F_1(X_1), \dots, F_n(X_n))^t) = \phi^{-1}(\vect{X})$, on a :
+    $$
+    Z = F_Y(Y) = F_Y \circ f \circ \phi (\vect{U})
+    $$ 
+    Si on suppose {\bf de plus} que :
+    \begin{equation}
+    \label{monotone}
+    \alert{\boldsymbol{Z = \sum_i \alpha_i U_i}}
+    \end{equation}
+    alors on définit le \alert{\bf Standard Rank Regression Coefficient (SRRC)} : 
+    $$
+    SRRC(Y/X_i) = SRC(Z / U_i) = \displaystyle \frac{\alpha_i^2 \Var{U_i}}{\Var{Z}} = S_i(Z/U_i)
+    $$
+    Donc {\bf SRRC est un indice de Sobol} à l'ordre 1 calculé sur les rangs des $X_i$ et de $Y$.
+}
+  \end{block}
+\end{frame}
+
+
+
+\begin{frame}
+  \frametitle{Facteurs d'importance}
+  \begin{block}{Indices de Sobol : Moyens de calcul dans Open TURNS}
+    Open TURNS propose d'évaluer les indices de Sobol via :
+    \begin{itemize}
+    \item de l'\alert{\bf échantillonnage} des entrées / sortie : 
+      \begin{itemize}  
+      \item classe \alert{\bf \itshape{CorrelationAnalysis}} : calcul des {\bf indices $S_I$ d'ordre 1, 2 et 3 et des indices totaux d'ordre 1} par la méthode d'échantillonnage de Sobol. La programmation de la méthode dans Open TURNS est parallèle (si l'évaluation de la fonction sur un échantillon a été codée de manière à bénéficier de plusieurs coeurs de calcul, l'algorithme en profite automatiquement : par exemple, en codant un wrapper multithread).
+      \item classe \alert{\bf \itshape{SensitivityAnalysis}} :  calcul des {\bf indices $S_I$ d'ordre 1 et des indices totaux d'ordre 1} via le package \itshape{Sensitivity} version 1.3.1 de R par la mï¿½thode de Saltelli.
+      \end{itemize}
+    \item une \alert{\bf décomposition en chaos fonctionnel} (polynomial) à l'aide de la classe \alert{\bf \itshape{FunctionalChaosRandomVector}} qui permet d'exploiter statistiquement le résultat d'un algorithme de décomposition en chaos fonctionnel : calcul de moyenne, variance, {\bf indices de Sobol de tout ordre et les indices de Sobol totaux de tout ordre} (à la demande).
+    \end{itemize}
+    
+  \end{block}
+  \begin{block}{SRC et SRRC : Moyens de calcul dans Open TURNS}
+    La classe \alert{\bf \itshape{CorrelationAnalysis}} permet le calcul de \bf{SRC} et \bf{SRRC}.
+  \end{block}
+\end{frame}
+
+
+
+
+\begin{frame}
+  \frametitle{Facteurs d'importance}
+  \begin{block}{Cumul quadratique}
+\small{
+ $Y=f(\vect{X})$ est approché par son \alert{\bf approximation de Taylor à l'ordre 1 au point moyen } : 
+\begin{equation}
+Y = f(\overline{\vect{X}}) + <\vect{\nabla }f(\overline{\vect{X}}), (\vect{X} - \overline{\vect{X}})> =  f(\overline{\vect{X}}) + \sum_i (X_i-\overline{X}_i)\left.\frac{\partial f}{\partial X_j}\right|_{\overline{\vect{X}}}
+\end{equation}
+Sous cette \alert{\bf hypothèse de linéarité du modèle au point moyen} $\overline{\vect{X}}$, on calcule : 
+\begin{eqnarray}
+\Var{Y} & = & \strut^t \vect{\nabla }f(\overline{\vect{X}}).\mat{\rm Cov}\left[ \vect{X} \right]. \vect{\nabla }f(\overline{\vect{X}}) = \sum_{i,j} \displaystyle \left.\frac{\partial f}{\partial X_i}\right|_{\overline{\vect{X}}}{\rm Cov} \left[ X_i, X_j \right].\left.\frac{\partial f}{\partial X_i}\right|_{\overline{\vect{X}}}
+\end{eqnarray}
+On définit le \alert{\bf facteur d'importance de $X_i$} : 
+\begin{equation}
+\label{FI}
+\boldsymbol{FI(X_i) = \displaystyle \frac{\left(\sum_{j} \left.\frac{\partial f}{\partial X_j}\right|_{\overline{\vect{X}}}{\rm Cov} \left[ X_i, X_j \right]\right)  \left.\frac{\partial f}{\partial X_i}\right|_{\overline{\vect{X}}}}{\Var{Y}}}
+\end{equation}
+{\bf Si les $X_i$ sont indépendantes} entre elles, alors (\ref{FI}) se simplifie en : 
+$$
+\boldsymbol{
+FI(X_i) = \left(\left.\frac{\partial f}{\partial X_j}\right|_{\overline{\vect{X}}}\right)^2 \frac{\Var{X_i}}{\Var{Y}}
+} = SRC(Y / X_i) = S_i(Y/X_i)
+$$
+{\bf Dans le cas des $X_i$ indépendantes et d'un modèle linéaire, les $FI$ du cumul quadratique sont des indices de Sobol à l'ordre 1}.
+}
+\end{block}
+\end{frame}
+
+
+
+\begin{frame}
+  \frametitle{Facteurs d'importance}
+  \begin{block}{Cumul quadratique : Moyens de calcul dans Open TURNS}
+    La classe \alert{\bf \itshape{QuadraticCumul}} permet le calcul des facteurs d'importance $FI$ ainsi que leur tracé sous forme de camembert : \itshape{getImportanceFactors()} et \itshape{drawImportanceFactors()}. 
+  \end{block}
+\end{frame}
+
+
+
+
+\begin{frame}
+  \frametitle{Facteurs d'importance}
+  \begin{block}{FORM / SORM}
+  \small{
+    Le modèle $Y=f(\vect{X})$ est plongé via une transformation isoprobabiliste $\vect{U} = T(\vect{X})$ dans l'espace standard des variables sphériques décorrélées $U_i$. \\
+    Dans cet espace, le \alert{\bf modèle est linéarisé au point de conception} $P^{*}$. Si $\beta = ||\vect{OP^{*}}||$ et $\vect{\alpha} = \frac{\vect{OP^{*}}}{\beta}$, alors : 
+   \begin{equation}
+    \label{linearis}
+    Y \simeq M = \beta - <\vect{\alpha}, \vect{U}> = \beta - \sum_i \alpha_i U_i
+    \end{equation}
+    La {\bf littérature ne prenait en compte jusqu'à récemment que des espaces standards gaussiens} dans lesquels les \alert{\bf facteurs d'importance de FORM} sont définis par : 
+    \begin{equation}
+    \label{FILit}
+      \boldsymbol{FI(X_i) = \alpha_i^2}
+    \end{equation}
+    Cette définition est {\bf généralisable au cas des espaces standards sphériques}. Dans cet espace, les variables $U_i$ sont au moins {\itshape décorrélées} (indépendantes dans le cas gaussien), et de {\itshape marginales centrées réduites}. Donc on montre que, pour le modèle linéarisé  (\ref{linearis}):
+    \begin{equation}
+      SRC(Y/U_i) = \displaystyle \frac{\alpha_i^2 \Var{U_i}}{\Var{M}} = \alpha_i^2
+    \end{equation}
+    car $\Var{U_i} = 1$ et  $\Var{M} = \sum_i \alpha_i^2 \Var{U_i} =  \sum_i \alpha_i^2 = 1$.\\
+    Donc les {\bf facteurs d'importance de FORM sont des indices de Sobol} d'ordre 1 pour le modèle linéarisé au point de conception.\\
+    \alert{\bf Attention!} : les  FI sont des $SRC(Y/\alert{\boldsymbol{U_i}})$ et que dire dans le cas où les $X_i$ sont corrélées qui associe $U_i$ à une combinaison linéaire de plusieurs $X_j$ ???
+    }
+  \end{block}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Facteurs d'importance}
+  \begin{block}{FORM / SORM : Implémentation dans Open TURNS}
+\small{
+Dans Open TURNS, la transformation isoprobabiliste utilisée est :
+\begin{itemize}
+  \item celle de Nataf Généralisée lorsque la copule de $\vect{X}$ est elliptique : l'espaces standard sphérique pas nécessairement gaussien et les $U_i$ sont décorrélées (et indépendantes uniquement dans le cas gaussien).
+    \item celle de Rosenblatt lorsque la copue de $\vect{X}$ n'est pas elliptique : l'espace standard est gaussien, et les $U_i$ sont indépendantes.
+\end{itemize}
+Pour remédier au problème de la non bijection entre les $U_i$ et les $X_i$, Open TURNS ramène le point de conception dans l'espace elliptique des $Z_i$ corrélés (suppression de l'étape de décorrélation qui {\itshape mélange} les composantes entre elles) où : 
+    \begin{equation}
+        \boldsymbol{\vect{Z}^{*} = (E^{-1} \circ F_1(X_1^{*}), \dots, E^{-1} \circ F_n(X_n^{*}))^t}
+    \end{equation}
+où $E$ est la  CDF centrée réduite de même type que la copule de $\vect{X}$ dans le cas elliptique  ou gaussienne dans le cas non elliptique.\\
+La transformation étant faite composant à composante, $Z_i \leftrightarrow X_i$ et \alert{\bf Open TURNS définit le facteur d 'importance de $X_i$} comme : 
+    \begin{equation}
+    \label{FIOT}
+      \boldsymbol{FI(X_i) = \left( \frac{Z_i^{*}}{||\vect{Z}^{*}|| } \right)^2}
+    \end{equation}
+    Il ya concordance des définitions (\ref{FILit}) et (\ref{FIOT}) dans le cas de variables indépendantes ou de copule gaussienne. La version  d'OT proposera les 2 définitions.
+}
+\end{block}
+\end{frame}
+
+
+
+\begin{frame}
+  \frametitle{Facteurs d'importance}
+  \begin{block}{FORM : Moyens de calcul dans Open TURNS}
+    Les classes \alert{\bf \itshape{FORMResult}} et \alert{\bf \itshape{SORMResult}} permettent le calcul des facteurs d'importance $FI$ ainsi que leur tracé sous forme de camembert : \itshape{getImportanceFactors()} et \itshape{drawImportanceFactors()}. \\
+    Dans la prochaine version d'Open TURNS, l'utilisateur spécifiera à l'aide d'un flag la définition voulue.
+  \end{block}
+\end{frame}
+\section[Corrélation]{Corrélation}
+
+\begin{frame}
+  \frametitle{Corrélation}
+  \begin{block}{Si le modèle est linéaire : Pearson}
+  Si on suppose que $\alert{\boldsymbol Y=\sum_i \alpha_i X_i}$, on définit la \alert{\bf corrélation de Pearson} entre $Y$ et $X_i$ comme : 
+   \begin{equation}
+   \boldsymbol{ \rho(Y,X_i) = \displaystyle \frac{{\rm cov}\left[Y,X_i \right]}{\sqrt{\Var{X_i}\Var{Y}}}}
+  \end{equation}
+  Dans le cadre linéaire, {\bf si les $X_i$ sont indépendantes}, alors on montre que :
+  $$
+  (\rho(Y,X_i))^2 = SRC_i = S(Y/X_i)
+  $$
+  \end{block}
+  \begin{block}{Si le modèle est {\itshape monotone} : Spearman}
+  Si on suppose que le modèle est monotone et que \alert{\bf les rangs sont linéaires} (\ref{monotone}) , on définit la \alert{\bf corrélation des rangs de Spearman} entre $Y$ et $X_i$ comme : 
+  $$
+  \boldsymbol{\rho_S(Y,X_i) = \rho(F_Y(Y),F_i(X_i))}
+  $$
+  De même, on montre que dans le cas de {\bf variables indépendantes} : 
+  $$
+  (\rho_S(Y,X_i))^2 = SRRC(Y/X_i) = SRC(Z / U_i) = S(Z/U_i)
+  $$
+ 
+\end{block}
+\end{frame}
+   
+  
+  
+\begin{frame}
+  \frametitle{Corrélation}
+  \begin{block}{Si le modèle est linéaire : PCC}
+\small{
+Si on suppose que $Y=\sum_i \alpha_i X_i$, on définit le coefficient \alert{$\boldsymbol{PCC_i}$} (\alert{\bf Partial Pearson Correlation Coefficient }) quantifie la corrélation directe de $Y$ à $X_i$ une fois supprimée les dépendances linéaires de $X_i$ et de $Y$ par rapport aux autres $X_j$ pour $j \neq i$. 
+ \begin {itemize}
+  \item il évalue, à l'aide de régression linéaire, la moyenne de $X_i$ par rapport aux $X_j$ pour $j \neq i$ (partie de $X_i$ qui n'est pas expliquée par les $X_j$) : $  \tilde{X}_i = \sum_{k \neq i} \tilde{b}_k X_k $  
+  \item il évalue, à l'aide de régression linéaire,la moyenne de $Y$ par rapport aux $X_j$ pour $j \neq i$ (partie de $Y$ qui n'est pas expliquée par les $X_j$) : $  \tilde{Y} = \sum_{k \neq i} \tilde{a}_k X_k $
+    \item il calcule le coefficient de corrélation linéaire (de Pearson) entre les résidus issus de $Y$ et ceux issus de $X_i$ : $\boldsymbol{\rho_{(Y-\tilde{Y}),(X_i - \tilde{X}_i)}}$, estimé à partir de l'échantillon aléatoire.
+\end{itemize}
+{\bf Hors cadre linéaire, le coefficient $\boldsymbol{PCC_i}$ perd de sa signification}.
+}
+\end{block}
+\begin{block}{Coefficients de corrélation linéaire sur les rangs : PRCC}
+\small{
+\alert{\bf Cadre d'un modèle monotone} entre $Y$ et  chaque $X_i$.\\
+La monotonie de la relation entre $Y$ et les $X_i$ rend linéaire la relation entre les rangs des réalisations des $Y$ et les rangs des réalisations des $X_i$.\\
+Le coefficient \alert{$\boldsymbol{PRCC_i}$} (\alert{\bf Partial Rank Correlation Coefficient}) est l'équivalent du coefficient $PCC_i$ calculé sur les rangs des variables.
+}
+\end{block}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Corrélation}
+  \begin{block}{Pearson, Spearman, PCC, PRCC : Moyens de calcul dans Open TURNS}
+    La classe \alert{\bf \itshape{CorrelationAnalysis}} permet le calcul de toutes ces grandeurs.
+  \end{block}
+\end{frame}
+
+
+
+\section[Sensibilités]{Sensibilités}
+
+
+\begin{frame}
+  \frametitle{Sensibilités}
+  \begin{block}{FORM / SORM}
+      Les \alert{\bf facteurs de sensibilité} qui quantifient la dépendance de l'incertitude sur $Y = f(\vect{X}$ aux paramètres de la loi de $\vect{X}$ peuvent être lus dans deux échelles de risque différentes :
+\begin{itemize}
+  \item comme {\bf sensibilités sur la probabilité de défaillance} $\frac{\partial\mathbb{P}(Z>s)}{\partial\vect{\lambda}}$,
+  \item comme {\bf sensibilités sur l'indice de fiabilité} $\frac{\partial\beta}{\partial\vect{\lambda}}$.
+\end{itemize}
+Seules les sensibilités par rapport aux paramètres des lois marginales sont disponibles dans OpenTURNS.
+  \end{block}
+\end{frame}
+
+
+
+\begin{frame}
+  \frametitle{Sensibilités}
+  \begin{block}{Monte Carlo}
+     Dans l'espace standard, on peut calculer le point moyen dans l'espace de dépassement de seuil $\mathcal{D}$ : 
+     \begin{equation}
+       \vect{u}^{*} = \Expect{\vect{u}|\vect{u} \in \mathcal{D}}
+     \end{equation}
+     et en dériver des \alert{\bf \itshape facteurs d'importance} comme : 
+     \begin{equation}
+     \label{FIMC}
+     \boldsymbol{FI_{MC}(X_i) = \left( \frac{u_i^{*}}{||\vect{U}^{*}|| } \right)^2}
+     \end{equation}
+  Par symétrie de la loi sphérique de l'espace standard, $\vect{U}^{*}$ est sur la droite portée par le cosinus directeur du point de conception. \\
+  {\bf Dans le cas où l'approximation FORM est exacte, les 2 facteurs d'importances (\ref{FILit}) et  (\ref{FIMC}) coïnccident}.
+  \end{block}
+  \begin{block}{Monte Carlo : Implémentation dans Open TURNS}
+    Prochainement dans Open TURNS.
+  \end{block}
+\end{frame}
+
+
+
+
+
+
+
+
+
+\end{document}
+
+
+       
+    
+  % cette ligne doit toujours etre presente en fin de document
+  % \addtocontents{toc}{\protect\en 

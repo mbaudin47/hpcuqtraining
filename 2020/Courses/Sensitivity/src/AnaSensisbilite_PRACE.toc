@@ -1,0 +1,12 @@
+\beamer@endinputifotherversion {3.26pt}
+\select@language {french}
+\beamer@sectionintoc {1}{Variables ind\'ependantes}{5}{0}{1}
+\beamer@subsectionintoc {1}{1}{Indices de Sobol}{6}{0}{1}
+\beamer@subsectionintoc {1}{2}{Un exemple}{11}{0}{1}
+\beamer@subsectionintoc {1}{3}{Cas particuliers: mesures historiques}{14}{0}{1}
+\beamer@sectionintoc {2}{Variables d\'ependantes}{17}{0}{2}
+\beamer@subsectionintoc {2}{1}{Cumul quadratique}{18}{0}{2}
+\beamer@subsectionintoc {2}{2}{Indices ANCOVA}{19}{0}{2}
+\beamer@sectionintoc {3}{Extensions}{20}{0}{3}
+\beamer@subsectionintoc {3}{1}{Indices bas\'es sur la divergence de Csiszar}{21}{0}{3}
+\beamer@sectionintoc {4}{R\'ef\'erences}{27}{0}{4}

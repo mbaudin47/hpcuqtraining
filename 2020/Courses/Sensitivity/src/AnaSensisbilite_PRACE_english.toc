@@ -1,0 +1,12 @@
+\beamer@endinputifotherversion {3.26pt}
+\select@language {french}
+\beamer@sectionintoc {1}{Independent Variables }{5}{0}{1}
+\beamer@subsectionintoc {1}{1}{Sobol Indices}{6}{0}{1}
+\beamer@subsectionintoc {1}{2}{An example}{11}{0}{1}
+\beamer@subsectionintoc {1}{3}{Particular cases: historical measures}{14}{0}{1}
+\beamer@sectionintoc {2}{Dependent variables}{17}{0}{2}
+\beamer@subsectionintoc {2}{1}{Taylor decomposition}{18}{0}{2}
+\beamer@subsectionintoc {2}{2}{ ANCOVA Indices}{19}{0}{2}
+\beamer@sectionintoc {3}{Extensions}{20}{0}{3}
+\beamer@subsectionintoc {3}{1}{Indices based on the Csiszar divergence}{21}{0}{3}
+\beamer@sectionintoc {4}{References}{27}{0}{4}
