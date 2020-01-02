@@ -44,9 +44,12 @@ Day 2 : Quantification, Propagation and Ranking of Uncertainties
 "Slides/13. PRACE_D3_Salome.pdf"
 
 - Optimisation and Calibration (1h) : J.B. Blanchard, M. Baudin
-TODO
+
+- Calibration Course: https://github.com/mbaudin47/hpcuqtraining/blob/master/2020/Courses/Calibration/Calibration_PRACE_english.pdf
 
 - Application to OpenTURNS and Uranie (1h): J.B. Blanchard, M. Baudin
+- Calibration Scripts Deterministic: https://github.com/mbaudin47/hpcuqtraining/tree/master/2020/Scripts/Calibration/Exercice-calage-deterministe-Chaboche.ipynb
+- Calibration Scripts Bayesian: https://github.com/mbaudin47/hpcuqtraining/tree/master/2020/Scripts/Calibration/Exercice-calage-bayesien-Chaboche.ipynb
 
 Day 3 : HPC aspects – Meta model
 --------------------------------
