@@ -352,6 +352,261 @@ and:
 
 \end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Bayesian code calibration}
+
+\begin{frame}
+
+The bayesian calibration framework is based on two hypotheses.
+
+The first hypothesis is that the parameter $\vect{\theta}$ has a
+known distribution, called the \emph{prior} distribution, and denoted by
+$p(\vect{\theta})$.
+
+The second hypothesis is that the output observations
+$(\vect{y}^1, \ldots, \vect{y}^n)$ are sampled from a known
+conditional distribution denoted by $p(\vect{y} | \vect{\theta})$.
+
+For any $\vect{y}\in\Rset^{d_z}$ such that $p(\vect{y})>0$,
+the Bayes theorem implies that the conditional distribution of
+$\vect{\theta}$ given $\vect{y}$ is:
+
+$$
+p(\vect{\theta} | \vect{y}) = \frac{p(\vect{y} | \vect{\theta}) p(\vect{\theta})}{p(\vect{y})}
+$$
+
+for any $\vect{\theta}\in\Rset^{d_h}$.
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+
+The denominator of the previous Bayes fraction is independent of
+$\vect{\theta}$, so that the posterior distribution is
+proportional to the numerator:
+
+$$
+p(\vect{\theta} | \vect{y}) \propto  p(\vect{y} | \vect{\theta}) p(\vect{\theta}).
+$$
+
+for any $\vect{\theta}\in\Rset^{d_h}$.
+
+In the Gaussian calibration, the two previous distributions are assumed
+to be Gaussian.
+
+More precisely, we make the hypothesis that the parameter
+$\vect{\theta}$ has the Gaussian distribution:
+
+$$
+\vect{\theta} \sim \mathcal{N}(\vect{\mu}, B),
+$$
+
+where $\vect{\mu}\in\Rset^{d_h}$ is the mean of the Gaussian prior
+distribution, which is named the \emph{background} and
+$B\in\Rset^{d_h \times d_h}$ is the covariance matrix of the
+parameter.
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+Secondly, we make the hypothesis that the output observations have the
+conditional gaussian distribution:
+
+$$
+\vect{y} | \vect{\theta} \sim \mathcal{N}(\vect{h}(\vect{\theta}), R),
+$$
+
+where $R\in\Rset^{d_z \times d_z}$ is the covariance matrix of the
+output observations.
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Posterior distribution}
+
+Denote by $\|\cdot\|_B$ the Mahalanobis distance associated with
+the matrix $B$ :
+
+$$
+\|\vect{\theta}-\vect{\mu} \|^2_B = (\vect{\theta}-\vect{\mu} )^T B^{-1} (\vect{\theta}-\vect{\mu} ),
+$$
+
+for any $\vect{\theta},\vect{\mu} \in \Rset^{d_h}$. Denote by
+$\|\cdot\|_R$ the Mahalanobis distance associated with the matrix
+$R$ :
+
+$$
+\|\vect{y}-H(\vect{\theta})\|^2_R = (\vect{y}-H(\vect{\theta}))^T R^{-1} (\vect{y}-H(\vect{\theta})).
+$$
+
+for any $\vect{\theta} \in \Rset^{d_h}$ and any
+$\vect{y} \in \Rset^{d_z}$. Therefore, the posterior distribution
+of $\vect{\theta}$ given the observations $\vect{y}$ is :
+
+$$
+   p(\vect{\theta}|\vect{y}) \propto \exp\left( -\frac{1}{2} \left( \|\vect{y}-H(\vect{\theta})\|^2_R 
+   + \|\vect{\theta}-\vect{\mu} \|^2_B \right) \right)
+$$
+
+for any $\vect{\theta}\in\Rset^{d_h}$.
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{MAP estimator}
+
+The maximum of the posterior distribution of $\vect{\theta}$ given
+the observations $\vect{y}$ is reached at :
+
+$$
+   \hat{\vect{\theta}} = \argmin_{\vect{\theta}\in\Rset^{d_h}} \frac{1}{2} \left( \|\vect{y} - H(\vect{\theta})\|^2_R 
+   + \|\vect{\theta}-\vect{\mu} \|^2_B \right).
+$$
+
+It is called the \emph{maximum a posteriori posterior} estimator or \emph{MAP}
+estimator.
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Regularity of solutions of the Gaussian Calibration}
+
+The gaussian calibration is a tradeoff, so that the second expression
+acts as a \emph{spring} which pulls the parameter $\vect{\theta}$
+closer to the background $\vect{\mu}$ (depending on the "spring
+constant" $B$, meanwhile getting as close a possible to the
+observations. 
+
+Depending on the matrix $B$, the computation may
+have better regularity properties than the plain non linear least
+squares problem.
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Non Linear Gaussian Calibration : 3DVAR}
+
+The cost function of the gaussian nonlinear calibration problem is :
+
+$$
+   C(\vect{\theta}) = \frac{1}{2}\|\vect{y}-H(\vect{\theta})\|^2_R 
+   + \frac{1}{2}\|\vect{\theta}-\vect{\mu} \|^2_B
+$$
+
+for any $\vect{\theta}\in\Rset^{d_h}$.
+
+The goal of the non linear gaussian calibration is to find the value of
+$\vect{\theta}$ which minimizes the cost function $C$. In
+general, this involves using a nonlinear unconstrained optimization
+solver.
+
+Let $J \in \Rset^{n \times d_h}$ be the Jacobian matrix made of
+the partial derivatives of $\vect{h}$ with respect to
+$\vect{\theta}$:
+
+$$
+J(\vect{\theta}) = \frac{\partial \vect{h}}{\partial \vect{\theta}}.
+$$
+
+If the covariance matrix $B$ is positive definite, then the
+Hessian matrix of the cost function is positive definite 
+(no matter of the rank of $J$). 
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Linear Gaussian Calibration : bayesian BLUE}
+We make the hypothesis that $h$ is linear with respect to
+$\vect{\theta}$, i.e., for any
+$\vect{\theta}\in\Rset^{d_h}$, we have :
+
+$$
+h(\vect{\theta}) = h(\vect{\mu}) + J(\vect{\theta}-\vect{\mu} ),
+$$
+
+where $J$ is the constant Jacobian matrix of $h$.
+
+Let $A$ be the matrix:
+
+$$
+A^{-1} = B^{-1} + J^T R^{-1} J.
+$$
+
+We denote by $K$ the Kalman matrix:
+
+$$
+K = A J^T R^{-1}.
+$$
+
+The maximum of the posterior distribution of $\vect{\theta}$ given
+the observations $\vect{y}$ is:
+
+$$
+\hat{\vect{\theta}} = \vect{\mu} + K (\vect{y} - H(\vect{\mu})).
+$$
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+It can be proved that:
+
+$$
+   p(\vect{\theta} | \vect{y}) \propto 
+   \exp\left(\frac{1}{2} (\vect{\theta} - \hat{\vect{\theta}})^T A^{-1} (\vect{\theta} - \hat{\vect{\theta}}) \right)
+$$
+
+for any $\vect{\theta}\in\Rset^{d_h}$.
+
+This implies:
+
+$$
+\hat{\vect{\theta}} \sim \mathcal{N}(\vect{\theta},A)
+$$
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{General bayesian calibration}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{General bayesian calibration}
+
+If the full posterior distribution is to be known, the 
+general bayesian framework may be used. 
+
+This allows to:
+\begin{itemize}
+\item use whatever (proper) prior distribution (no need to restrict to gaussian 
+prior),
+\item use whatever computer code $\vect{h}$ (no need to restrict to linear 
+code).
+\end{itemize}
+
+One method is to create a Monte-Carlo Markov Chain ; the classical algorithm is then the 
+Metropolis-Hastings algorithm. 
+
+However, sampling from the posterior distribution 
+requires to generate a large sample size, which is impractical 
+when the $\vect{h}$ is costly. 
+
+In this case, using a metamodel is \emph{mandatory}. 
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{References}
+
+\begin{itemize}
+\item  N. H. Bingham and John M. Fry (2010). Regression, Linear Models in Statistics, Springer Undergraduate Mathematics Series. Springer.
+\item S. Huet, A. Bouvier, M.A. Poursat, and E. Jolivet (2004). Statistical Tools for Nonlinear Regression, Springer.
+\item C.E. Rasmussen and C. K. I. Williams (2006), Gaussian Processes for Machine Learning, The MIT Press.
+\end{itemize}
 
 \end{document}
 
