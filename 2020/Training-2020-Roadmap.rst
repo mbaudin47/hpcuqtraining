@@ -8,10 +8,13 @@ Day 1 : Methodology of Uncertainty Treatment – Basics of Probability and Stat
 -----------------------------------------------------------------------------------
 
 - General Uncertainty Methodology (30’) : A. Dutfoy
-"Slides/01. PRACE_D1 - IntroStage.ppt"
+
+https://github.com/mbaudin47/hpcuqtraining/tree/master/2020/Courses/Intro/1-PRACE_D1-IntroStage.ppt
 
 - Probability and Statistics: Basics (45’) : G. Blondet
-"Slides/02. PRACE_D1 - MethodoIncertitudes.ppt"
+
+https://github.com/mbaudin47/hpcuqtraining/tree/master/2020/Courses/Intro/2-PRACE_D1-MethodoIncertitudes.ppt
+
 "Slides/03. PRACE_D1 - Probability theory basics.pdf"
 
 - General introduction to Open TURNS and Uranie (2 * 30’) : G. Blondet, J.B. Blanchard
