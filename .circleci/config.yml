@@ -9,6 +9,15 @@ jobs:
       - run:
           name: Install
           command: |
+            sudo apt-get install texlive-base
+            sudo apt-get install texlive
+            sudo apt-get install texlive-latex-extra
+            sudo apt-get install texlive-latex-recommended
+            sudo apt-get install texlive-fonts-recommended
+            sudo apt-get install texlive-latex-extra
+            sudo apt-get install texlive-science
+            sudo apt-get install lmodern
+            sudo apt-get install texlive-lang-french
             curl -s -o Miniconda3-latest-Linux-x86_64.sh "https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh"
             bash Miniconda3-latest-Linux-x86_64.sh -b -p $HOME/miniconda
             export PATH="$HOME/miniconda/bin:$PATH"
