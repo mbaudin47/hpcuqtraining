@@ -1,0 +1,5 @@
+pdflatex AnaSensisbilite_PRACE_english
+pdflatex AnaSensisbilite_PRACE_english
+bibtex AnaSensisbilite_PRACE_english
+pdflatex AnaSensisbilite_PRACE_english
+
