@@ -71,7 +71,7 @@ TODO : Optimization Course
 
 - Application to OpenTURNS and Uranie (1h): J.B. Blanchard, M. Baudin
 
-    - Calibration Scripts Deterministic: https://github.com/mbaudin47/hpcuqtraining/tree/master/2020/Scripts/Calibration/Exercice-calage-deterministe-Chaboche.ipynb
+    - Calibration Scripts Deterministic (30min) : https://github.com/mbaudin47/hpcuqtraining/tree/master/2020/Scripts/Calibration/Exercice-calage-deterministe-Chaboche.ipynb
     - Calibration Scripts Bayesian: https://github.com/mbaudin47/hpcuqtraining/tree/master/2020/Scripts/Calibration/Exercice-calage-bayesien-Chaboche.ipynb
 
 TODO : Optimization Application
