@@ -11,9 +11,10 @@ Day 1 : Methodology of Uncertainty Treatment – Basics of Probability and Stat
 
 https://github.com/mbaudin47/hpcuqtraining/tree/master/2020/Courses/Intro/1-PRACE_D1-IntroStage.ppt
 
+https://github.com/mbaudin47/hpcuqtraining/tree/master/2020/Courses/Intro/2-PRACE_D1-MethodoIncertitudes.ppt
+
 - Probability and Statistics: Basics (45’) : G. Blondet
 
-https://github.com/mbaudin47/hpcuqtraining/tree/master/2020/Courses/Intro/2-PRACE_D1-MethodoIncertitudes.ppt
 
 "Slides/03. PRACE_D1 - Probability theory basics.pdf"
 
