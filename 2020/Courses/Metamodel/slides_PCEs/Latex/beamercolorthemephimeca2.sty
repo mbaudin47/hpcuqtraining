@@ -1,0 +1,66 @@
+% Copyright 2007 by Till Tantau
+%
+% This file may be distributed and/or modified
+%
+% 1. under the LaTeX Project Public License and/or
+% 2. under the GNU Public License.
+%
+% See the file doc/licenses/LICENSE for more details.
+
+\ProvidesPackageRCS $Header: /cvsroot/latex-beamer/latex-beamer/themes/color/beamercolorthemephimeca.sty,v 1.4 2007/01/28 20:48:24 tantau Exp $
+
+
+\mode<presentation>
+
+% Palette de couleurs principales
+\definecolor{BleuPhimeca1}{RGB}{107 134 164} % bleu logo foncé
+\definecolor{BleuPhimeca2}{RGB}{148 187 227} % bleu logo clair
+\definecolor{BleuPhimeca3}{RGB}{72 61 139} % bleu pétillant
+\definecolor{Violet1}{RGB}{140 92 180} % violet cool
+\definecolor{GrisBleuPale}{RGB}{220 225 183} % gis bleu pale
+
+\definecolor{blatman2}{RGB}{139 181 55} % vert kaki
+
+\setbeamercolor*{palette primary}{fg=white,bg=BleuPhimeca1} % couleur cadre sous-titre et cadre haut droite
+\setbeamercolor*{palette secondary}{parent=palette primary,use=palette primary,bg=palette primary.bg!95!black}
+\setbeamercolor*{palette tertiary}{parent=palette primary,use=palette primary,bg=palette primary.bg!85!black}
+\setbeamercolor*{palette quaternary}{parent=palette primary,use=palette primary,bg=palette primary.bg!85!black} % couleur cadre haut gauche
+
+%\setbeamercolor*{sidebar}{use=structure,bg=structure.fg}
+\setbeamercolor*{sidebar}{parent=palette primary}
+  
+\setbeamercolor*{palette sidebar primary}{fg=white}
+\setbeamercolor*{palette sidebar secondary}{fg=black}
+\setbeamercolor*{palette sidebar tertiary}{fg=white}
+\setbeamercolor*{palette sidebar quaternary}{fg=black}
+\setbeamercolor*{titlelike}{parent=palette primary}
+
+\setbeamercolor*{separation line}{}
+\setbeamercolor*{fine separation line}{}
+
+
+\setbeamercolor*{block title}{bg=BleuPhimeca1, fg=white} % couleur titres blocs
+\setbeamercolor*{block title alerted}{parent=alerted text}
+\setbeamercolor*{block title example}{bg=BleuPhimeca1!50, fg=white}
+%\setbeamercolor*{block title example}{use=example text,bg=Purple!50, fg=white}
+\setbeamercolor*{block body}{bg=GrisBleuPale!50} % couleur fond des blocs
+\setbeamercolor*{block body alerted}{}
+\setbeamercolor*{block body example}{parent=block body}
+
+\setbeamercolor*{alerted text}{fg=Purple}  % Alerted text
+\setbeamercolor{framesubtitle}{fg=white}
+
+\setbeamercolor*{title}{bg=BleuPhimeca1, fg=white}
+%\setbeamercolor*{title}{fg=BleuPhimeca3}
+\setbeamercolor*{subtitle}{fg=BleuPhimeca3}%%
+\setbeamercolor*{author}{fg=BleuPhimeca3}
+\setbeamercolor*{institute}{fg=BleuPhimeca3}
+
+%---- changes some color options BSD
+%\setbeamercolor{block example title}{bg=,fg=red} 
+%\definecolor{MyGreen}{RGB}{1,255,12}
+%\setbeamercolor{block title example}{use=example text,fg=green,bg=example text.fg!75!bg}
+
+
+\mode
+<all>
