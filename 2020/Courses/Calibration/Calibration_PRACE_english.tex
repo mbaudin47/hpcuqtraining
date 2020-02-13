@@ -146,7 +146,7 @@ $$
 $$
 
 for $i=1,...,n$. The method of least squares minimizes the square
-of the euclidian norm of the residuals. This is why the least squares
+of the Euclidian norm of the residuals. This is why the least squares
 method is based on the cost function $C$ defined by:
 
 $$
@@ -247,7 +247,7 @@ we generally do not compute and invert the Gram matrix $J^T J$.
 
 Alternatively, various orthogonalization methods such as the QR or the
 SVD decomposition can be used to solve the linear least squares problem
-so that potential ill-conditionning of the normal equations is
+so that potential ill-conditioning of the normal equations is
 mitigated.
 
 \end{frame}
@@ -282,7 +282,7 @@ $$
 In the general case where the function $\vect{h}$ is non linear
 with respect to the parameter $\vect{\theta}$, then the resolution
 involves a non linear least squares optimization algorithm. Instead of
-directly minimizing the squared euclidian norm of the residuals, most
+directly minimizing the squared Euclidian norm of the residuals, most
 implementations rely on the residual vector, which lead to an improved
 accuracy.
 
@@ -293,7 +293,7 @@ $\hat{\vect{\theta}}$ anymore.
 There are two practical solutions to overcome this limitation.
 \begin{itemize}
 \item bootstrap (randomly resample within the observations),
-\item linearization (in the neighbourhood of $\hat{\vect{\theta}}$).
+\item linearization (in the neighborhood of $\hat{\vect{\theta}}$).
 \end{itemize}
 
 \end{frame}
@@ -466,7 +466,7 @@ $$
    + \|\vect{\theta}-\vect{\mu} \|^2_B \right).
 $$
 
-It is called the \emph{maximum a posteriori posterior} estimator or \emph{MAP}
+It is called the \emph{maximum a posteriori} estimator or \emph{MAP}
 estimator.
 \end{frame}
 
@@ -595,7 +595,7 @@ However, sampling from the posterior distribution
 requires to generate a large sample size, which is impractical 
 when the $\vect{h}$ is costly. 
 
-In this case, using a metamodel is \emph{mandatory}. 
+In this case, using a surrogate model is \emph{mandatory}. 
 
 \end{frame}
 
