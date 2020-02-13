@@ -61,7 +61,7 @@ TODO : "Slides/11. PRACE_D3_BatchUranie.pdf"
 
 TODO : "Slides/12. PRACE_D3 - Distributing_OpenTURNS_OtWraPy_.pdf"
 
-TODO : "Slides/13. PRACE_D3_Salome.pdf"
+    - SALOME Course: https://github.com/mbaudin47/hpcuqtraining/blob/master/2020/Courses/Salome/13.PRACE_D3_Salome.pptx
 
 - Optimization and Calibration (1h) : J.B. Blanchard, M. Baudin
 
