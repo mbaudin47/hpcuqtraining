@@ -36,7 +36,7 @@ TODO
 
 - Central tendency and Sensitivity analysis (1h): A. Dutfoy
 
-TODO
+    - Sensitivity Course: https://github.com/mbaudin47/hpcuqtraining/blob/master/2020/Courses/Sensitivity/AnaSensisbilite_PRACE_english.pdf
 
 Day 2 : Quantification, Propagation and Ranking of Uncertainties
 ----------------------------------------------------------------
@@ -89,7 +89,9 @@ TODO
 
 - Kriging meta model (1h): C. Mai
 
-TODO
+    - Kriging Course: https://github.com/mbaudin47/hpcuqtraining/blob/master/2020/Courses/Metamodel/slides_GP/Latex/Metamodel_Kriging.pdf
+
+    - Chaos Course: https://github.com/mbaudin47/hpcuqtraining/blob/master/2020/Courses/Metamodel/slides_PCEs/Latex/Metamodel_PCEs.pdf
 
 - Lunch 
 
