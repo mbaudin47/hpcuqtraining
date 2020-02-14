@@ -11,3 +11,8 @@ cd 2020/Courses/Sensitivity && bash make-slides.sh && cd -
 cd 2020/Courses/Metamodel/slides_PCEs/Latex && bash make-slides.sh && cd -
 cd 2020/Courses/Metamodel/slides_GP/Latex && bash make-slides.sh && cd -
 
+# Notebooks in all subdirectories
+cd 2020
+python ../tests/find-ipynb-files.py
+cd ..
+
