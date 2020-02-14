@@ -67,7 +67,7 @@
 
 %%% First slide informations
 
-\title[Introduction aux métamodèles] 
+\title[Introduction to metamodels] 
 {\textcolor{orange}{ Introduction to metamodels \& Polynomial chaos expansions  }}
 
 %\author[L. Le Gratiet \& G. Blatman]{L. Le Gratiet \& G. Blatman}
@@ -208,7 +208,7 @@
 \emph{Meta} : a prefix added to the name of something that consciously references or comments upon its own subject or features, e.g. metamodel : a model of another model
 
 \vspace{0.2cm}
-A metamodel is an approximation model that mimics the behaviour of a computationally expensive simulator by training on \emph{observations (data)} of the latter.
+A metamodel is an approximation model that mimics the behavior of a computationally expensive simulator by training on \emph{observations (data)} of the latter.
 
  
 
@@ -280,7 +280,7 @@ By definition, two requirements of a metamodel $\hat{f}$ are:
 	 \begin{itemize}
 	 \item change method for fitting: use advanced regression technique instead of least squares errors,
 	 \item change metamodel parameters: increase polynomial degrees,
-	 \item enrich the experimental design where the model is inaccurate or interesting behaviour is observed,
+	 \item enrich the experimental design where the model is inaccurate or interesting behavior is observed,
 	 \item change the type of metamodel: polynomial chaos instead of second-order response surface
 	\end{itemize}	     
 	\end{itemize}
@@ -331,7 +331,7 @@ k(\bs{X}, \bs{X'}) = \sigma^2 \, \rho( \left\lVert \bs{X} - \bs{X'}  \right\rVer
 \]
 
 
-{\titx \bf Artifical neural network:}
+{\titx \bf Artificial neural network:}
 Radial basis function is a single layer neural network with radial coordinate neurons
 \begin{center}
  \includegraphics[width=2.8cm]{../Pics/neural_network.png} \\
@@ -376,7 +376,7 @@ Radial basis function is a single layer neural network with radial coordinate ne
 
 {\titx \bf $K$-fold cross-validation method:}
 
-$\mathcal{K}: \{1, \dots , N\} \mapsto \{1, \dots, K\}$ partion of $N$ observations to $K$ roughly equal-sized parts, $K=N$: leave-one-out
+$\mathcal{K}: \{1, \dots , N\} \mapsto \{1, \dots, K\}$ partition of $N$ observations to $K$ roughly equal-sized parts, $K=N$: leave-one-out
 
 $\hat{f}^{-k}()$: fitted metamodel with $k$-th part of data set aside
 
@@ -653,19 +653,20 @@ $\displaystyle{ \tilde{\bs{Y}} }\,  = \,
 
 \end{frame}
 
-\begin{frame}{Least angle regression}
+\begin{frame}{Least angle regression stepwise}
 
 \begin{center}
  \includegraphics[width=5cm]{../Pics/lars.png} \\
- \color{cornellred}{Least angle regression}
+ \color{cornellred}{Least angle regression stepwise}
 \end{center}
 
-In each iteration:
-\begin{itemize}
-	\item Find the vector $\psi_{\alpha_j}$ which is as correlated with the current residual as active vectors
-	\item Move jointly coefficients until another vector is equi-correlated with the current residual
-\end{itemize}
+First, initialize coefficients to $0$ \& initial residual to the vector of observations.\\
 
+At each iteration:
+\begin{itemize}
+	\item Find the vector $\psi_{\alpha_j}$ which is the most correlated with the current residual
+    \item Move jointly $(\psi_{\alpha_j}, \psi_{\alpha_k})^T$ coefficients until another vector $\psi_{\alpha_l}$ is much correlated with the current residual
+\end{itemize}
 \end{frame}
 
 
@@ -675,7 +676,7 @@ In each iteration:
 \item $Q^2$ cross-validation on independent test data set
 \item Due to its linear-regression form, leave-one-out error for polynomial chaos expansions can be obtained without calculating $N$ metamodels:
 $$  \qquad Err_{L00} \quad = \quad \frac{1}{N} \sum_{i=1}^{N} \; \left( \frac{ f(\xi^{(i)}) - \hat{f}_{\bs{a}}(\xi^{(i)}) } {1 - h_i} \right)^2  $$ 
-where $\hat{f}_{\bs{a}}$ is the metamodel computed on the entire data set, $h_i$ is $i$-th diagonal term of the matrix $\boldsymbol{\Psi} \left( \boldsymbol{\Psi}^T \boldsymbol{\Psi} \right)^{-1} \boldsymbol{\Psi}^T$
+where $\hat{f}_{\bs{a}}$ is the metamodel computed on the full data set, $h_i$ is $i$-th diagonal term of the hat matrix $\boldsymbol{\Psi} \left( \boldsymbol{\Psi}^T \boldsymbol{\Psi} \right)^{-1} \boldsymbol{\Psi}^T$
 
 \end{itemize}
 
