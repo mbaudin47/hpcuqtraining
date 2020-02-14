@@ -653,19 +653,20 @@ $\displaystyle{ \tilde{\bs{Y}} }\,  = \,
 
 \end{frame}
 
-\begin{frame}{Least angle regression}
+\begin{frame}{Least angle regression stepwise}
 
 \begin{center}
  \includegraphics[width=5cm]{../Pics/lars.png} \\
- \color{cornellred}{Least angle regression}
+ \color{cornellred}{Least angle regression stepwise}
 \end{center}
 
-In each iteration:
-\begin{itemize}
-	\item Find the vector $\psi_{\alpha_j}$ which is as correlated with the current residual as active vectors
-	\item Move jointly coefficients until another vector is equi-correlated with the current residual
-\end{itemize}
+First, initialize coefficients to $0$ \& initial residual to the vector of observations.\\
 
+At each iteration:
+\begin{itemize}
+	\item Find the vector $\psi_{\alpha_j}$ which is the most correlated with the current residual
+    \item Move jointly $(\psi_{\alpha_j}, \psi_{\alpha_k})^T$ coefficients until another vector $\psi_{\alpha_l}$ is much correlated with the current residual
+\end{itemize}
 \end{frame}
 
 
@@ -675,7 +676,7 @@ In each iteration:
 \item $Q^2$ cross-validation on independent test data set
 \item Due to its linear-regression form, leave-one-out error for polynomial chaos expansions can be obtained without calculating $N$ metamodels:
 $$  \qquad Err_{L00} \quad = \quad \frac{1}{N} \sum_{i=1}^{N} \; \left( \frac{ f(\xi^{(i)}) - \hat{f}_{\bs{a}}(\xi^{(i)}) } {1 - h_i} \right)^2  $$ 
-where $\hat{f}_{\bs{a}}$ is the metamodel computed on the entire data set, $h_i$ is $i$-th diagonal term of the matrix $\boldsymbol{\Psi} \left( \boldsymbol{\Psi}^T \boldsymbol{\Psi} \right)^{-1} \boldsymbol{\Psi}^T$
+where $\hat{f}_{\bs{a}}$ is the metamodel computed on the full data set, $h_i$ is $i$-th diagonal term of the hat matrix $\boldsymbol{\Psi} \left( \boldsymbol{\Psi}^T \boldsymbol{\Psi} \right)^{-1} \boldsymbol{\Psi}^T$
 
 \end{itemize}
 
