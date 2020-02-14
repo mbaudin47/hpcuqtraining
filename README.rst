@@ -32,6 +32,8 @@ La prochaine session aura lieu :
 
 11-13 mai 2020, 9h30- 12h30 / 14h – 17h, Maison de la Simulation, France
 
-Le programme est disponible ici :
+.. _`programme 2020`: https://github.com/mbaudin47/hpcuqtraining/blob/master/2020/Programme/ProgrammePRACE_HPC_Uncertainty_2020.odt
+.. _`feuille de route 2020`: https://github.com/mbaudin47/hpcuqtraining/blob/master/2020/Training-2020-Roadmap.rst
 
-https://github.com/mbaudin47/hpcuqtraining/blob/master/2020/Programme/ProgrammePRACE_HPC_Uncertainty_2020.odt
+Le `programme 2020`_ est disponible ainsi que la `feuille de route 2020`_.
+
