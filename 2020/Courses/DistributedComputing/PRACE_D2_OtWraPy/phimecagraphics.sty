@@ -1,0 +1,540 @@
+% -*- coding: utf-8 -*-
+% Original version 02/28/2010
+% Extended by Felipe Aguirre Martinez :
+% - Created several macros for each type of logo.
+% - Added black and white variations
+% - Added slogan 'Solutions for robust engineering' to the logos.
+% - Recreated the title for beamer presentation (\phimecabeamer).
+\NeedsTeXFormat{LaTeX2e}[1999/01/01]
+\ProvidesPackage{phimecagraphics}[01/21/2016, Charte graphique Phimeca LaTeX]
+
+\RequirePackage{tikz}
+\usetikzlibrary{shapes}
+\usetikzlibrary{patterns}
+\usetikzlibrary{arrows,decorations.pathmorphing,backgrounds,positioning,fit,petri}
+
+\RequirePackage[T1]{fontenc}
+\usepackage[letterspace=100]{microtype} % Add option that increases letter spacing
+\DeclareTextFontCommand{\textxoireqe}{\lsstyle\fontencoding{T1}\fontfamily{xoireqe}\selectfont}
+\DeclareTextFontCommand{\sloganfont}{\fontfamily{qag}\selectfont}
+\definecolor{phi dark blue}{RGB}{51,51,153}
+\definecolor{phidarkblue}{RGB}{51,51,153}
+\definecolor{phi light blue}{RGB}{8,115,168}
+\definecolor{phi grey}{RGB}{137,137,137}
+\definecolor{zdlilas}{rgb}{0.8,0.6,0.7}
+\colorlet{dlilas}{zdlilas!85!black}
+
+
+\RequirePackage{color}
+\definecolor{phimecalightblue}{RGB}{127 172 210}
+\definecolor{phimecadarkblue}{RGB}{70 131 170}
+\definecolor{Apricot}{cmyk}{0,0.32,0.52,0}
+\definecolor{Aquamarine}{cmyk}{0.82,0,0.30,0}
+\definecolor{Bittersweet}{cmyk}{0,0.75,1,0.24}
+\definecolor{Black}{cmyk}{0,0,0,1}
+\definecolor{Blue}{cmyk}{1,1,0,0}
+\definecolor{BlueGreen}{cmyk}{0.85,0,0.33,0}
+\definecolor{BlueViolet}{cmyk}{0.86,0.91,0,0.04}
+\definecolor{BrickRed}{cmyk}{0,0.89,0.94,0.28}
+\definecolor{Brown}{cmyk}{0,0.81,1,0.60}
+\definecolor{BurntOrange}{cmyk}{0,0.51,1,0}
+\definecolor{CadetBlue}{cmyk}{0.62,0.57,0.23,0}
+\definecolor{CarnationPink}{cmyk}{0,0.63,0,0}
+\definecolor{Cerulean}{cmyk}{0.94,0.11,0,0}
+\definecolor{CornflowerBlue}{cmyk}{0.65,0.13,0,0}
+\definecolor{Cyan}{cmyk}{1,0,0,0}
+\definecolor{Dandelion}{cmyk}{0,0.29,0.84,0}
+\definecolor{DarkOrchid}{cmyk}{0.40,0.80,0.20,0}
+\definecolor{Emerald}{cmyk}{1,0,0.50,0}
+\definecolor{ForestGreen}{cmyk}{0.91,0,0.88,0.12}
+\definecolor{Fuchsia}{cmyk}{0.47,0.91,0,0.08}
+\definecolor{Goldenrod}{cmyk}{0,0.10,0.84,0}
+\definecolor{Gray}{cmyk}{0,0,0,0.50}
+\definecolor{Green}{cmyk}{1,0,1,0}
+\definecolor{GreenYellow}{cmyk}{0.15,0,0.69,0}
+\definecolor{JungleGreen}{cmyk}{0.99,0,0.52,0}
+\definecolor{Lavender}{cmyk}{0,0.48,0,0}
+\definecolor{LimeGreen}{cmyk}{0.50,0,1,0}
+\definecolor{Magenta}{cmyk}{0,1,0,0}
+\definecolor{Mahogany}{cmyk}{0,0.85,0.87,0.35}
+\definecolor{Maroon}{cmyk}{0,0.87,0.68,0.32}
+\definecolor{Melon}{cmyk}{0,0.46,0.50,0}
+\definecolor{MidnightBlue}{cmyk}{0.98,0.13,0,0.43}
+\definecolor{Mulberry}{cmyk}{0.34,0.90,0,0.02}
+\definecolor{NavyBlue}{cmyk}{0.94,0.54,0,0}
+\definecolor{OliveGreen}{cmyk}{0.64,0,0.95,0.40}
+\definecolor{Orange}{cmyk}{0,0.61,0.87,0}
+\definecolor{OrangeRed}{cmyk}{0,1,0.50,0}
+\definecolor{Orchid}{cmyk}{0.32,0.64,0,0}
+\definecolor{Peach}{cmyk}{0,0.50,0.70,0}
+\definecolor{Periwinkle}{cmyk}{0.57,0.55,0,0}
+\definecolor{PineGreen}{cmyk}{0.92,0,0.59,0.25}
+\definecolor{Plum}{cmyk}{0.50,1,0,0}
+\definecolor{ProcessBlue}{cmyk}{0.96,0,0,0}
+\definecolor{Purple}{cmyk}{0.45,0.86,0,0}
+\definecolor{RawSienna}{cmyk}{0,0.72,1,0.45}
+\definecolor{Red}{cmyk}{0,1,1,0}
+\definecolor{RedOrange}{cmyk}{0,0.77,0.87,0}
+\definecolor{RedViolet}{cmyk}{0.07,0.90,0,0.34}
+\definecolor{Rhodamine}{cmyk}{0,0.82,0,0}
+\definecolor{RoyalBlue}{cmyk}{1,0.50,0,0}
+\definecolor{RoyalPurple}{cmyk}{0.75,0.90,0,0}
+\definecolor{RubineRed}{cmyk}{0,1,0.13,0}
+\definecolor{Salmon}{cmyk}{0,0.53,0.38,0}
+\definecolor{SeaGreen}{cmyk}{0.69,0,0.50,0}
+\definecolor{Sepia}{cmyk}{0,0.83,1,0.70}
+\definecolor{SkyBlue}{cmyk}{0.62,0,0.12,0}
+\definecolor{SpringGreen}{cmyk}{0.26,0,0.76,0}
+\definecolor{Tan}{cmyk}{0.14,0.42,0.56,0}
+\definecolor{TealBlue}{cmyk}{0.86,0,0.34,0.02}
+\definecolor{Thistle}{cmyk}{0.12,0.59,0,0}
+\definecolor{Turquoise}{cmyk}{0.85,0,0.20,0}
+\definecolor{Violet}{cmyk}{0.79,0.88,0,0}
+\definecolor{VioletRed}{cmyk}{0,0.81,0,0}
+\definecolor{White}{cmyk}{0,0,0,0}
+\definecolor{WildStrawberry}{cmyk}{0,0.96,0.39,0}
+\definecolor{Yellow}{cmyk}{0,0,1,0}
+\definecolor{YellowGreen}{cmyk}{0.44,0,0.74,0}
+\definecolor{YellowOrange}{cmyk}{0,0.42,1,0}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%          Phimeca avec la police 'phimeca'            %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\phimeca}{
+\textxoireqe{\textcolor{phimecalightblue}{PHI}\textcolor{phimecadarkblue}{MECA}}
+}
+
+\newcommand{\phimecaNB}{
+	\textxoireqe{\textcolor{phi grey}{PHI}\textcolor{black}{MECA}}
+}
+
+\newcommand{\phimecanoir}{
+	\textxoireqe{PHIMECA}
+}
+
+\newcommand{\phimecablanc}{
+	\textxoireqe{\textcolor{white}{PHIMECA}}
+}
+
+\usepackage[outline]{contour}
+\contourlength{0.5pt} %how thick each copy is
+\newcommand{\phimecaTrait}{
+	\textcolor{white}{\contour{black}{\textxoireqe{phimeca}}}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   Slogan phimeca avec la police TeX Gyre Adventor    %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand*{\slogancouleur}{%
+		\sloganfont{\textcolor{phimecadarkblue}{Solutions for robust engineering}}%
+}
+\newcommand*{\sloganNB}{%
+	\sloganfont{Solutions for robust engineering}
+}
+\newcommand*{\slogannoir}{%
+	\sloganfont{Solutions for robust engineering}
+}
+\newcommand*{\sloganblanc}{%
+	\sloganfont{\textcolor{white}{Solutions for robust engineering}}%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%        Logo Phimeca en couleur, B&N et Trait         %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\logophimeca}[1]{
+\begin{tikzpicture}[#1, x=0.07cm, y=0.07cm]
+  \fill[color = phimecadarkblue]
+    (0,0) -- (0,16) -- (7.5,16)
+    -- (7.5,16) arc (90:270:6)
+    -- (7.5,4) -- (3,4)
+    -- (3,4) arc (90:180:1)
+    -- (2,3) -- (2,2) -- (13,2)
+    -- (13,2) arc (-90:0:2)
+    -- (15,4) -- plot [variable=\theta,domain=0:-90,smooth] ({13+2*cos(\theta)},{4+4*sin(\theta)})
+    -- (13,0) -- (0,0) ;
+  \fill[color = phimecadarkblue]
+    (7.3,6.41242) -- (7.3,13.7)
+    -- (7.3,13.7) arc (100:260:3.7)
+    -- cycle ;
+  \fill[color = phimecalightblue]
+    (9.7,6.41242) -- (9.7,13.7)
+    -- (9.7,13.7) arc (80:-80:3.7)
+    -- cycle ;
+  \fill[color = phimecalightblue]
+    (17,20) -- (17,4) -- (9.5,4)
+    -- (9.5,4) arc (-90:90:6)
+    -- (9.5,16) -- (14,16)
+    -- (14,16) arc (-90:0:1)
+    -- (15,17) -- (15,18) -- (4,18)
+    -- (4,18) arc (90:180:2)
+    -- (2,16) -- plot [variable=\theta,domain=180:90,smooth] ({4+2*cos(\theta)},{16+4*sin(\theta)})
+    -- (4,20) -- (17,20) ;
+\end{tikzpicture}
+}
+
+\newcommand{\logophimecaNB}[1]{
+	\begin{tikzpicture}[#1, x=0.07cm, y=0.07cm]
+	\fill[color = black]
+	(0,0) -- (0,16) -- (7.5,16)
+	-- (7.5,16) arc (90:270:6)
+	-- (7.5,4) -- (3,4)
+	-- (3,4) arc (90:180:1)
+	-- (2,3) -- (2,2) -- (13,2)
+	-- (13,2) arc (-90:0:2)
+	-- (15,4) -- plot [variable=\theta,domain=0:-90,smooth] ({13+2*cos(\theta)},{4+4*sin(\theta)})
+	-- (13,0) -- (0,0) ;
+	\fill[color = black]
+	(7.3,6.41242) -- (7.3,13.7)
+	-- (7.3,13.7) arc (100:260:3.7)
+	-- cycle ;
+	\fill[color = phi grey]
+	(9.7,6.41242) -- (9.7,13.7)
+	-- (9.7,13.7) arc (80:-80:3.7)
+	-- cycle ;
+	\fill[color = phi grey]
+	(17,20) -- (17,4) -- (9.5,4)
+	-- (9.5,4) arc (-90:90:6)
+	-- (9.5,16) -- (14,16)
+	-- (14,16) arc (-90:0:1)
+	-- (15,17) -- (15,18) -- (4,18)
+	-- (4,18) arc (90:180:2)
+	-- (2,16) -- plot [variable=\theta,domain=180:90,smooth] ({4+2*cos(\theta)},{16+4*sin(\theta)})
+	-- (4,20) -- (17,20) ;
+	\end{tikzpicture}
+}
+
+\newcommand{\logophimecanoir}[1]{
+	\begin{tikzpicture}[#1, x=0.07cm, y=0.07cm]
+	\fill[color = black]
+	(0,0) -- (0,16) -- (7.5,16)
+	-- (7.5,16) arc (90:270:6)
+	-- (7.5,4) -- (3,4)
+	-- (3,4) arc (90:180:1)
+	-- (2,3) -- (2,2) -- (13,2)
+	-- (13,2) arc (-90:0:2)
+	-- (15,4) -- plot [variable=\theta,domain=0:-90,smooth] ({13+2*cos(\theta)},{4+4*sin(\theta)})
+	-- (13,0) -- (0,0) ;
+	\fill[color = black]
+	(7.3,6.41242) -- (7.3,13.7)
+	-- (7.3,13.7) arc (100:260:3.7)
+	-- cycle ;
+	\fill[color = black]
+	(9.7,6.41242) -- (9.7,13.7)
+	-- (9.7,13.7) arc (80:-80:3.7)
+	-- cycle ;
+	\fill[color = black]
+	(17,20) -- (17,4) -- (9.5,4)
+	-- (9.5,4) arc (-90:90:6)
+	-- (9.5,16) -- (14,16)
+	-- (14,16) arc (-90:0:1)
+	-- (15,17) -- (15,18) -- (4,18)
+	-- (4,18) arc (90:180:2)
+	-- (2,16) -- plot [variable=\theta,domain=180:90,smooth] ({4+2*cos(\theta)},{16+4*sin(\theta)})
+	-- (4,20) -- (17,20) ;
+	\end{tikzpicture}
+}
+
+\newcommand{\logophimecablanc}[1]{
+	\begin{tikzpicture}[#1, x=0.07cm, y=0.07cm]
+	\fill[color = white]
+	(0,0) -- (0,16) -- (7.5,16)
+	-- (7.5,16) arc (90:270:6)
+	-- (7.5,4) -- (3,4)
+	-- (3,4) arc (90:180:1)
+	-- (2,3) -- (2,2) -- (13,2)
+	-- (13,2) arc (-90:0:2)
+	-- (15,4) -- plot [variable=\theta,domain=0:-90,smooth] ({13+2*cos(\theta)},{4+4*sin(\theta)})
+	-- (13,0) -- (0,0) ;
+	\fill[color = white]
+	(7.3,6.41242) -- (7.3,13.7)
+	-- (7.3,13.7) arc (100:260:3.7)
+	-- cycle ;
+	\fill[color = white]
+	(9.7,6.41242) -- (9.7,13.7)
+	-- (9.7,13.7) arc (80:-80:3.7)
+	-- cycle ;
+	\fill[color = white]
+	(17,20) -- (17,4) -- (9.5,4)
+	-- (9.5,4) arc (-90:90:6)
+	-- (9.5,16) -- (14,16)
+	-- (14,16) arc (-90:0:1)
+	-- (15,17) -- (15,18) -- (4,18)
+	-- (4,18) arc (90:180:2)
+	-- (2,16) -- plot [variable=\theta,domain=180:90,smooth] ({4+2*cos(\theta)},{16+4*sin(\theta)})
+	-- (4,20) -- (17,20) ;
+	\end{tikzpicture}
+}
+
+
+\newcommand{\logophimecaTrait}[1]{
+	\begin{tikzpicture}[#1, x=0.07cm, y=0.07cm]
+	\draw
+	(0,0) -- (0,16) -- (7.5,16)
+	-- (7.5,16) arc (90:270:6)
+	-- (7.5,4) -- (3,4)
+	-- (3,4) arc (90:180:1)
+	-- (2,3) -- (2,2) -- (13,2)
+	-- (13,2) arc (-90:0:2)
+	-- (15,4) -- plot [variable=\theta,domain=0:-90,smooth] ({13+2*cos(\theta)},{4+4*sin(\theta)})
+	-- (13,0) -- (0,0) ;
+	\draw
+	(7.3,6.41242) -- (7.3,13.7)
+	-- (7.3,13.7) arc (100:260:3.7)
+	-- cycle ;
+	\draw
+	(9.7,6.41242) -- (9.7,13.7)
+	-- (9.7,13.7) arc (80:-80:3.7)
+	-- cycle ;
+	\draw
+	(17,20) -- (17,4) -- (9.5,4)
+	-- (9.5,4) arc (-90:90:6)
+	-- (9.5,16) -- (14,16)
+	-- (14,16) arc (-90:0:1)
+	-- (15,17) -- (15,18) -- (4,18)
+	-- (4,18) arc (90:180:2)
+	-- (2,16) -- plot [variable=\theta,domain=180:90,smooth] ({4+2*cos(\theta)},{16+4*sin(\theta)})
+	-- (4,20) -- (17,20) ;
+	\end{tikzpicture}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%           Logo Phimeca à droite avec text            %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\logophimecadroite}[1]{
+	\begin{tikzpicture}[inner sep=0, % Remove margin of nodes
+	outer sep=1, % Add 0.5 distance between nodes
+	node distance=0mm]
+	\node [scale=#1] (phimeca) at (0,0) {\fontsize{9}{12}\selectfont\ignorespaces\phimeca};
+	\node [scale=#1] (logo) [right= of phimeca.south east, anchor=south west] {\logophimeca{scale=1.0}};
+	\node [scale=#1] (logo) [below= of phimeca.south west, anchor=north west] {\fontsize{7}{8}\selectfont\ignorespaces\slogancouleur};
+	\end{tikzpicture}
+}
+
+\newcommand{\logophimecadroiteNB}[1]{
+	\begin{tikzpicture}[inner sep=0, % Remove margin of nodes
+	outer sep=1, % Add 0.5 distance between nodes
+	node distance=0mm]
+	\node [scale=#1] (phimeca) at (0,0) {\fontsize{9}{12}\selectfont\ignorespaces\phimecaNB};
+	\node [scale=#1] (logo) [right= of phimeca.south east, anchor=south west] {\logophimecaNB{scale=1.0}};
+	\node [scale=#1] (logo) [below= of phimeca.south west, anchor=north west] {\fontsize{7}{8}\selectfont\ignorespaces\sloganNB};
+	\end{tikzpicture}
+}
+
+\newcommand{\logophimecadroitenoir}[1]{
+	\begin{tikzpicture}[inner sep=0, % Remove margin of nodes
+	outer sep=1, % Add 0.5 distance between nodes
+	node distance=0mm]
+	\node [scale=#1] (phimeca) at (0,0) {\fontsize{9}{12}\selectfont\ignorespaces\phimecanoir};
+	\node [scale=#1] (logo) [right= of phimeca.south east, anchor=south west] {\logophimecanoir{scale=1.0}};
+	\node [scale=#1] (logo) [below= of phimeca.south west, anchor=north west] {\fontsize{7}{8}\selectfont\ignorespaces\slogannoir};
+	\end{tikzpicture}
+}
+
+\newcommand{\logophimecadroiteblanc}[1]{
+	\begin{tikzpicture}[inner sep=0, % Remove margin of nodes
+	outer sep=1, % Add 0.5 distance between nodes
+	node distance=0mm]
+	\node [scale=#1] (phimeca) at (0,0) {\fontsize{9}{12}\selectfont\ignorespaces\phimecablanc};
+	\node [scale=#1] (logo) [right= of phimeca.south east, anchor=south west] {\logophimecablanc{scale=1.0}};
+	\node [scale=#1] (logo) [below= of phimeca.south west, anchor=north west] {\fontsize{7}{8}\selectfont\ignorespaces\sloganblanc};
+	\end{tikzpicture}
+}
+
+\newcommand{\logophimecadroiteTrait}[1]{
+	\begin{tikzpicture}[inner sep=0, % Remove margin of nodes
+	outer sep=1, % Add 0.5 distance between nodes
+	node distance=0mm]
+	\node [scale=#1] (phimeca) at (0,0) {\fontsize{9}{12}\selectfont\ignorespaces\phimecaTrait};
+	\node [scale=#1] (logo) [right= of phimeca.south east, anchor=south west] {\logophimecaTrait{scale=1.0}};
+	\node [scale=#1] (logo) [below= of phimeca.south west, anchor=north west] {\fontsize{7}{8}\selectfont\ignorespaces\sloganNB};
+	\end{tikzpicture}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%           Logo Phimeca à gauche avec text            %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\logophimecagauche}[1]{
+	\begin{tikzpicture}[inner sep=0, % Remove margin of nodes
+	outer sep=1, % Add 0.5 distance between nodes
+	node distance=0mm]
+	\node [scale=#1] (phimeca) at (0,0) {\fontsize{9}{12}\selectfont\ignorespaces\phimeca};
+	\node [scale=#1] (logo) [left= of phimeca.south west, anchor=south east] {\logophimeca{scale=1.0}};
+	\node [scale=#1] (logo) [below= of logo.south west, anchor=north west] {\fontsize{7}{8}\selectfont\ignorespaces\slogancouleur};
+	\end{tikzpicture}
+}
+
+\newcommand{\logophimecagaucheNB}[1]{
+	\begin{tikzpicture}[inner sep=0, % Remove margin of nodes
+	outer sep=1, % Add 0.5 distance between nodes
+	node distance=0mm]
+	\node [scale=#1] (phimeca) at (0,0) {\fontsize{9}{12}\selectfont\ignorespaces\phimecaNB};
+	\node [scale=#1] (logo) [left= of phimeca.south west, anchor=south east] {\logophimecaNB{scale=1.0}};
+	\node [scale=#1] (logo) [below= of logo.south west, anchor=north west] {\fontsize{7}{8}\selectfont\ignorespaces\sloganNB};
+	\end{tikzpicture}
+}
+
+\newcommand{\logophimecagauchenoir}[1]{
+	\begin{tikzpicture}[inner sep=0, % Remove margin of nodes
+	outer sep=1, % Add 0.5 distance between nodes
+	node distance=0mm]
+	\node [scale=#1] (phimeca) at (0,0) {\fontsize{9}{12}\selectfont\ignorespaces\phimecanoir};
+	\node [scale=#1] (logo) [left= of phimeca.south west, anchor=south east] {\logophimecanoir{scale=1.0}};
+	\node [scale=#1] (logo) [below= of logo.south west, anchor=north west] {\fontsize{7}{8}\selectfont\ignorespaces\slogannoir};
+	\end{tikzpicture}
+}
+
+\newcommand{\logophimecagaucheblanc}[1]{
+	\begin{tikzpicture}[inner sep=0, % Remove margin of nodes
+	outer sep=1, % Add 0.5 distance between nodes
+	node distance=0mm]
+	\node [scale=#1] (phimeca) at (0,0) {\fontsize{9}{12}\selectfont\ignorespaces\phimecablanc};
+	\node [scale=#1] (logo) [left= of phimeca.south west, anchor=south east] {\logophimecablanc{scale=1.0}};
+	\node [scale=#1] (logo) [below= of logo.south west, anchor=north west] {\fontsize{7}{8}\selectfont\ignorespaces\sloganblanc};
+	\end{tikzpicture}
+}
+
+\newcommand{\logophimecagaucheTrait}[1]{
+	\begin{tikzpicture}[inner sep=0, % Remove margin of nodes
+	outer sep=1, % Add 0.5 distance between nodes
+	node distance=0mm]
+	\node [scale=#1] (phimeca) at (0,0) {\fontsize{9}{12}\selectfont\ignorespaces\phimecaTrait};
+	\node [scale=#1] (logo) [left= of phimeca.south west, anchor=south east] {\logophimecaTrait{scale=1.0}};
+	\node [scale=#1] (logo) [below= of logo.south west, anchor=north west] {\fontsize{7}{8}\selectfont\ignorespaces\sloganNB};
+	\end{tikzpicture}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%           Logo Phimeca en haut avec text            %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\logophimecahaut}[1]{
+	\begin{tikzpicture}[inner sep=0, % Remove margin of nodes
+	outer sep=1, % Add 0.5 distance between nodes
+	node distance=0mm]
+	\node [scale=#1] (phimeca) at (0,0) {\fontsize{9}{12}\selectfont\ignorespaces\phimeca};
+	\node [scale=#1] (logo) [above= of phimeca.north, anchor=south] {\logophimeca{scale=1.0}};
+	\node [scale=#1] (logo) [below= of phimeca.south, anchor=north] {\fontsize{4.5}{5}\selectfont\ignorespaces\slogancouleur};
+	\end{tikzpicture}
+}
+
+\newcommand{\logophimecahautNB}[1]{
+	\begin{tikzpicture}[inner sep=0, % Remove margin of nodes
+	outer sep=1, % Add 0.5 distance between nodes
+	node distance=0mm]
+	\node [scale=#1] (phimeca) at (0,0) {\fontsize{9}{12}\selectfont\ignorespaces\phimecaNB};
+	\node [scale=#1] (logo) [above= of phimeca.north, anchor=south] {\logophimecaNB{scale=1.0}};
+	\node [scale=#1] (logo) [below= of phimeca.south, anchor=north] {\fontsize{4.5}{5}\selectfont\ignorespaces\sloganNB};
+	\end{tikzpicture}
+}
+
+
+\newcommand{\logophimecahautnoir}[1]{
+	\begin{tikzpicture}[inner sep=0, % Remove margin of nodes
+	outer sep=1, % Add 0.5 distance between nodes
+	node distance=0mm]
+	\node [scale=#1] (phimeca) at (0,0) {\fontsize{9}{12}\selectfont\ignorespaces\phimecanoir};
+	\node [scale=#1] (logo) [above= of phimeca.north, anchor=south] {\logophimecanoir{scale=1.0}};
+	\node [scale=#1] (logo) [below= of phimeca.south, anchor=north] {\fontsize{4.5}{5}\selectfont\ignorespaces\slogannoir};
+	\end{tikzpicture}
+}
+
+\newcommand{\logophimecahautblanc}[1]{
+	\begin{tikzpicture}[inner sep=0, % Remove margin of nodes
+	outer sep=1, % Add 0.5 distance between nodes
+	node distance=0mm]
+	\node [scale=#1] (phimeca) at (0,0) {\fontsize{9}{12}\selectfont\ignorespaces\phimecablanc};
+	\node [scale=#1] (logo) [above= of phimeca.north, anchor=south] {\logophimecablanc{scale=1.0}};
+	\node [scale=#1] (logo) [below= of phimeca.south, anchor=north] {\fontsize{4.5}{5}\selectfont\ignorespaces\sloganblanc};
+	\end{tikzpicture}
+}
+
+\newcommand{\logophimecahautTrait}[1]{
+	\begin{tikzpicture}[inner sep=0, % Remove margin of nodes
+	outer sep=1, % Add 0.5 distance between nodes
+	node distance=0mm]
+	\node [scale=#1] (phimeca) at (0,0) {\fontsize{9}{12}\selectfont\ignorespaces\phimecaTrait};
+	\node [scale=#1] (logo) [above= of phimeca.north, anchor=south] {\logophimecaTrait{scale=1.0}};
+	\node [scale=#1] (logo) [below= of phimeca.south, anchor=north] {\fontsize{4.5}{5}\selectfont\ignorespaces\sloganNB};
+	\end{tikzpicture}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                  Logo Phimeca plat                   %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\logophimecaplat}[1]{
+	\begin{tikzpicture}[inner sep=0, % Remove margin of nodes
+	outer sep=1, % Add 0.5 distance between nodes
+	node distance=0mm]
+	\node [scale=#1] (phimeca) at (0,0) {\fontsize{9}{12}\selectfont\ignorespaces\phimeca};
+	\node [scale=#1, below=-0.05cm of phimeca.south, anchor=north] (slogan) {\fontsize{4.5}{5}\selectfont\ignorespaces\slogancouleur};
+	\node [scale=#1] (logo) [left=-0.05cm of phimeca.north west, anchor=north east] {\logophimeca{scale=0.3}};
+	\end{tikzpicture}
+}
+
+\newcommand{\logophimecaplatNB}[1]{
+	\begin{tikzpicture}[inner sep=0, % Remove margin of nodes
+	outer sep=1, % Add 0.5 distance between nodes
+	node distance=0mm]
+	\node [scale=#1] (phimeca) at (0,0) {\fontsize{9}{12}\selectfont\ignorespaces\phimecaNB};
+	\node [scale=#1, below=-0.05cm of phimeca.south, anchor=north] (slogan) {\fontsize{4.5}{5}\selectfont\ignorespaces\sloganNB};
+	\node [scale=#1] (logo) [left=-0.05cm of phimeca.north west, anchor=north east] {\logophimecaNB{scale=0.3}};
+	\end{tikzpicture}
+}
+
+\newcommand{\logophimecaplatnoir}[1]{
+	\begin{tikzpicture}[inner sep=0, % Remove margin of nodes
+	outer sep=1, % Add 0.5 distance between nodes
+	node distance=0mm]
+	\node [scale=#1] (phimeca) at (0,0) {\fontsize{9}{12}\selectfont\ignorespaces\phimecanoir};
+	\node [scale=#1, below=-0.05cm of phimeca.south, anchor=north] (slogan) {\fontsize{4.5}{5}\selectfont\ignorespaces\slogannoir};
+	\node [scale=#1] (logo) [left=-0.05cm of phimeca.north west, anchor=north east] {\logophimecanoir{scale=0.3}};
+	\end{tikzpicture}
+}
+
+\newcommand{\logophimecaplatblanc}[1]{
+	\begin{tikzpicture}[inner sep=0, % Remove margin of nodes
+	outer sep=1, % Add 0.5 distance between nodes
+	node distance=0mm]
+	\node [scale=#1] (phimeca) at (0,0) {\fontsize{9}{12}\selectfont\ignorespaces\phimecablanc};
+	\node [scale=#1, below=-0.05cm of phimeca.south, anchor=north] (slogan) {\fontsize{4.5}{5}\selectfont\ignorespaces\sloganblanc};
+	\node [scale=#1] (logo) [left=-0.05cm of phimeca.north west, anchor=north east] {\logophimecablanc{scale=0.3}};
+	\end{tikzpicture}
+}
+
+\newcommand{\logophimecaplattrait}[1]{
+	\begin{tikzpicture}[inner sep=0, % Remove margin of nodes
+	outer sep=1, % Add 0.5 distance between nodes
+	node distance=0mm]
+	\node [scale=#1] (phimeca) at (0,0) {\fontsize{9}{12}\selectfont\ignorespaces\phimecaTrait};
+	\node [scale=#1, below=-0.05cm of phimeca.south, anchor=north] (slogan) {\fontsize{4.5}{5}\selectfont\ignorespaces\sloganNB};
+	\node [scale=#1] (logo) [left=-0.05cm of phimeca.north west, anchor=north east] {\logophimecaTrait{scale=0.3}};
+	\end{tikzpicture}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%             Titre première page beamer               %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\phimecabeamer}{
+	\begin{tikzpicture}[every node/.style={inner sep=0, % Remove margin of nodes
+		outer sep=0.0}]
+	\fill[color = phi grey, opacity=0.25]
+	(-0.1,-0.1) -- (9.35,-0.1) -- (8.35,1) -- (-1,1);
+	\node[anchor=south west] (phimeca) at (0,0) {\fontsize{33}{38}\selectfont\ignorespaces\phimeca};
+
+	\node[anchor=north east] (phimeca) at (9.35,-0.2) {\textsf{\textit{\textcolor{phi light blue}{\sloganfont{\dots solutions for robust engineering.}}}}};
+	\end{tikzpicture}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                 Images pour beamer                   %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\wordcloud}[1]{\includegraphics[width=#1]{./bibtex/wordcloudCalendrier.png}}
+\newcommand{\masquebeamer}[1]{\includegraphics[width=#1]{./figure/logo_phimeca/png/masque_beamer.png}}
+\newcommand{\gaussienneNB}[1]{\includegraphics[width=#1]{./figure/logo_phimeca/gaussienne_nue_NB.pdf}}
+\newcommand{\gaussiennegris}[1]{\includegraphics[width=#1]{./figure/logo_phimeca/gaussienne_nue_gris.pdf}}
+\newcommand{\gaussiennecouleurs}[1]{\includegraphics[width=#1]{./figure/logo_phimeca/gaussienne_couleurs.pdf}}
+\newcommand{\iso}[1]{\includegraphics[width=#1]{./figure/iso_9001}}
