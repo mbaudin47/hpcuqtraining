@@ -1,0 +1,10 @@
+\ProvidesFile{t1xoireqe.fd}[xoireqe]
+\DeclareFontFamily{T1}{xoireqe}{}
+\DeclareFontShape{T1}{xoireqe}{m}{n}{<-> xoireqe}{}
+\DeclareFontShape{T1}{xoireqe}{bx}{n}{<->ssub * ptm/m/n}{}
+\DeclareFontShape{T1}{xoireqe}{m}{it}{<->ssub * ptm/m/it}{}
+\DeclareFontShape{T1}{xoireqe}{m}{sl}{<->ssub * ptm/m/sl}{}
+\DeclareFontShape{T1}{xoireqe}{m}{sc}{<->ssub * ptm/m/sc}{}
+\DeclareFontShape{T1}{xoireqe}{bx}{it}{<->ssub * ptm/b/it}{}
+\DeclareFontShape{T1}{xoireqe}{bx}{sl}{<->ssub * ptm/b/sl}{}
+\pdfmapline{+xoireqe\space <xoireqe.ttf\space <T1-WGL4.enc}
