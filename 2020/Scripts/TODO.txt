@@ -1,0 +1,6 @@
+Instructions: must be updated, replaced or removed
+Python: TODO
+Rare_event:
+	TP3_Rare_event_bonus.ipynb : graphical bug, not a crash
+Uncertainty_Quantification:
+	TP1_Uncertainty_Quantification.ipynb: asymptotic distribution of variance must be validated.
