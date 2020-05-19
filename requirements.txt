@@ -1,0 +1,6 @@
+numpy
+scipy
+matplotlib
+jupyter
+openturns==1.14
+
