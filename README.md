@@ -2,7 +2,7 @@
     https://python.org)
 [![CircleCI](https://circleci.com/gh/mbaudin47/hpcuqtraining.svg?style=svg)](
     https://circleci.com/gh/mbaudin47/hpcuqtraining)
-[![Code license](https://img.shields.io/github/license/mbaudin47/hpcuqtraining)](https://github.com/mbaudin47/hpcuqtraining/blob/master/LICENSE-code-LGPL.txt)
+[![Code license](https://img.shields.io/github/license/mbaudin47/hpcuqtraining)](https://github.com/mbaudin47/hpcuqtraining/blob/master/LICENSE.txt)
 [![Doc license](https://img.shields.io/badge/Doc%20Licence-CC--BY--SA--4.0-orange)](https://github.com/mbaudin47/hpcuqtraining/blob/master/LICENSE-doc-cc-by-sa-4.0.txt)
 [![Binder](https://mybinder.org/badge_logo.svg)](
     https://mybinder.org/v2/gh/mbaudin47/hpcuqtraining/master?filepath=2020/Scripts/Calibration/Exercice-calage-bayesien-Chaboche.ipynb)
