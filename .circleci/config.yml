@@ -8,7 +8,25 @@ jobs:
     executor: python/default
     steps:
       - checkout
-      - python/install-deps
+      - run:
+          name: Install conda
+          command: |
+            curl -s -o Miniconda3-latest-Linux-x86_64.sh "https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh"
+            bash Miniconda3-latest-Linux-x86_64.sh -b -p $HOME/miniconda
+            export PATH="$HOME/miniconda/bin:$PATH"
+            source $HOME/miniconda/bin/activate
+            conda config --add channels conda-forge
+      - run:
+          name: Install dependencies
+          command: |
+            export PATH="$HOME/miniconda/bin:$PATH"
+            source $HOME/miniconda/bin/activate
+            conda install -y numpy
+            conda install -y scipy
+            conda install -y matplotlib
+            conda install -y jupyter
+            conda install -y openturns==1.14
+            conda install -y otwrapy
       - run:
           name: Install LaTeX requirements
           command: |
