@@ -16,12 +16,16 @@ jobs:
             export PATH="$HOME/miniconda/bin:$PATH"
             source $HOME/miniconda/bin/activate
             conda config --add channels conda-forge
-      - python/install-deps
       - run:
-          name: Install otwrapy
+          name: Install dependencies
           command: |
             export PATH="$HOME/miniconda/bin:$PATH"
             source $HOME/miniconda/bin/activate
+            conda install -y numpy
+            conda install -y scipy
+            conda install -y matplotlib
+            conda install -y jupyter
+            conda install -y openturns==1.14
             conda install -y otwrapy
       - run:
           name: Install LaTeX requirements
