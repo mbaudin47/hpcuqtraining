@@ -10,6 +10,11 @@ jobs:
       - checkout
       - python/install-deps
       - run:
+          name: Install otwrapy
+          command: |
+            conda config --add channels conda-forge
+            conda install -y otwrapy
+      - run:
           name: Install LaTeX requirements
           command: |
             sudo apt-get install texlive-base
