@@ -20,7 +20,9 @@ https://github.com/mbaudin47/hpcuqtraining/tree/master/2020/Courses/Intro/2-PRAC
 
 - General introduction to Open TURNS and Uranie (2 * 30’) : G. Blondet, J.B. Blanchard
 TODO : "Slides/04. PRACE_D1 - OpenTURNS introduction.pdf"
-TODO : "Slides/05. PRACE_D1 UranieGeneralIntroduction.pdf"
+
+https://github.com/mbaudin47/hpcuqtraining/tree/master/2020/Courses/Intro/05._PRACE_D1_UranieGeneralIntroduction.pdf
+
 
 - Introduction to Python and Jupyter (45’): practical work on distributions manipulations
 
@@ -28,7 +30,9 @@ TODO
 
 - Lunch 
 - Uncertainty Quantification (45’) : J.B. Blanchard
-"Slides/06. PRACE_D1 UncertaintyQuantification.pdf"
+
+https://github.com/mbaudin47/hpcuqtraining/tree/master/2020/Courses/Intro/06._PRACE_D1_UncertaintyQuantification.pdf
+
 
 - OpenTURNS – Uranie practical works: sections 1, 2 (1h): G. Blondet,  J.B. Blanchard,  A. Dutfoy
 
@@ -64,6 +68,8 @@ TODO : "Slides/12. PRACE_D3 - Distributing_OpenTURNS_OtWraPy_.pdf"
     - SALOME Course: https://github.com/mbaudin47/hpcuqtraining/blob/master/2020/Courses/Salome/13.PRACE_D3_Salome.pptx
 
 - Optimization and Calibration (1h) : J.B. Blanchard, M. Baudin
+
+    - Optimisation Course: https://github.com/mbaudin47/hpcuqtraining/blob/master/2020/Courses/Calibration/14._PRACE_D2_Optimisation_introduction.pdf
 
     - Calibration Course: https://github.com/mbaudin47/hpcuqtraining/blob/master/2020/Courses/Calibration/Calibration_PRACE_english.pdf
 
