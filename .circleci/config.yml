@@ -1,13 +1,34 @@
-version: 2
+version: 2.1
+
+orbs:
+  python: circleci/python@0.2.1
 
 jobs:
-  build:
-    docker:
-      - image: circleci/python
+  build-and-test:
+    executor: python/default
     steps:
       - checkout
       - run:
-          name: Install
+          name: Install conda
+          command: |
+            curl -s -o Miniconda3-latest-Linux-x86_64.sh "https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh"
+            bash Miniconda3-latest-Linux-x86_64.sh -b -p $HOME/miniconda
+            export PATH="$HOME/miniconda/bin:$PATH"
+            source $HOME/miniconda/bin/activate
+            conda config --add channels conda-forge
+      - run:
+          name: Install dependencies
+          command: |
+            export PATH="$HOME/miniconda/bin:$PATH"
+            source $HOME/miniconda/bin/activate
+            conda install -y numpy
+            conda install -y scipy
+            conda install -y matplotlib
+            conda install -y jupyter
+            conda install -y openturns==1.14
+            conda install -y otwrapy
+      - run:
+          name: Install LaTeX requirements
           command: |
             sudo apt-get install texlive-base
             sudo apt-get install texlive
@@ -18,18 +39,16 @@ jobs:
             sudo apt-get install texlive-science
             sudo apt-get install lmodern
             sudo apt-get install texlive-lang-french
-            sudo apt-get install texlive-pstricks
-            curl -s -o Miniconda3-latest-Linux-x86_64.sh "https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh"
-            bash Miniconda3-latest-Linux-x86_64.sh -b -p $HOME/miniconda
-            export PATH="$HOME/miniconda/bin:$PATH"
-            source $HOME/miniconda/bin/activate
-            conda config --add channels conda-forge
-            conda install -y openturns=1.14
-            conda install -y otmorris
-            conda install -y jupyter
-            conda install -y matplotlib
-            conda install -y scipy
+            sudo apt-get install texlive-pstricks            
       - run:
-          name: Build and test
-          command: ./.circleci/run_docker_linux.sh
+          name: Test scripts
+          command: bash ./.circleci/run_docker_linux.sh
+      - run:
+          name: Run Notebooks
+          command: bash ./.circleci/run_Notebooks.sh
+
+workflows:
+  main:
+    jobs:
+      - build-and-test
 

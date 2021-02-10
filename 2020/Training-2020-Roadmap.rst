@@ -91,7 +91,13 @@ TODO : "Slides/15. PRACE_D3 - HMatrix.pdf"
 
 - Introduction to Meta models (validation, over-fitting) – Polynomial chaos expansion (1h) : JB Blanchard, C. Mai
 
-TODO
+.. _`Metamodel over-fitting (HTML)`: Courses/Metamodel/Introduction/Over-fitting-model-selection.slides.html
+.. _`Metamodel over-fitting (NB)`: Courses/Metamodel/Introduction/Over-fitting-model-selection.ipynb
+.. _`Metamodel validation (HTML)`: Courses/Metamodel/Introduction/Validation-Chaos-cantilever-beam.slides.html
+.. _`Metamodel validation (NB)`: Courses/Metamodel/Introduction/Validation-Chaos-cantilever-beam.ipynb
+
+    - `Metamodel over-fitting (HTML)`_ `Metamodel over-fitting (NB)`_ 
+    - `Metamodel validation (HTML)`_ `Metamodel validation (NB)`_ 
 
 - Kriging meta model (1h): C. Mai
 
