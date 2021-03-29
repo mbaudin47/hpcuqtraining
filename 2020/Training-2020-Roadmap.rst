@@ -87,7 +87,8 @@ Day 3 : HPC aspects – Meta model
 
 - HPC aspects specific to the Uncertainty treatment (1h) : K. Delamotte
 
-TODO : "Slides/15. PRACE_D3 - HMatrix.pdf"
+    - Course: https://github.com/mbaudin47/hpcuqtraining/tree/master/2020/Courses/15._PRACE_D3_HMatrix.pdf
+
 
 - Introduction to Meta models (validation, over-fitting) – Polynomial chaos expansion (1h) : JB Blanchard, C. Mai
 
