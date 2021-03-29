@@ -89,7 +89,7 @@ Day 3 : HPC aspects – Meta model
 
 - Introduction to Meta models (validation, over-fitting) – Polynomial chaos expansion (1h) : M.Baudin, C. Mai
 
-    - Kriging Course: https://github.com/mbaudin47/hpcuqtraining/blob/master/2020/Courses/Metamodel/Introduction/steps-C-surrogate.pdf
+    - Course: https://github.com/mbaudin47/hpcuqtraining/blob/master/2020/Courses/Metamodel/Introduction/steps-C-surrogate.pdf
 
 - Kriging meta model (1h): C. Mai
 
