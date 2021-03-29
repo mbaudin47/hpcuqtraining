@@ -73,8 +73,6 @@ TODO : "Slides/12. PRACE_D3 - Distributing_OpenTURNS_OtWraPy_.pdf"
 
     - Calibration Course: https://github.com/mbaudin47/hpcuqtraining/blob/master/2020/Courses/Calibration/Calibration_PRACE_english.pdf
 
-TODO : Optimization Course
-
 - Application to OpenTURNS and Uranie (1h): J.B. Blanchard, M. Baudin
 
     - Calibration Scripts Deterministic (30min) : https://github.com/mbaudin47/hpcuqtraining/tree/master/2020/Scripts/Calibration/Exercice-calage-deterministe-Chaboche.ipynb
@@ -88,7 +86,6 @@ Day 3 : HPC aspects – Meta model
 - HPC aspects specific to the Uncertainty treatment (1h) : K. Delamotte
 
     - Course: https://github.com/mbaudin47/hpcuqtraining/tree/master/2020/Courses/15._PRACE_D3_HMatrix.pdf
-
 
 - Introduction to Meta models (validation, over-fitting) – Polynomial chaos expansion (1h) : JB Blanchard, C. Mai
 
