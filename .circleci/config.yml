@@ -21,13 +21,9 @@ jobs:
           command: |
             export PATH="$HOME/miniconda/bin:$PATH"
             source $HOME/miniconda/bin/activate
-            conda install -y numpy
-            conda install -y scipy
-            conda install -y matplotlib
+            conda install -y numpy scipy matplotlib pandas
             conda install -y jupyter
-            conda install -y openturns==1.16
-            conda install -y otwrapy
-            conda install -y pandas
+            conda install -y openturns==1.16 otwrapy
       - run:
           name: Install LaTeX requirements
           command: |
@@ -38,9 +34,9 @@ jobs:
             sudo apt-get install texlive-fonts-recommended
             sudo apt-get install texlive-latex-extra
             sudo apt-get install texlive-science
-            sudo apt-get install lmodern
             sudo apt-get install texlive-lang-french
             sudo apt-get install texlive-pstricks            
+            sudo apt-get install lmodern
       - run:
           name: Test scripts
           command: bash ./.circleci/run_docker_linux.sh
