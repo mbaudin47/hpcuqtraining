@@ -38,11 +38,14 @@ jobs:
             sudo apt-get install texlive-pstricks            
             sudo apt-get install lmodern
       - run:
-          name: Test scripts
-          command: bash ./.circleci/run_docker_linux.sh
+          name: Build Slides
+          command: bash ./.circleci/build_slides.sh
       - run:
           name: Run Notebooks
           command: bash ./.circleci/run_Notebooks.sh
+      - run:
+          name: Run Scripts
+          command: bash ./.circleci/run_docker_linux.sh
 
 workflows:
   main:
