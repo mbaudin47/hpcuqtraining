@@ -87,21 +87,20 @@ Day 3 : HPC aspects – Meta model
 
     - Course: https://github.com/mbaudin47/hpcuqtraining/tree/master/2020/Courses/15._PRACE_D3_HMatrix.pdf
 
-- Introduction to Meta models (validation, over-fitting) – Polynomial chaos expansion (1h) : JB Blanchard, C. Mai
+- Introduction to Meta models (validation, over-fitting) – Polynomial chaos expansion (1h) : M.Baudin, C. Mai
 
-.. _`Metamodel over-fitting (HTML)`: Courses/Metamodel/Introduction/Over-fitting-model-selection.slides.html
-.. _`Metamodel over-fitting (NB)`: Courses/Metamodel/Introduction/Over-fitting-model-selection.ipynb
-.. _`Metamodel validation (HTML)`: Courses/Metamodel/Introduction/Validation-Chaos-cantilever-beam.slides.html
-.. _`Metamodel validation (NB)`: Courses/Metamodel/Introduction/Validation-Chaos-cantilever-beam.ipynb
-
-    - `Metamodel over-fitting (HTML)`_ `Metamodel over-fitting (NB)`_ 
-    - `Metamodel validation (HTML)`_ `Metamodel validation (NB)`_ 
+    - Kriging Course: https://github.com/mbaudin47/hpcuqtraining/blob/master/2020/Courses/Metamodel/Introduction/steps-C-surrogate.pdf
 
 - Kriging meta model (1h): C. Mai
 
     - Kriging Course: https://github.com/mbaudin47/hpcuqtraining/blob/master/2020/Courses/Metamodel/slides_GP/Latex/Metamodel_Kriging.pdf
 
     - Chaos Course: https://github.com/mbaudin47/hpcuqtraining/blob/master/2020/Courses/Metamodel/slides_PCEs/Latex/Metamodel_PCEs.pdf
+
+- Scripts (it time allows)
+
+    - https://github.com/mbaudin47/hpcuqtraining/blob/master/2020/Scripts/Metamodel/Introduction/Over-fitting-model-selection.ipynb
+    - https://github.com/mbaudin47/hpcuqtraining/blob/master/2020/Scripts/Metamodel/Introduction/Validation-Chaos-cantilever-beam.ipynb
 
 - Lunch 
 
