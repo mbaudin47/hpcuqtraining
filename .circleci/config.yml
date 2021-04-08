@@ -15,15 +15,22 @@ jobs:
             bash Miniconda3-latest-Linux-x86_64.sh -b -p $HOME/miniconda
             export PATH="$HOME/miniconda/bin:$PATH"
             source $HOME/miniconda/bin/activate
-            conda config --add channels conda-forge
       - run:
           name: Install dependencies
           command: |
             export PATH="$HOME/miniconda/bin:$PATH"
             source $HOME/miniconda/bin/activate
-            conda install -y numpy scipy matplotlib pandas
-            conda install -y jupyter
+            conda config --add channels conda-forge
+            conda config --set channel_priority strict
+            conda update -y conda
+            conda install -y numpy scipy matplotlib pandas jupyter
             conda install -y openturns==1.16 otwrapy
+      - run:
+          name: Run Notebooks
+          command: bash ./.circleci/run_Notebooks.sh
+      - run:
+          name: Run Scripts
+          command: bash ./.circleci/run_docker_linux.sh
       - run:
           name: Install LaTeX requirements
           command: |
@@ -40,12 +47,6 @@ jobs:
       - run:
           name: Build Slides
           command: bash ./.circleci/build_slides.sh
-      - run:
-          name: Run Notebooks
-          command: bash ./.circleci/run_Notebooks.sh
-      - run:
-          name: Run Scripts
-          command: bash ./.circleci/run_docker_linux.sh
 
 workflows:
   main:
