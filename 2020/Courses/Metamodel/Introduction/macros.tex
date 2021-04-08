@@ -1,0 +1,87 @@
+\usepackage{graphicx}
+\unitlength=1cm
+\graphicspath{{./figures/}{../../../Scripts/Metamodel/}}
+
+\usepackage[space]{grffile}
+
+\usepackage{alltt}
+\usepackage{euscript}
+\usepackage{hyperref}
+\usepackage{bbm}
+
+\usepackage{multicol}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\usepackage{listings}
+\definecolor{darkgreen}{rgb}{0,0.5,0}
+\definecolor{violet}{rgb}{0.5,0,1}
+
+% Python macros
+\newcommand{\pyvar}[1]{\texttt{#1}}
+
+% https://tex.stackexchange.com/questions/183149/cant-silence-a-pdftex-pdf-inclusion-multiple-pdfs-with-page-group-error
+\pdfsuppresswarningpagegroup=1
+
+% Configuration beamer
+\usetheme{Montpellier}
+\setbeamertemplate{navigation symbols}{} % Remove navigation
+\useoutertheme{infolines}
+\setbeamertemplate{theorems}[numbered] 
+% Utilise des fonts serif, pour éviter les pb de fonte
+\usefonttheme{serif} 
+\setbeamertemplate{caption}[numbered]
+
+
+% Commandes mathématiques
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\esp}{\mathbb{E}}
+\newcommand{\var}{\mathbb{V}}
+\newcommand{\cov}{\textbf{Cov}}
+\newcommand{\likelihood}{\mathcal{L}} % Likelihood
+
+% Lettres en gras
+\newcommand{\bc}{{\bf c}}
+\newcommand{\bT}{{\bf T}}
+\newcommand{\bX}{{\bf X}}
+\newcommand{\bY}{{\bf Y}}
+\newcommand{\bZ}{{\bf Z}}
+\newcommand{\bg}{{\bf g}}
+\newcommand{\bs}{{\bf s}}
+\newcommand{\bx}{{\bf x}}
+\newcommand{\by}{{\bf y}}
+\newcommand{\bz}{{\bf z}}
+\def\bzero{{\bf 0}}
+
+\newcommand{\bindicator}{\mathbbm{1}}
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+
+% Symboles mathématiques gras
+\def\balpha{\boldsymbol{\alpha}}
+\def\bbeta{\boldsymbol{\beta}}
+\def\btheta{\boldsymbol{\theta}}
+\def\bmu{\boldsymbol{\mu}}
+\def\bxi{\boldsymbol{\xi}}
+\def\bpsi{\boldsymbol{\psi}}
+
+\renewcommand{\P}{\mathbb{P}}
+% From https://github.com/openturns/openturns/blob/master/python/doc/math_notations.sty
+\DeclareMathOperator*{\argmin}{argmin}
+\DeclareMathOperator*{\argmax}{argmax}
+
+% Binomial coefficient
+\newcommand{\choosefun}[2]{
+\left(
+\begin{array}{@{}c@{}}
+#1\\
+#2
+\end{array}
+\right)
+}
+
+\newtheorem{counterexample}{Couter-example}
+\newtheorem{hypothesis}{Hypothesis}
+\newtheorem{hypotheses}{Hypotheses}
+

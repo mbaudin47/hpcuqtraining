@@ -73,8 +73,6 @@ TODO : "Slides/12. PRACE_D3 - Distributing_OpenTURNS_OtWraPy_.pdf"
 
     - Calibration Course: https://github.com/mbaudin47/hpcuqtraining/blob/master/2020/Courses/Calibration/Calibration_PRACE_english.pdf
 
-TODO : Optimization Course
-
 - Application to OpenTURNS and Uranie (1h): J.B. Blanchard, M. Baudin
 
     - Calibration Scripts Deterministic (30min) : https://github.com/mbaudin47/hpcuqtraining/tree/master/2020/Scripts/Calibration/Exercice-calage-deterministe-Chaboche.ipynb
@@ -87,23 +85,22 @@ Day 3 : HPC aspects – Meta model
 
 - HPC aspects specific to the Uncertainty treatment (1h) : K. Delamotte
 
-TODO : "Slides/15. PRACE_D3 - HMatrix.pdf"
+    - Course: https://github.com/mbaudin47/hpcuqtraining/tree/master/2020/Courses/15._PRACE_D3_HMatrix.pdf
 
-- Introduction to Meta models (validation, over-fitting) – Polynomial chaos expansion (1h) : JB Blanchard, C. Mai
+- Introduction to Meta models (validation, over-fitting) – Polynomial chaos expansion (1h) : M.Baudin, C. Mai
 
-.. _`Metamodel over-fitting (HTML)`: Courses/Metamodel/Introduction/Over-fitting-model-selection.slides.html
-.. _`Metamodel over-fitting (NB)`: Courses/Metamodel/Introduction/Over-fitting-model-selection.ipynb
-.. _`Metamodel validation (HTML)`: Courses/Metamodel/Introduction/Validation-Chaos-cantilever-beam.slides.html
-.. _`Metamodel validation (NB)`: Courses/Metamodel/Introduction/Validation-Chaos-cantilever-beam.ipynb
-
-    - `Metamodel over-fitting (HTML)`_ `Metamodel over-fitting (NB)`_ 
-    - `Metamodel validation (HTML)`_ `Metamodel validation (NB)`_ 
+    - Course: https://github.com/mbaudin47/hpcuqtraining/blob/master/2020/Courses/Metamodel/Introduction/steps-C-surrogate.pdf
 
 - Kriging meta model (1h): C. Mai
 
     - Kriging Course: https://github.com/mbaudin47/hpcuqtraining/blob/master/2020/Courses/Metamodel/slides_GP/Latex/Metamodel_Kriging.pdf
 
     - Chaos Course: https://github.com/mbaudin47/hpcuqtraining/blob/master/2020/Courses/Metamodel/slides_PCEs/Latex/Metamodel_PCEs.pdf
+
+- Scripts (it time allows)
+
+    - https://github.com/mbaudin47/hpcuqtraining/blob/master/2020/Scripts/Metamodel/Introduction/Over-fitting-model-selection.ipynb
+    - https://github.com/mbaudin47/hpcuqtraining/blob/master/2020/Scripts/Metamodel/Introduction/Validation-Chaos-cantilever-beam.ipynb
 
 - Lunch 
 
