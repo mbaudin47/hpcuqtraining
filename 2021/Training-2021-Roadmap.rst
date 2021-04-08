@@ -99,8 +99,8 @@ Day 3 : HPC aspects – Meta model
 
 - Scripts (it time allows)
 
-    - TODO (2020: https://github.com/mbaudin47/hpcuqtraining/blob/master/2020/Scripts/Metamodel/Introduction/Over-fitting-model-selection.ipynb)
-    - TODO (2020: https://github.com/mbaudin47/hpcuqtraining/blob/master/2020/Scripts/Metamodel/Introduction/Validation-Chaos-cantilever-beam.ipynb)
+    - Over-fitting and model selection. https://github.com/mbaudin47/hpcuqtraining/blob/master/2021/Scripts/Metamodel/Over_fitting_model_selection.ipynb
+    - Application of the polynomial chaos to the cantilever beam: validation of a metamodel. https://github.com/mbaudin47/hpcuqtraining/blob/master/2021/Scripts/Metamodel/Validation-Chaos-cantilever-beam.ipynb
 
 - Lunch 
 
