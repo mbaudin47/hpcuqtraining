@@ -49,9 +49,6 @@ steps C.
  \includegraphics[height=3.2cm]{resp_surf_sketch.jpg}
 \end{center}
 
-\emph{Meta} : a prefix added to the name of something that consciously references or comments upon its own subject or features, e.g. metamodel : a model of another model
-
-\vspace{0.2cm}
 A metamodel is an approximation model that mimics the behavior of a computationally expensive simulator by training on \emph{observations (data)} of the latter.
 
 \end{frame}
@@ -59,20 +56,16 @@ A metamodel is an approximation model that mimics the behavior of a computationa
 
 \begin{frame}[t]{Metamodel - Definition}
 
-\begin{center}
- \includegraphics[height=3.2cm]{resp_surf_sketch.jpg}
-\end{center}
-
-Expensive simulator: $\boldsymbol{Y} \; = \; f(\boldsymbol{X})$
+Model:
 \begin{itemize}
-\item $\boldsymbol{X},~\boldsymbol{Y}$ are vectors of input and output,
-\item $\boldsymbol{X}=(X_1,\dots,X_M)$
+\item Expensive simulator: $\boldsymbol{Y} \; = \; \boldsymbol{g}(\boldsymbol{X})$
+\item $\boldsymbol{X} \in\RR^{n_X}$ : input vector
+\item $\boldsymbol{Y}\in\RR^{n_Y}$ : output vector
 \end{itemize}
    
-Metamodel: $ \widetilde{\boldsymbol{Y} } \; = \; \hat{f}(\boldsymbol{X}, \boldsymbol{\theta})$, where $\boldsymbol{\theta}$ is the vector of parameters
-%\vspace{0.2cm}
+Metamodel: $ \widetilde{\boldsymbol{Y} } \; = \; \tilde{\boldsymbol{g}}(\boldsymbol{X}, \boldsymbol{\theta})$, where $\boldsymbol{\theta}$ is the vector of parameters
 
-By definition, two requirements of a metamodel $\hat{f}$ are:
+By definition, two requirements of a metamodel $\tilde{\boldsymbol{g}}$ are:
 \begin{itemize}
 \item Usefully accurate when predicting away from known observation
 \item Being significantly cheaper to evaluate than the primary simulator
@@ -98,7 +91,7 @@ By definition, two requirements of a metamodel $\hat{f}$ are:
 \begin{frame}[t]{Major steps for constructing a metamodel}
  
 \begin{center}
- \includegraphics[width=0.8\textwidth]{metamodel_scheme.pdf} 
+ \includegraphics[width=0.7\textwidth]{metamodel_scheme.pdf} 
 \end{center}
 
 \end{frame}
@@ -174,7 +167,7 @@ which fits to the data,
 \item Test: quantify the predictivity of the metamodel.
 \end{enumerate}
 
-One issue is to avoid overfitting, that is, we must be able 
+Avoid overfitting: we must be able 
 to predict datasets that have not been used to train the metamodel 
 (more on this topic later).
 
@@ -186,6 +179,17 @@ One solution is to use cross-validation.
 \end{itemize}
 
 \end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[t]{Training and validation}
+
+\begin{center}
+ \includegraphics[width=0.7\textwidth]{train_test_cross_validation.pdf}
+\end{center}
+
+\end{frame}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}[t]{Training and validation}
@@ -292,7 +296,7 @@ canonical basis.
 \end{example}
 
 \begin{center}
- \includegraphics[width=0.5\textwidth]{overfitting-function-sample.pdf}
+ \includegraphics[width=0.45\textwidth]{overfitting-function-sample.pdf}
 \end{center}
 
 \end{frame}
@@ -313,10 +317,10 @@ We use linear least squares to fit a degree 4 polynomial (5 coefficients).
 
 \begin{frame}[t]{Overfitting: example}
 
-Increasing the degree may not always reduce the generalization error. 
+Increasing the degree does not always reduce the generalization error. 
 
 \begin{center}
- \includegraphics[width=0.75\textwidth]{overfitting-polynomial-degree-various.pdf}
+ \includegraphics[width=0.75\textwidth]{overfitting-polynomial-degree-9.pdf}
 \end{center}
 
 \end{frame}
@@ -341,7 +345,7 @@ first decreases, then increases.
 Adding points to the training sample reduces the validation error, ...
 
 \begin{center}
- \includegraphics[width=0.7\textwidth]{overfitting-increase-sample.pdf}
+ \includegraphics[width=0.7\textwidth]{overfitting-increase-sample-degree-9.pdf}
 \end{center}
 
 ... but this is not always possible, e.g. the computer code may require 
@@ -359,8 +363,8 @@ costly simulations.
 with independent marginals: E: Beta, F: Lognormal, L: Uniform, 
 I: Beta.
 
-\item We approximate it with \emph{sparse} polynomial chaos: this limits 
-the number of coefficients in the model.
+\item We approximate it with \emph{sparse} polynomial chaos: the model 
+selection limits the number of coefficients in the model.
 \end{itemize}
 
 \end{example}
