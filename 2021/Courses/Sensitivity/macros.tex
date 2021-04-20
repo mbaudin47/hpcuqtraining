@@ -1,0 +1,37 @@
+% Copyright (C) 2012 - 2020 - Michael Baudin
+
+\setbeameroption{hide notes}
+%\setbeameroption{show notes}
+%\setbeameroption{show only notes}
+%\mode<presentation>{\usetheme{EDF09}}
+
+\usetheme{EDF09}
+\useoutertheme{infolines}
+
+\usepackage[T1]{fontenc}
+
+\usepackage[french]{babel}
+\uselanguage{French}
+\languagepath{French}
+
+% Python macros
+\newcommand{\pyobj}[1]{\textcolor{blue}{\texttt{#1}}}
+
+\def\RR{\mathbb{R}}
+\def\NN{\mathbb{N}}
+\def\bx{{\bf x}}
+
+% To highlight source code
+\usepackage{listings}
+\definecolor{darkgreen}{rgb}{0,0.5,0}
+\definecolor{violet}{rgb}{0.5,0,1}
+\lstset{
+  % general command to set parameter(s)
+   basicstyle=\scriptsize\ttfamily, %
+   keywordstyle=\color{violet}\bfseries,%
+   commentstyle=\color{darkgreen}\bfseries,%
+   showspaces=false,%
+   stringstyle=\color{red}\bfseries
+}
+
+
