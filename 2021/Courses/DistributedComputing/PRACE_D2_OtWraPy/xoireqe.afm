@@ -1,0 +1,120 @@
+StartFontMetrics 2.0
+Comment Converted at Mon Mar  1 10:37:36 2010 by ttf2afm from font file `xoireqe.ttf'
+FontName EyechartDisplayCapsSSK
+FullName EyechartDisplayCapsSSK Regular
+FamilyName EyechartDisplayCapsSSK
+ItalicAngle 0
+IsFixedPitch false
+FontBBox -90 -234 1246 842
+UnderlinePosition -122
+UnderlineThickness 18
+Version Altsys Metamorphosis:8/24/94
+Notice Copyright 1992 Southern Software, Inc. All Rights Reserved
+EncodingScheme FontSpecific
+Ascender 842
+Descender -234
+StartCharMetrics 102
+C 16 ; WX 478 ; N quotedblleft ; B 18 384 461 754 ;
+C 17 ; WX 475 ; N quotedblright ; B 18 375 457 746 ;
+C 21 ; WX 610 ; N endash ; B 26 339 584 509 ;
+C 22 ; WX 827 ; N emdash ; B 27 257 801 407 ;
+C 33 ; WX 252 ; N exclam ; B 27 0 226 745 ;
+C 36 ; WX 1203 ; N dollar ; B 31 -65 1171 815 ;
+C 37 ; WX 1204 ; N percent ; B 27 0 1176 742 ;
+C 38 ; WX 1180 ; N ampersand ; B 30 -3 1151 747 ;
+C 40 ; WX 230 ; N parenleft ; B 14 -94 215 842 ;
+C 41 ; WX 227 ; N parenright ; B 12 -100 214 837 ;
+C 42 ; WX 520 ; N asterisk ; B 31 171 489 614 ;
+C 44 ; WX 237 ; N comma ; B 27 -199 209 136 ;
+C 46 ; WX 281 ; N period ; B 33 0 248 201 ;
+C 47 ; WX 1005 ; N slash ; B 5 0 999 742 ;
+C 48 ; WX 1208 ; N zero ; B 92 5 1115 744 ;
+C 49 ; WX 1208 ; N one ; B 372 0 835 743 ;
+C 50 ; WX 1208 ; N two ; B 195 -3 1012 745 ;
+C 51 ; WX 1208 ; N three ; B 89 3 1118 745 ;
+C 52 ; WX 1208 ; N four ; B 24 -3 1184 747 ;
+C 53 ; WX 1208 ; N five ; B 73 0 1135 743 ;
+C 54 ; WX 1208 ; N six ; B 72 0 1136 742 ;
+C 55 ; WX 1208 ; N seven ; B 86 -3 1122 742 ;
+C 56 ; WX 1208 ; N eight ; B 74 3 1134 745 ;
+C 57 ; WX 1208 ; N nine ; B 67 -3 1141 742 ;
+C 58 ; WX 296 ; N colon ; B 41 111 256 610 ;
+C 59 ; WX 300 ; N semicolon ; B 35 -234 264 382 ;
+C 63 ; WX 1116 ; N question ; B 14 -3 1102 742 ;
+C 65 ; WX 1034 ; N A ; B 20 -3 1014 745 ;
+C 66 ; WX 1156 ; N B ; B 43 0 1112 745 ;
+C 67 ; WX 1070 ; N C ; B 10 0 1061 744 ;
+C 68 ; WX 1124 ; N D ; B 42 -3 1083 745 ;
+C 69 ; WX 1077 ; N E ; B 20 -3 1056 747 ;
+C 70 ; WX 1044 ; N F ; B 19 0 1032 739 ;
+C 71 ; WX 1111 ; N G ; B 28 3 1083 745 ;
+C 72 ; WX 1160 ; N H ; B 52 0 1107 745 ;
+C 73 ; WX 298 ; N I ; B 45 -6 252 745 ;
+C 74 ; WX 1117 ; N J ; B 41 -3 1075 742 ;
+C 75 ; WX 1082 ; N K ; B 16 0 1065 745 ;
+C 76 ; WX 1003 ; N L ; B -15 0 1018 747 ;
+C 77 ; WX 1200 ; N M ; B 53 -17 1147 744 ;
+C 78 ; WX 1121 ; N N ; B 46 -11 1076 760 ;
+C 79 ; WX 1134 ; N O ; B 47 3 1086 742 ;
+C 80 ; WX 1103 ; N P ; B 12 -3 1092 745 ;
+C 81 ; WX 1134 ; N Q ; B 17 -3 1116 739 ;
+C 82 ; WX 1125 ; N R ; B 43 0 1082 743 ;
+C 83 ; WX 1201 ; N S ; B 34 -3 1167 744 ;
+C 84 ; WX 1084 ; N T ; B 17 0 1066 744 ;
+C 85 ; WX 1151 ; N U ; B 45 -3 1105 745 ;
+C 86 ; WX 1070 ; N V ; B 26 -6 1045 745 ;
+C 87 ; WX 1292 ; N W ; B 47 -6 1246 765 ;
+C 88 ; WX 1005 ; N X ; B -15 0 1021 745 ;
+C 89 ; WX 1059 ; N Y ; B 23 0 1037 745 ;
+C 90 ; WX 1224 ; N Z ; B 34 3 1189 747 ;
+C 97 ; WX 1034 ; N a ; B 9 -3 1003 745 ;
+C 98 ; WX 1156 ; N b ; B 43 0 1112 745 ;
+C 99 ; WX 1066 ; N c ; B -31 0 1020 744 ;
+C 100 ; WX 1124 ; N d ; B 38 -3 1079 745 ;
+C 101 ; WX 1048 ; N e ; B -17 -3 1019 747 ;
+C 102 ; WX 1037 ; N f ; B -16 0 997 739 ;
+C 103 ; WX 1078 ; N g ; B -10 3 1045 745 ;
+C 104 ; WX 1160 ; N h ; B 53 0 1109 745 ;
+C 105 ; WX 298 ; N i ; B 44 -6 251 745 ;
+C 106 ; WX 1117 ; N j ; B 42 -3 1076 742 ;
+C 107 ; WX 1082 ; N k ; B -12 0 1037 745 ;
+C 108 ; WX 1003 ; N l ; B -76 0 957 747 ;
+C 109 ; WX 1200 ; N m ; B 52 -17 1146 744 ;
+C 110 ; WX 1121 ; N n ; B 43 -11 1073 760 ;
+C 111 ; WX 1135 ; N o ; B 48 3 1087 742 ;
+C 112 ; WX 1103 ; N p ; B -20 -3 1060 745 ;
+C 113 ; WX 1180 ; N q ; B 10 -3 1109 739 ;
+C 114 ; WX 1125 ; N r ; B 42 0 1081 743 ;
+C 115 ; WX 1201 ; N s ; B 25 -3 1158 744 ;
+C 116 ; WX 1086 ; N t ; B -10 0 1039 744 ;
+C 117 ; WX 1151 ; N u ; B 44 -3 1104 745 ;
+C 118 ; WX 1070 ; N v ; B 15 -6 1034 745 ;
+C 119 ; WX 1292 ; N w ; B 38 -6 1237 765 ;
+C 120 ; WX 1005 ; N x ; B -73 0 963 745 ;
+C 121 ; WX 1059 ; N y ; B -5 0 1009 745 ;
+C 122 ; WX 1224 ; N z ; B 27 3 1182 747 ;
+C 191 ; WX 814 ; N sterling ; B 35 -2 779 745 ;
+C -1 ; WX 800 ; N .notdef ; B 50 0 750 800 ;
+C -1 ; WX 0 ; N .null ; B 27 0 226 745 ;
+C -1 ; WX 599 ; N nonmarkingreturn ; B 27 0 226 745 ;
+C -1 ; WX 599 ; N space ; B 27 0 226 745 ;
+C -1 ; WX 210 ; N quotesingle ; B 13 347 196 681 ;
+C -1 ; WX 549 ; N notequal ; B 45 18 504 454 ;
+C -1 ; WX 713 ; N infinity ; B 52 114 659 484 ;
+C -1 ; WX 549 ; N plusminus ; B 43 19 506 453 ;
+C -1 ; WX 549 ; N lessequal ; B 43 18 506 458 ;
+C -1 ; WX 549 ; N greaterequal ; B 43 18 506 458 ;
+C -1 ; WX 494 ; N partialdiff ; B 60 -13 434 635 ;
+C -1 ; WX 713 ; N Sigma ; B 44 -216 669 744 ;
+C -1 ; WX 823 ; N Pi ; B 28 -216 795 744 ;
+C -1 ; WX 549 ; N pi ; B 20 -10 529 472 ;
+C -1 ; WX 274 ; N integral ; B -90 -181 364 757 ;
+C -1 ; WX 768 ; N Omega ; B 50 0 718 675 ;
+C -1 ; WX 549 ; N radical ; B -30 -20 579 811 ;
+C -1 ; WX 549 ; N approxequal ; B 15 100 534 372 ;
+C -1 ; WX 612 ; N Delta ; B 19 0 593 672 ;
+C -1 ; WX 620 ; N nbspace ; B 26 339 584 509 ;
+C -1 ; WX 494 ; N lozenge ; B 3 -233 491 807 ;
+C -1 ; WX 790 ; N applelogo ; B 55 -17 735 788 ;
+EndCharMetrics
+EndFontMetrics
