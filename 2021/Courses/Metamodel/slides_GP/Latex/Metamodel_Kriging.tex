@@ -485,16 +485,17 @@ The model output is a realization of a {\altx Gaussian random process} of the fo
 & $\mathcal{Y} =  \left\{ Y(\bs{x}^{(1)}), \dots ,  Y(\bs{x}^{(N)}\right\} $\\
 \\
 
-{\altx Notations:}~~~ & $\bs{k}(\bs{x}) \, \, \equiv\, \, \left\{\rho\left(\bs{x},\bs{x}^{(1)}\right),\dots,\rho\left(\bs{x},\bs{x}^{(N)}\right)\right\}^{\tr}$ \\
+{\altx Notations:}~~~ & $\bs{k}(\bs{x}^*) \, \, \equiv\, \, \left\{\rho\left(\bs{x}^*,\bs{x}^{(1)}\right),\dots,\rho\left(\bs{x}^*,\bs{x}^{(N)}\right)\right\}^{\tr}$ \\
  \\
-& $\bs{R} \, \, \equiv\, \, \left( r_{j}(\bs{x}^{(i)}) \right)_{1\leq i,j\leq N} \quad , \quad \bs{K} \, \, \equiv\, \, \left( \rho(\bs{x}^{(i)},\bs{x}^{(j)}) \right)_{1\leq i,j\leq N}$ \\
+& $\bs{R} \, \, \equiv\, \, \left( r_{j}(\bs{x}^{(i)}) \right)_{1\leq i\leq N, 1\leq j\leq p} \quad , \quad \bs{K} \, \, \equiv\, \, \left( \rho(\bs{x}^{(i)},\bs{x}^{(j)}) \right)_{1\leq i,j\leq N}$ \\
 \\
 \\
 
-{\altx Conditional mean:}~~~ & \fcolorbox{red}{white}{$\mu(\bs{x}) \, \, = \, \,   \bs{r}^{\tr}(\bs{x}) \bs{\beta} \, + \, \bs{k}^{\tr}(\bs{x}) \bs{K}^{-1} \left(\mathcal{Y} \, - \, \bs{R} \bs{\beta} \right)$} \\
+{\altx Conditional mean:}~~ & \fcolorbox{red}{white}{$\mu(\bs{x^*}) \, \, = \, \,   \bs{r}^{\tr}(\bs{x^*}) \bs{\beta} \, + \, \bs{k}^{\tr}(\bs{x^*}) \bs{K}^{-1} \left(\mathcal{Y} \, - \, \bs{R} \bs{\beta} \right)$} \\
 \\
-{\altx Conditional variance:}~~~ & \fcolorbox{red}{white}{$\sigma^{2}(\bs{x}) \, \, = \, \,   \sigma^{2} \, - \, \bs{k}^{\tr}(\bs{x}) \; \bs{K}^{-1} \; \bs{k}^{\tr}(\bs{x})$} \\
+{\altx Conditional variance:}~~ & \fcolorbox{red}{white}{$\sigma^{2}(\bs{x^*}) \, \, = \, \,   \sigma^{2} \, - \, \bs{k}^{\tr}(\bs{x^*}) \; \bs{K}^{-1} \; \bs{k}^{\tr}(\bs{x^*}) -  \, \bs{U(x^*)}^{\tr} \; \bs{F} \; \bs{U(x^*)}$} \\
 \end{tabular}
+with $\bs{F} \, = \, (\bs{R}^{\tr} \bs{K}^{-1} \bs{R}^{})^{-1}$, $\bs{U(x^*)} =  \bs{R}^t K^{-1} \bs{k}(x^*) - \bs{r}(x^*)^{t}$
 \end{frame}
 
 %=======================================================================================================%
