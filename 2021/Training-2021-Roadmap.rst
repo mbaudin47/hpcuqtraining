@@ -65,7 +65,7 @@ TODO : "Slides/11. PRACE_D3_BatchUranie.pdf"
 
 TODO : "Slides/12. PRACE_D3 - Distributing_OpenTURNS_OtWraPy.pdf"
 
-    - SALOME Course: TODO (2020: https://github.com/mbaudin47/hpcuqtraining/blob/master/2020/Courses/Salome/13.PRACE_D3_Salome.pptx)
+    - SALOME Course: https://github.com/mbaudin47/hpcuqtraining/blob/master/2021/Courses/Salome/Salome.pptx
 
 - Optimization and Calibration (1h) : J.B. Blanchard, M. Baudin
 
@@ -85,7 +85,7 @@ Day 3 : HPC aspects – Meta model
 
 - HPC aspects specific to the Uncertainty treatment (1h) : K. Delamotte
 
-    - Course: TODO (2020: https://github.com/mbaudin47/hpcuqtraining/tree/master/2020/Courses/prace-HMatrix-2020.pdf)
+    - Course: TODO (2020: https://github.com/mbaudin47/hpcuqtraining/tree/master/2020/Courses/Hmatrix/prace-HMatrix-2020.pdf)
 
 - Introduction to Meta models (validation, over-fitting) – Polynomial chaos expansion (1h) : M.Baudin, C. Mai
 
