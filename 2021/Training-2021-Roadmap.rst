@@ -75,8 +75,8 @@ TODO : "Slides/12. PRACE_D3 - Distributing_OpenTURNS_OtWraPy.pdf"
 
 - Application to OpenTURNS and Uranie (1h): J.B. Blanchard, M. Baudin
 
-    - Calibration Scripts Deterministic (30min) : https://github.com/mbaudin47/hpcuqtraining/tree/master/2021/Scripts/Calibration/Exercice-calage-deterministe-Chaboche.ipynb)
-    - Calibration Scripts Bayesian: https://github.com/mbaudin47/hpcuqtraining/tree/master/2021/Scripts/Calibration/Exercice-calage-bayesien-Chaboche.ipynb
+    - Calibration Scripts Deterministic (30min) : https://github.com/mbaudin47/hpcuqtraining/tree/master/2021/Scripts/Calibration/Exercise-calage-deterministic-Chaboche.ipynb)
+    - Calibration Scripts Bayesian: https://github.com/mbaudin47/hpcuqtraining/tree/master/2021/Scripts/Calibration/Exercise-calage-bayesian-Chaboche.ipynb
 
 TODO : Optimization Application
 
