@@ -318,13 +318,13 @@ $\forall k, \forall \{x_1, \dots , x_k \} \in \mathcal{D}^k$, $\{ Y(x_1), \dots 
 
 Global form of a unidimensional covariance function (Schlather 2009):
 \[
-C(x, x') = C_0 + \upsilon \, \rho \left( \frac{\absolute{x-x'}}{l} \right)
+C(x, x') = \delta_0 + \sigma^2 \, \rho \left( \frac{\absolute{x-x'}}{\theta} \right)
 \]
 
 \begin{itemize}
-\item $C_0$: nugget effect
-\item $\upsilon$: constant variance of the random process
-\item $l$: correlation length
+\item $\delta_0$: nugget effect
+\item $\sigma^2$: constant variance of the random process
+\item $\theta$: correlation length
 \end{itemize}
 
 Examples of covariance functions: 
@@ -358,9 +358,9 @@ For stationary processes, the trajectories $y(x)$ are $p$-times differentiable i
   \hline
   $\nu$ & Mat\'{e}rn covariance function \\
   \hline
-   $\nu = 1/2 $ & $C_{1/2}(\tau) = \sigma^2 exp( - \frac{\absolute{\tau}}{\rho} )$ \\
-   $\nu = 3/2 $ &   $C_{3/2}(\tau) = \sigma^2 \, (1+ \frac{\sqrt{3}\absolute{\tau}}{\rho}) \, exp( - \frac{\sqrt{3}\absolute{\tau}}{\rho} )$\\
-   $\nu = 5/2 $ &  $C_{5/2}(\tau) = \sigma^2 \, (1+ \frac{\sqrt{5}\absolute{\tau}}{\rho} + \frac{5 {\absolute{\tau}}^2 }{3 \rho^2} ) \, exp( - \frac{\sqrt{5}\absolute{\tau}}{\rho} )$ \\
+   $\nu = 1/2 $ & $C_{1/2}(\tau) = \sigma^2 exp( - \frac{\absolute{\tau}}{\theta} )$ \\
+   $\nu = 3/2 $ &   $C_{3/2}(\tau) = \sigma^2 \, (1+ \frac{\sqrt{3}\absolute{\tau}}{\theta}) \, exp( - \frac{\sqrt{3}\absolute{\tau}}{\theta} )$\\
+   $\nu = 5/2 $ &  $C_{5/2}(\tau) = \sigma^2 \, (1+ \frac{\sqrt{5}\absolute{\tau}}{\theta} + \frac{5 {\absolute{\tau}}^2 }{3 \theta^2} ) \, exp( - \frac{\sqrt{5}\absolute{\tau}}{\theta} )$ \\
   \hline
 \end{tabular}
 \end{center}
