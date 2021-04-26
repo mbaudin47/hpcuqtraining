@@ -99,8 +99,8 @@ Day 3 : HPC aspects – Meta model
 
 - Scripts (it time allows)
 
-    - https://github.com/mbaudin47/hpcuqtraining/blob/master/2020/Scripts/Metamodel/Introduction/Over-fitting-model-selection.ipynb
-    - https://github.com/mbaudin47/hpcuqtraining/blob/master/2020/Scripts/Metamodel/Introduction/Validation-Chaos-cantilever-beam.ipynb
+    - https://github.com/mbaudin47/hpcuqtraining/blob/master/2020/Scripts/Metamodel/Over_fitting_model_selection.ipynb
+    - https://github.com/mbaudin47/hpcuqtraining/blob/master/2020/Scripts/Metamodel/Validation-Chaos-cantilever-beam.ipynb
 
 - Lunch 
 
