@@ -40,7 +40,7 @@ TODO
 
 - Central tendency and Sensitivity analysis (1h): A. Dutfoy
 
-    - Sensitivity Course: TODO (2020: https://github.com/mbaudin47/hpcuqtraining/blob/master/2020/Courses/Sensitivity/AnaSensisbilite_PRACE_english.pdf)
+    - Sensitivity Course: https://github.com/mbaudin47/hpcuqtraining/blob/master/2021/Courses/Sensitivity/AnaSensibilite_PRACE_english.pdf
 
 Day 2 : Quantification, Propagation and Ranking of Uncertainties
 ----------------------------------------------------------------

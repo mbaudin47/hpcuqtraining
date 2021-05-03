@@ -47,9 +47,18 @@ jobs:
       - run:
           name: Build Slides
           command: bash ./.circleci/build_slides.sh
+      - store_artifacts:
+          path: 2021/Courses/Calibration/Calibration_PRACE_english.pdf
+      - store_artifacts:
+          path: 2021/Courses/Metamodel/Introduction/steps-C-surrogate.pdf
+      - store_artifacts:
+          path: 2021/Courses/Metamodel/slides_GP/Latex/Metamodel_Kriging.pdf
+      - store_artifacts:
+          path: 2021/Courses/Metamodel/slides_PCEs/Latex/Metamodel_PCEs.pdf
+      - store_artifacts:
+          path: 2021/Courses/Sensitivity/AnaSensibilite_PRACE_english.pdf
 
 workflows:
   main:
     jobs:
       - build-and-test
-
