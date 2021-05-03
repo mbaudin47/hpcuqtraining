@@ -9,9 +9,9 @@ Day 1 : Methodology of Uncertainty Treatment – Basics of Probability and Stat
 
 - General Uncertainty Methodology (30’) : A. Dutfoy
 
-TODO (2020: https://github.com/mbaudin47/hpcuqtraining/tree/master/2020/Courses/Intro/1-PRACE_D1-IntroStage.ppt)
+https://github.com/mbaudin47/hpcuqtraining/tree/master/2021/Courses/Intro/1-PRACE_D1-IntroStage.ppt
 
-TODO (2020: https://github.com/mbaudin47/hpcuqtraining/tree/master/2020/Courses/Intro/2-PRACE_D1-MethodoIncertitudes.ppt)
+https://github.com/mbaudin47/hpcuqtraining/tree/master/2021/Courses/Intro/2-PRACE_D1-MethodoIncertitudes.ppt
 
 - Probability and Statistics: Basics (45’) : G. Blondet
 
