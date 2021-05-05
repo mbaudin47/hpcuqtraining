@@ -67,7 +67,7 @@ We consider
   The main objectives of sensitivity analyses may be:
 \begin{enumerate}
  \item \alert{remove some variables} which are not influential on the feature of interest, within a context of high dimension,
- \item\alert{ rank the input variables } in order to focus the modeling efforts on significant inputs: we need a  \emph{relative} quantification
+ \item\alert{ rank the input variables } in order to focus the modeling on significant inputs: we need a  \emph{relative} quantification
  \item \alert{quantify the impact of a variable}: we need an \emph{exact} quantification
 \end{enumerate}
 \end{block}
@@ -241,7 +241,7 @@ How can we use this result for $Y = f(\vect{X})$ with $\vect{X}$ a random vector
       \label{decompSobolY}
       Y = f(\vect{X}) = f_0 + \sum_{i=1}^{i=n}f_i(X_i) + \sum_{1\leq i < j \leq n} f_{i,j} (X_i, X_j) + \dots + f_{1, \dots, n}(X_1, \dots, X_n)
     \end{equation}
-    {\bf The orthogonal condition (\ref{decompSobolCondOrthog}) of the  $f_{i_1, \dots, i_k}$  w.r.t. the Lebesgue measure on $[0,1]^n$ can be interpreted as an expectation calculus if the $X_i$ are independent}.\\
+    {\bf The orthogonal condition (\ref{decompSobolCondOrthog}) of the  $f_{i_1, \dots, i_k}$  w.r.t. the Lebesgue measure on $[0,1]^n$ can be interpreted as an expectation if the $X_i$ are independent}.\\
     \alert{$\Longrightarrow$} We  suppose now that the $X_i$ are  \alert{\bf independent}.\\
 
     \alert{\bf Conclusion} :     Y can be decomposed as:
@@ -257,7 +257,7 @@ How can we use this result for $Y = f(\vect{X})$ with $\vect{X}$ a random vector
 \begin{frame}
   \frametitle{Sobol indices}
 \small
-  \begin{block}{Calculus of the Sobol indices}
+  \begin{block}{Computation of the Sobol indices}
     \small{
       From the probabilistic decomposition (\ref{decompSobolY2}), we calculate $\Expect{Y}$ and $\Var{Y}$:
       $$
@@ -347,7 +347,7 @@ How can we use this result for $Y = f(\vect{X})$ with $\vect{X}$ a random vector
  Sobol indices  were introduced by Sobol in 2001 (\cite{Sobol2001}). But sensitivity indices were already existing!:
  \begin{itemize}
   \item SRC, SRRC indices
-  \item Pearson, Spearmann, PCC, PRCC indices
+  \item Pearson, Spearman, PCC, PRCC indices
   \item importance factors from the \emph{Taylor decomposition}
  \end{itemize}
 \alert{When the components $X_i$ are independent, these indices are exactly particular cases of Sobol indices.}
@@ -357,7 +357,7 @@ How can we use this result for $Y = f(\vect{X})$ with $\vect{X}$ a random vector
     \begin{equation}
       SRC(X_i) = \displaystyle \frac{\alpha_i^2 \Var{X_i}}{\Var{Y}}
     \end{equation}
-    Then {\bf $SRC $ is the Sobol indice} of order 1 of $X_i$ : $\boldsymbol{    SRC (Y / X_i) = S(Y / X_i)}$.
+    Then {\bf $SRC $ is the Sobol index} of order 1 of $X_i$ : $\boldsymbol{    SRC (Y / X_i) = S(Y / X_i)}$.
  \end{block}
 
  
@@ -396,7 +396,7 @@ Moreover, if the  \alert{ $X_i$ are independent}, we show that:
      SRRC(Y/X_i) = SRC(Z / U_i) = \dfrac{\alpha_i^2 \Var{U_i}}{\Var{Z}} = S(Z/U_i)
     $$    
        
-    Then {\bf SRRC is a Sobol indice} of order 1 calculated on the ranks of $X_i$ and $Y$.
+    Then {\bf SRRC is a Sobol index} of order 1 calculated on the ranks of $X_i$ and $Y$.
            
   \end{block} 
 
@@ -553,7 +553,7 @@ We assume that $Y$ and $X_i$ are scalar to ease the notations of this presentati
     \begin{align*}
       S_i^f= D_f(p_{Y \otimes X_i} \| p_{(Y,X_i)})
     \end{align*}
- We show that this indice: 
+ We show that this index: 
  \begin{itemize}
   \item depends on the whole distribution and not on its first moments only
   \item is independent of the margins (and then of the scale of the components)
@@ -631,7 +631,7 @@ In particular, we can consider the uniform margins with  $f = F_X$ and $g = F_Y$
   \item The divergences $D_{f_1}$ and $D_{f_2}$  quantify the gaps between the distributions  exactly the same way when  $f_1$ and $f_2$ differ from a linear function of $(u-1)$
   \item The divergences based on Kullback-Liebler and Hellinger are different
   \end{itemize}
-  \item Symetry: $\forall (P,Q), D_{f}(P||Q)=D_{f^*}(Q||P)$ and $\forall (P,Q),D_{f^*}(P||Q)=D_{f}(P||Q)\Leftrightarrow \exists c\in\Rset, f^*(u)-f(u)=c(u-1)$
+  \item Symmetry: $\forall (P,Q), D_{f}(P||Q)=D_{f^*}(Q||P)$ and $\forall (P,Q),D_{f^*}(P||Q)=D_{f}(P||Q)\Leftrightarrow \exists c\in\Rset, f^*(u)-f(u)=c(u-1)$
   \item Range: \alert{$\displaystyle 0=f(1)\leq D_f(P||Q)\leq f(0)+f^*(0)$}
   \item Convexity: $\displaystyle \forall \lambda\in[0,1],\quad D_f(\lambda P_1+(1-\lambda)P_2||\lambda Q_1+(1-\lambda)Q_2)\leq\lambda D_f(P_1||Q_1)+(1-\lambda)D_f(P_2||Q_2)$
   \end{itemize}
@@ -661,7 +661,7 @@ The characterisation of the range of the indices is the main result for the depe
    Works are in progress on the following challenges: 
     \begin{itemize}
     \item \alert{how to interpret the value of the sensitivity index?} $S_i^f=0.8$: if if is a Sobol' index, it means that $80\%$ of the variance of $Y$ is explained by the variance of $X_i$... but what if Csiszar divergence?
-    \item \alert{which  $f$ to consider?} If $S_i^{f} > S_j^{f}$, do we still have $S_i^{g} > S_j^{g}$? Answer: no... thus, the hierarchisation depends on $f$. We have to \emph{adapt $f$} to the needs of the study. For example, if $c(x_i, y)$ is low in some particular zones, we take a $f$ which increases the gaps to 1 in that zone. We need to build a know-how!
+    \item \alert{which  $f$ to consider?} If $S_i^{f} > S_j^{f}$, do we still have $S_i^{g} > S_j^{g}$? Answer: no... thus, the ranking depends on $f$. We have to \emph{adapt $f$} to the needs of the study. For example, if $c(x_i, y)$ is low in some particular zones, we take a $f$ which increases the gaps to 1 in that zone. We need to build a know-how!
       \item \alert{how to estimate a copula density $c_{(Y,X_i)}$}:  $\hat{S}_i^f = S_i^f(\hat{c})$ $\Longrightarrow$ use of the Bernstein copula?
      \item \alert{how to create independence tests} based on an estimation of $S_i^f$, according to $f$?: under the independence assumption, which confidence interval do we have on the values of $\hat{S}_i^f$?
     \end{itemize}
