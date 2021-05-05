@@ -15,28 +15,29 @@ TODO (2020: https://github.com/mbaudin47/hpcuqtraining/tree/master/2020/Courses/
 
 - Probability and Statistics: Basics (45’) : G. Blondet
 
+https://github.com/mbaudin47/hpcuqtraining/tree/master/2021/Courses/Probability/PRACE_D1_Probability_theory_basics_2021.pdf
 
-TODO: "Slides/03. PRACE_D1 - Probability theory basics.pdf"
 
 - General introduction to Open TURNS and Uranie (2 * 30’) : G. Blondet, J.B. Blanchard
 
-TODO: "Slides/04. PRACE_D1 - OpenTURNS introduction.pdf"
+    https://github.com/mbaudin47/hpcuqtraining/tree/master/2021/Courses/Probability/PRACE_D1_OpenTURNS_introduction_2021.pdf
 
 - General overview of the Uranie platform : https://github.com/mbaudin47/hpcuqtraining/tree/master/2021/Courses/Intro/05._PRACE_D1_UranieGeneralIntroduction.pdf
 
 
 - Introduction to Python and Jupyter (45’): practical work on distributions manipulations
+    https://github.com/mbaudin47/hpcuqtraining/tree/master/2021/Scripts/Python/TP0_Introduction_Python_Jupyter.ipynb
 
-TODO
 
 - Lunch 
 - Uncertainty Quantification (45’) : J.B. Blanchard
 
-https://github.com/mbaudin47/hpcuqtraining/tree/master/2021/Courses/Intro/06._PRACE_D1_UncertaintyQuantification.pdf
+    https://github.com/mbaudin47/hpcuqtraining/tree/master/2021/Courses/Intro/06._PRACE_D1_UncertaintyQuantification.pdf
 
 - OpenTURNS – Uranie practical works: sections 1, 2 (1h): G. Blondet,  J.B. Blanchard,  A. Dutfoy
 
-TODO
+    https://github.com/mbaudin47/hpcuqtraining/tree/master/2021/Scripts/Uncertainty_Quantification/TP1_Uncertainty_Quantification.ipynb
+
 
 - Central tendency and Sensitivity analysis (1h): A. Dutfoy
 
@@ -47,15 +48,19 @@ Day 2 : Quantification, Propagation and Ranking of Uncertainties
 
 - Application to OpenTURNS and Uranie, section 3 (1h): M. Baudin, G. Blondet, F. Gaudier, J.B. Blanchard
 
-TODO
+    - TP 2 on the beam example (Openturns): central tendency and sensitivity
+
+        https://github.com/mbaudin47/hpcuqtraining/tree/master/2021/Scripts/Central_tendency/TP2_wrapper_Central_dispersion.ipynb
 
 - Estimation of probability of rare events (1h): G. Blondet
 
-TODO
+    https://github.com/mbaudin47/hpcuqtraining/tree/master/2021/Courses/Rare_event/PRACE_D2_Rare_events_probability_estimation_2021.pdf
 
 - Application to OpenTURNS and Uranie (1h): G. Blondet, F. Gaudier, J.B. Blanchard, M. Baudin
 
-TODO
+    - OpenTURNS: rare event probability estimation based on beam example
+
+        https://github.com/mbaudin47/hpcuqtraining/tree/master/2021/Scripts/Rare_Event/TP3_Rare_event.ipynb
 
 - Lunch 
 
@@ -63,7 +68,7 @@ TODO
 
 TODO : "Slides/11. PRACE_D3_BatchUranie.pdf"
 
-TODO : "Slides/12. PRACE_D3 - Distributing_OpenTURNS_OtWraPy.pdf"
+    - Otwrappy: https://github.com/mbaudin47/hpcuqtraining/tree/master/2021/Courses/DistributedComputing/Distributing_OpenTURNS_OtWraPy.pdf
 
     - SALOME Course: https://github.com/mbaudin47/hpcuqtraining/blob/master/2021/Courses/Salome/Salome.pptx
 
@@ -105,6 +110,7 @@ Day 3 : HPC aspects – Meta model
 - Lunch 
 
 - Application to OpenTURNS and Uranie (2h) : C. Mai, G. Blondet, J.B. Blanchard
+    - OpenTURNS: kriging metamodel on the beam example
 
 TODO
 
