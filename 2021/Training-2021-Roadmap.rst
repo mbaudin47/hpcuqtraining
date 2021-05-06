@@ -15,12 +15,12 @@ TODO (2020: https://github.com/mbaudin47/hpcuqtraining/tree/master/2020/Courses/
 
 - Probability and Statistics: Basics (45’) : G. Blondet
 
-https://github.com/mbaudin47/hpcuqtraining/tree/master/2021/Courses/Probability/PRACE_D1_Probability_theory_basics_2021.pdf
+    https://github.com/mbaudin47/hpcuqtraining/tree/master/2021/Courses/Probability/PRACE_D1_Probability_theory_basics_2021.pdf
 
 
 - General introduction to Open TURNS and Uranie (2 * 30’) : G. Blondet, J.B. Blanchard
 
-    https://github.com/mbaudin47/hpcuqtraining/tree/master/2021/Courses/Probability/PRACE_D1_OpenTURNS_introduction_2021.pdf
+    https://github.com/mbaudin47/hpcuqtraining/tree/master/2021/Courses/Intro_OT/PRACE_D1_OpenTURNS_introduction_2021.pdf
 
 - General overview of the Uranie platform : https://github.com/mbaudin47/hpcuqtraining/tree/master/2021/Courses/Intro/05._PRACE_D1_UranieGeneralIntroduction.pdf
 
@@ -68,7 +68,7 @@ Day 2 : Quantification, Propagation and Ranking of Uncertainties
 
 TODO : "Slides/11. PRACE_D3_BatchUranie.pdf"
 
-    - Otwrappy: https://github.com/mbaudin47/hpcuqtraining/tree/master/2021/Courses/DistributedComputing/Distributing_OpenTURNS_OtWraPy.pdf
+    - Otwrappy: https://github.com/mbaudin47/hpcuqtraining/tree/master/2021/Courses/DistributedComputing/PRACE_D2_OtWraPy/Distributing_OpenTURNS_OtWraPy.pdf
 
     - SALOME Course: https://github.com/mbaudin47/hpcuqtraining/blob/master/2021/Courses/Salome/Salome.pptx
 
