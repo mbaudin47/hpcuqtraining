@@ -1,5 +1,4 @@
-pdflatex AnaSensisbilite_PRACE_english
-pdflatex AnaSensisbilite_PRACE_english
-bibtex AnaSensisbilite_PRACE_english
-pdflatex AnaSensisbilite_PRACE_english
-
+pdflatex AnaSensibilite_PRACE_english
+pdflatex AnaSensibilite_PRACE_english
+bibtex AnaSensibilite_PRACE_english
+pdflatex AnaSensibilite_PRACE_english
