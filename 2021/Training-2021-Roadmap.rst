@@ -17,17 +17,14 @@ https://github.com/mbaudin47/hpcuqtraining/tree/master/2021/Courses/Intro/2-PRAC
 
     https://github.com/mbaudin47/hpcuqtraining/tree/master/2021/Courses/Probability/PRACE_D1_Probability_theory_basics_2021.pdf
 
-
 - General introduction to Open TURNS and Uranie (2 * 30’) : G. Blondet, J.B. Blanchard
 
     https://github.com/mbaudin47/hpcuqtraining/tree/master/2021/Courses/Intro_OT/PRACE_D1_OpenTURNS_introduction_2021.pdf
 
 - General overview of the Uranie platform : https://github.com/mbaudin47/hpcuqtraining/tree/master/2021/Courses/Intro/05._PRACE_D1_UranieGeneralIntroduction.pdf
 
-
 - Introduction to Python and Jupyter (45’): practical work on distributions manipulations
     https://github.com/mbaudin47/hpcuqtraining/tree/master/2021/Scripts/Python/TP0_Introduction_Python_Jupyter.ipynb
-
 
 - Lunch 
 - Uncertainty Quantification (45’) : J.B. Blanchard
@@ -37,7 +34,6 @@ https://github.com/mbaudin47/hpcuqtraining/tree/master/2021/Courses/Intro/2-PRAC
 - OpenTURNS – Uranie practical works: sections 1, 2 (1h): G. Blondet,  J.B. Blanchard,  A. Dutfoy
 
     https://github.com/mbaudin47/hpcuqtraining/tree/master/2021/Scripts/Uncertainty_Quantification/TP1_Uncertainty_Quantification.ipynb
-
 
 - Central tendency and Sensitivity analysis (1h): A. Dutfoy
 
@@ -66,7 +62,7 @@ Day 2 : Quantification, Propagation and Ranking of Uncertainties
 
 - Distributed computing (1h) : Uranie (15’, F. Gaudier, J.B. Blanchard), OpenTURNS (15’, G. Blondet), Salome et OpenTURNS (30’, O. Mircescu)
 
-TODO : "Slides/11. PRACE_D3_BatchUranie.pdf"
+        https://github.com/mbaudin47/hpcuqtraining/tree/master/2021/Courses/DistributedComputing/11.PRACE_D3_BatchUranie.pdf
 
     - Otwrappy: https://github.com/mbaudin47/hpcuqtraining/tree/master/2021/Courses/DistributedComputing/PRACE_D2_OtWraPy/Distributing_OpenTURNS_OtWraPy.pdf
 
