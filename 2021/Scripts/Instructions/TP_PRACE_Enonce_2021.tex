@@ -5,6 +5,7 @@
 \usepackage[dvips]{graphicx}
 \usepackage{color}
 \usepackage{psfrag}
+\usepackage{babel}
 \usepackage{listings}
 \usepackage{longtable}
 \usepackage{mdwtab}
@@ -14,7 +15,6 @@
 \usepackage{amsthm}
 \usepackage[latin1]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage{babel}
 \usepackage{bbold}
 
 \newlength{\malong}
@@ -54,7 +54,7 @@
 \vspace*{2cm}
 
 
-\begin{minipage}{8cm}
+\begin{minipage}{6cm}
   \begin{center}
     \begin{tabular}{c}
 \includegraphics[height=5cm]{logoOpenTURNS.jpg}
@@ -62,7 +62,7 @@
   \end{center}
 \end{minipage}
 \hfill
-\begin{minipage}{8cm}
+\begin{minipage}{6cm}
   \begin{center}
     \begin{tabular}{c}
 \includegraphics[height=5cm]{uranie_splash.png}
@@ -72,17 +72,17 @@
 
 \vspace*{2cm}
 
-\begin{minipage}{8cm}
+\begin{minipage}{6cm}
 %\begin{figure}[htbp]
   \begin{center}
     \begin{tabular}{c}
-			\includegraphics[width=8cm]{Prace_long.jpg}
+			\includegraphics[width=5cm]{Prace_long.jpg}
     \end{tabular}
   \end{center}
 %\end{figure}
 \end{minipage}
 \hfill
-\begin{minipage}{8cm}
+\begin{minipage}{6cm}
 %\begin{figure}[htbp]
   \begin{center}
     \begin{tabular}{c}
@@ -99,13 +99,8 @@
 We study the deviation of a cantilever beam. An external force is applied to the free tip of the beam:
 
 \begin{figure}[htbp]
-  \begin{center}
-    \begin{tabular}{cc}
+\centering
 \includegraphics[width=4cm]{poutre.pdf}
-&
-\includegraphics[width=4cm]{section.pdf}
-    \end{tabular}
-  \end{center}
 \end{figure}
 
 The vertical deviation writes:
@@ -117,7 +112,7 @@ The vertical deviation writes:
     \item[$\bullet$]  E is the Young modulus,
     \item[$\bullet$]  F is the ponctual load,
     \item[$\bullet$]  L is the length of the beam,
-    \item[$\bullet$]  I is the second moment of area according for bending, $I = \displaystyle \frac{a^4 - (a-e)^4}{12}$.
+    \item[$\bullet$]  I is the second moment of area according for bending.
 \end{itemize}
 \vspace*{0.2cm}
 
@@ -125,10 +120,10 @@ The ponctual values used for deterministic studies are:
 $$
 \left\{
 \begin{array}{lcl}
- E & = & 3.0e9 Pa\\
- F & = & 300 N\\
- L & = & 2.5 m\\
- I & = & 4.0E-6 m^4
+ E & = & 3 \times 10^{9} \quad (Pa)\\
+ F & = & 300  \quad (N)\\
+ L & = & 2.5  \quad (m)\\
+ I & = & 4 \times 10^{-6}  \quad (m^4)
 \end{array}
 \right.
 $$
@@ -159,7 +154,8 @@ We propose the following margins:
 	\hline
 	Variable & Description            & Distribution & Parameters and support                  \\ \hline
 	E        & Young Modulus (Pa)     & from sample  & from sample (file \emph{sample\_E.csv}  \\ \hline
-	F        & Load (N)               & Log-Normal   & $\mathbb{E}[F] = 30000$, $\sqrt{Var[F]} = 9000$, $[15000, +\infty[$   \\ \hline
+	F        & Load (N)               & Log-Normal   & $\mathbb{E}[F] = 30000$, $\sqrt{Var[F]} = 9000$, \\
+             &                        &              & $[15000, +\infty[$   \\ \hline
 	L        & Length (m)             & Uniform      & $[250; 260]$            				   \\ \hline
 	I        & Bending moment ($m^4$) & Beta         & $r = 2.5,t = 4,a = 310,b = 450$         \\ \hline      
 	\end{tabular}
