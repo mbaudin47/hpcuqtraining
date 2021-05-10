@@ -25,7 +25,7 @@ Day 1 : Methodology of Uncertainty Treatment – Basics of Probability and Stat
 
   https://github.com/mbaudin47/hpcuqtraining/tree/master/2021/Courses/Intro/05._PRACE_D1_UranieGeneralIntroduction.pdf
 
-- Introduction to Python and Jupyter (45’): Hands-on session on distributions manipulations.
+- Introduction to Jupyter and Python (45’): Hands-on session on Jupyter Notebook and Python basics.
 
   https://github.com/mbaudin47/hpcuqtraining/tree/master/2021/Scripts/Python/TP0_Introduction_Python_Jupyter.ipynb
 
