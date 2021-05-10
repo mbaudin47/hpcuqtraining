@@ -58,6 +58,8 @@ jobs:
           path: 2021/Courses/Metamodel/slides_PCEs/Latex/Metamodel_PCEs.pdf
       - store_artifacts:
           path: 2021/Courses/Sensitivity/AnaSensibilite_PRACE_english.pdf
+      - store_artifacts:
+          path: 2021/Courses/LinearAlgebra/HMat-PRACE-2021.pdf
 
 workflows:
   main:

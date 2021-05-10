@@ -39,13 +39,11 @@ La prochaine session aura lieu :
 
 10-12 mai 2021, 9h30- 12h30 / 14h – 17h, Maison de la Simulation, France and online.
 
-[programme 2020]: https://github.com/mbaudin47/hpcuqtraining/blob/master/2020/Programme/ProgrammePRACE_HPC_Uncertainty_2020.odt
-[feuille de route 2020]: https://github.com/mbaudin47/hpcuqtraining/blob/master/2020/Training-2020-Roadmap.rst
+[feuille de route 2021]: https://github.com/mbaudin47/hpcuqtraining/blob/master/2021/Training-2021-Roadmap.rst
 
-Pour plus de détails sur la session 2020, nous vous recommandons de consulter :
+Pour plus de détails sur la session 2021, nous vous recommandons de consulter :
 
-* le [programme 2020],
-* la [feuille de route 2020].
+* la [feuille de route 2021].
 
 ## Licence
 
