@@ -25,7 +25,7 @@ Day 1 : Methodology of Uncertainty Treatment – Basics of Probability and Stat
 
     https://github.com/mbaudin47/hpcuqtraining/tree/master/2021/Courses/Intro/05._PRACE_D1_UranieGeneralIntroduction.pdf
 
-- Introduction to Python and Jupyter (45’): practical work on distributions manipulations.
+- Introduction to Python and Jupyter (45’): Hands-on session on distributions manipulations.
 
     https://github.com/mbaudin47/hpcuqtraining/tree/master/2021/Scripts/Python/TP0_Introduction_Python_Jupyter.ipynb
 
@@ -34,7 +34,8 @@ Day 1 : Methodology of Uncertainty Treatment – Basics of Probability and Stat
 
     https://github.com/mbaudin47/hpcuqtraining/tree/master/2021/Courses/Intro/06._PRACE_D1_UncertaintyQuantification.pdf
 
-- OpenTURNS – Uranie practical works: sections 1, 2 (1h): G. Blondet,  J.B. Blanchard,  A. Dutfoy.
+- Hands-on session 1 with OpenTURNS and Uranie: sections 1, 2 (1h): G. Blondet,  J.B. Blanchard,  A. Dutfoy.
+Hands-on session 1 on the beam example with OpenTURNS.
 
     https://github.com/mbaudin47/hpcuqtraining/tree/master/2021/Scripts/Uncertainty_Quantification/TP1_Uncertainty_Quantification.ipynb
 
@@ -45,8 +46,8 @@ Day 1 : Methodology of Uncertainty Treatment – Basics of Probability and Stat
 Day 2 : Quantification, Propagation and Ranking of Uncertainties
 ----------------------------------------------------------------
 
-- Application to OpenTURNS and Uranie, section 3 (1h): M. Baudin, G. Blondet, F. Gaudier, J.B. Blanchard. 
-TP 2 on the beam example (OpenTURNS): central tendency and sensitivity.
+- Hands-on session 2 with OpenTURNS and Uranie, section 3 (1h): M. Baudin, G. Blondet, F. Gaudier, J.B. Blanchard. 
+Hands-on session 2 on the beam example with OpenTURNS: central tendency and sensitivity.
 
     https://github.com/mbaudin47/hpcuqtraining/tree/master/2021/Scripts/Central_tendency/TP2_wrapper_Central_dispersion.ipynb
 
@@ -54,8 +55,8 @@ TP 2 on the beam example (OpenTURNS): central tendency and sensitivity.
 
     https://github.com/mbaudin47/hpcuqtraining/tree/master/2021/Courses/Rare_event/PRACE_D2_Rare_events_probability_estimation_2021.pdf
 
-- Application to OpenTURNS and Uranie (1h): G. Blondet, F. Gaudier, J.B. Blanchard, M. Baudin. 
-OpenTURNS: rare event probability estimation based on beam example.
+- Hands-on session 3 with OpenTURNS and Uranie (1h): G. Blondet, F. Gaudier, J.B. Blanchard, M. Baudin. 
+Hands-on session 3 with OpenTURNS: rare event probability estimation based on beam example.
 
         https://github.com/mbaudin47/hpcuqtraining/tree/master/2021/Scripts/Rare_Event/TP3_Rare_event.ipynb
 
@@ -75,15 +76,15 @@ OpenTURNS: rare event probability estimation based on beam example.
 
     - Calibration Course: https://github.com/mbaudin47/hpcuqtraining/blob/master/2021/Courses/Calibration/Calibration_PRACE_english.pdf
 
-- Application to OpenTURNS and Uranie (1h): J.B. Blanchard, M. Baudin.
+- Hands-on session with OpenTURNS and Uranie (1h): J.B. Blanchard, M. Baudin.
 
     - Calibration Scripts Deterministic (30min): https://github.com/mbaudin47/hpcuqtraining/tree/master/2021/Scripts/Calibration/Exercise-calage-deterministic-Chaboche.ipynb)
     - Calibration Scripts Bayesian: https://github.com/mbaudin47/hpcuqtraining/tree/master/2021/Scripts/Calibration/Exercise-calage-bayesian-Chaboche.ipynb
 
 TODO : Optimization Application
 
-Day 3 : HPC aspects – Meta model
---------------------------------
+Day 3 : HPC and Meta modeling
+-----------------------------
 
 - HPC aspects specific to the Uncertainty treatment (1h): K. Delamotte
 
@@ -99,17 +100,22 @@ Day 3 : HPC aspects – Meta model
 
     - Chaos Course: https://github.com/mbaudin47/hpcuqtraining/blob/master/2021/Courses/Metamodel/slides_PCEs/Latex/Metamodel_PCEs.pdf
 
-- Scripts (it time allows)
+- Hands-on session with OpenTURNS (it time allows)
 
     - Over-fitting and model selection: https://github.com/mbaudin47/hpcuqtraining/blob/master/2021/Scripts/Metamodel/Over_fitting_model_selection.ipynb
     - Application of the polynomial chaos to the cantilever beam: validation of a metamodel. https://github.com/mbaudin47/hpcuqtraining/blob/master/2021/Scripts/Metamodel/Validation-Chaos-cantilever-beam.ipynb
 
 - Lunch 
 
-- Application to OpenTURNS and Uranie (2h): C. Mai, G. Blondet, J.B. Blanchard.
-    - OpenTURNS: kriging metamodel on the beam example.
+- Hands-on session 4 with OpenTURNS and Uranie (2h): C. Mai, G. Blondet, J.B. Blanchard.
 
-TODO
+    - Hands-on session 4 (a) with OpenTURNS: polynomial chaos metamodel on the beam example.
+
+    https://github.com/mbaudin47/hpcuqtraining/blob/master/2021/Scripts/Metamodel/TP4_Cantilever_beam_polynomial_chaos.ipynb
+
+    - Hands-on session 4 (b) with OpenTURNS: kriging metamodel on the beam example.
+
+    https://github.com/mbaudin47/hpcuqtraining/blob/master/2021/Scripts/Metamodel/TP4b_Kriging.ipynb
 
 - Discussion /  Participants projects
 
