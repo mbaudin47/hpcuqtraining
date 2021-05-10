@@ -7,17 +7,17 @@ The goal of this document is to present the roadmap for the 2021 Training. This 
 Day 1 : Methodology of Uncertainty Treatment – Basics of Probability and Statistics
 -----------------------------------------------------------------------------------
 
-- General Uncertainty Methodology (30’): A. Dutfoy
+- General Uncertainty Methodology (30’): A. Dutfoy.
 
     https://github.com/mbaudin47/hpcuqtraining/tree/master/2021/Courses/Intro/1-PRACE_D1-IntroStage.ppt
 
     https://github.com/mbaudin47/hpcuqtraining/tree/master/2021/Courses/Intro/2-PRACE_D1-MethodoIncertitudes.ppt
 
-- Probability and Statistics: Basics (45’): G. Blondet
+- Probability and Statistics: Basics (45’): G. Blondet.
 
     https://github.com/mbaudin47/hpcuqtraining/tree/master/2021/Courses/Probability/PRACE_D1_Probability_theory_basics_2021.pdf
 
-- General introduction to Open TURNS and Uranie (2 * 30’): G. Blondet, J.B. Blanchard
+- General introduction to Open TURNS and Uranie (2 * 30’): G. Blondet, J.B. Blanchard.
 
     https://github.com/mbaudin47/hpcuqtraining/tree/master/2021/Courses/Intro_OT/PRACE_D1_OpenTURNS_introduction_2021.pdf
 
@@ -25,20 +25,20 @@ Day 1 : Methodology of Uncertainty Treatment – Basics of Probability and Stat
 
     https://github.com/mbaudin47/hpcuqtraining/tree/master/2021/Courses/Intro/05._PRACE_D1_UranieGeneralIntroduction.pdf
 
-- Introduction to Python and Jupyter (45’): practical work on distributions manipulations
+- Introduction to Python and Jupyter (45’): practical work on distributions manipulations.
 
     https://github.com/mbaudin47/hpcuqtraining/tree/master/2021/Scripts/Python/TP0_Introduction_Python_Jupyter.ipynb
 
 - Lunch 
-- Uncertainty Quantification (45’): J.B. Blanchard
+- Uncertainty Quantification (45’): J.B. Blanchard.
 
     https://github.com/mbaudin47/hpcuqtraining/tree/master/2021/Courses/Intro/06._PRACE_D1_UncertaintyQuantification.pdf
 
-- OpenTURNS – Uranie practical works: sections 1, 2 (1h): G. Blondet,  J.B. Blanchard,  A. Dutfoy
+- OpenTURNS – Uranie practical works: sections 1, 2 (1h): G. Blondet,  J.B. Blanchard,  A. Dutfoy.
 
     https://github.com/mbaudin47/hpcuqtraining/tree/master/2021/Scripts/Uncertainty_Quantification/TP1_Uncertainty_Quantification.ipynb
 
-- Sensitivity analysis (1h): A. Dutfoy
+- Sensitivity analysis (1h): A. Dutfoy.
 
     https://github.com/mbaudin47/hpcuqtraining/blob/master/2021/Courses/Sensitivity/AnaSensibilite_PRACE_english.pdf
 
@@ -50,7 +50,7 @@ TP 2 on the beam example (OpenTURNS): central tendency and sensitivity.
 
     https://github.com/mbaudin47/hpcuqtraining/tree/master/2021/Scripts/Central_tendency/TP2_wrapper_Central_dispersion.ipynb
 
-- Estimation of probability of rare events (1h): G. Blondet
+- Estimation of probability of rare events (1h): G. Blondet.
 
     https://github.com/mbaudin47/hpcuqtraining/tree/master/2021/Courses/Rare_event/PRACE_D2_Rare_events_probability_estimation_2021.pdf
 
@@ -61,7 +61,7 @@ OpenTURNS: rare event probability estimation based on beam example.
 
 - Lunch 
 
-- Distributed computing (1h): Uranie (15’, F. Gaudier, J.B. Blanchard), OpenTURNS (15’, G. Blondet), Salome et OpenTURNS (30’, O. Mircescu)
+- Distributed computing (1h): Uranie (15’, F. Gaudier, J.B. Blanchard), OpenTURNS (15’, G. Blondet), Salome et OpenTURNS (30’, O. Mircescu).
 
     - Batch Submission with Uranie: https://github.com/mbaudin47/hpcuqtraining/tree/master/2021/Courses/DistributedComputing/11.PRACE_D3_BatchUranie.pdf
 
@@ -69,13 +69,13 @@ OpenTURNS: rare event probability estimation based on beam example.
 
     - SALOME Course: https://github.com/mbaudin47/hpcuqtraining/blob/master/2021/Courses/Salome/Salome.pptx
 
-- Optimization and Calibration (1h): J.B. Blanchard, M. Baudin
+- Optimization and Calibration (1h): J.B. Blanchard, M. Baudin.
 
     - Numerical Optimisation: A broad introduction:  https://github.com/mbaudin47/hpcuqtraining/blob/master/2021/Courses/Calibration/14._PRACE_D2_Optimisation_introduction.pdf
 
     - Calibration Course: https://github.com/mbaudin47/hpcuqtraining/blob/master/2021/Courses/Calibration/Calibration_PRACE_english.pdf
 
-- Application to OpenTURNS and Uranie (1h): J.B. Blanchard, M. Baudin
+- Application to OpenTURNS and Uranie (1h): J.B. Blanchard, M. Baudin.
 
     - Calibration Scripts Deterministic (30min): https://github.com/mbaudin47/hpcuqtraining/tree/master/2021/Scripts/Calibration/Exercise-calage-deterministic-Chaboche.ipynb)
     - Calibration Scripts Bayesian: https://github.com/mbaudin47/hpcuqtraining/tree/master/2021/Scripts/Calibration/Exercise-calage-bayesian-Chaboche.ipynb
@@ -87,9 +87,9 @@ Day 3 : HPC aspects – Meta model
 
 - HPC aspects specific to the Uncertainty treatment (1h): K. Delamotte
 
-    - Course: TODO (2020: https://github.com/mbaudin47/hpcuqtraining/tree/master/2020/Courses/Hmatrix/prace-HMatrix-2020.pdf)
+    https://github.com/mbaudin47/hpcuqtraining/tree/master/2021/Courses/LinearAlgebra/HMat-PRACE-2021.pdf
 
-- Introduction to Meta models (validation, over-fitting) – Polynomial chaos expansion (1h): M.Baudin, C. Mai
+- Introduction to Meta models (validation, over-fitting) – Polynomial chaos expansion (1h): M.Baudin, C. Mai.
 
     - Course: https://github.com/mbaudin47/hpcuqtraining/blob/master/2021/Courses/Metamodel/Introduction/steps-C-surrogate.pdf
 
@@ -106,8 +106,8 @@ Day 3 : HPC aspects – Meta model
 
 - Lunch 
 
-- Application to OpenTURNS and Uranie (2h): C. Mai, G. Blondet, J.B. Blanchard
-    - OpenTURNS: kriging metamodel on the beam example
+- Application to OpenTURNS and Uranie (2h): C. Mai, G. Blondet, J.B. Blanchard.
+    - OpenTURNS: kriging metamodel on the beam example.
 
 TODO
 
