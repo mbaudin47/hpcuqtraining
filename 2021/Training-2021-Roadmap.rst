@@ -36,7 +36,7 @@ Day 1 : Methodology of Uncertainty Treatment – Basics of Probability and Stat
 
 - Hands-on session 1 with OpenTURNS and Uranie: sections 1, 2 (1h): G. Blondet,  J.B. Blanchard,  A. Dutfoy.
 
-  - HPC and Uncertainty Treatment. Examples with OpenTURNS and Uranie :
+  - Examples with OpenTURNS and Uranie:
 
     https://github.com/mbaudin47/hpcuqtraining/tree/master/2021/Scripts/Instructions/TP_PRACE_Enonce_2021.pdf
 
