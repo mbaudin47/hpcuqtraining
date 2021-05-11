@@ -7,7 +7,21 @@
 \input{macros}
 
 \begin{document}
-\frame{\titlepage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\titlepage
+  
+\begin{center}
+\includegraphics[height=0.2\textheight]{edf.jpg}
+\hspace{1cm}
+\includegraphics[height=0.2\textheight]{Maison_Simulation_LOGO.jpg}
+\hspace{1cm}
+\includegraphics[height=0.2\textheight]{PRACE_LOGO.jpg}
+\end{center}
+
+\end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -58,19 +72,26 @@ A metamodel is an approximation model that mimics the behavior of a computationa
 
 Model:
 \begin{itemize}
-\item Expensive simulator: $\boldsymbol{Y} \; = \; \boldsymbol{g}(\boldsymbol{X})$
+\item Expensive simulator: 
+$$
+\boldsymbol{Y} \; = \; \boldsymbol{g}(\boldsymbol{X})
+$$
 \item $\boldsymbol{X} \in\RR^{n_X}$ : input vector
 \item $\boldsymbol{Y}\in\RR^{n_Y}$ : output vector
 \end{itemize}
    
-Metamodel: $ \widetilde{\boldsymbol{Y} } \; = \; \tilde{\boldsymbol{g}}(\boldsymbol{X}, \boldsymbol{\theta})$, where $\boldsymbol{\theta}$ is the vector of parameters
+Metamodel: 
+$$ 
+\widetilde{\boldsymbol{Y} } \; 
+= \; \tilde{\boldsymbol{g}}(\boldsymbol{X}, \boldsymbol{\theta}), 
+$$
+where $\boldsymbol{\theta}$ is the vector of parameters
 
 By definition, two requirements of a metamodel $\tilde{\boldsymbol{g}}$ are:
 \begin{itemize}
-\item Usefully accurate when predicting away from known observation
-\item Being significantly cheaper to evaluate than the primary simulator
+\item Accurate when predicting away from known observations
+\item Cheaper to evaluate than the primary simulator
 \end{itemize}
- 
 
 \end{frame}
 
@@ -82,7 +103,8 @@ By definition, two requirements of a metamodel $\tilde{\boldsymbol{g}}$ are:
 \item Show functional relationships between input parameters and the output quantity of interest: impacts of variables 
 % \item Augment results from single, expensive simulations: results can be predicted without use of the primary simulator; a continuous predictive function instead of discrete observations
 \item Optimize the output quantity of interest: determine configurations that maximize the response or achieve specifications or customer requirements
-\item Replace the primary simulator in uncertainty propagation (surrogate model):  sensitivity analysis
+\item Replace the primary simulator in uncertainty propagation 
+(surrogate model):  e.g. in sensitivity analysis
 %\item Multi-fidelity, multi-level approach: metamodel used as a bridge between a simple but inaccurate code and a more accurate but slower counterpart.
 \end{itemize}
 
@@ -149,8 +171,8 @@ There are different metamodels available:
 
 They all require to:
 \begin{itemize}
-\item assess the quality of the prediction: validation,
-\item tune the parameters $\btheta$.
+\item tune the parameters $\btheta$: \emph{training}, 
+\item assess the quality of the prediction: \emph{validation}.
 \end{itemize}
 
 \end{frame}
@@ -162,12 +184,11 @@ They all require to:
 
 Creating a metamodel involves two steps.
 \begin{enumerate}
-\item Train: estimate the coefficients of the metamodel 
-which fits to the data,
-\item Test: quantify the predictivity of the metamodel.
+\item Train: estimate the coefficients which fits to the data,
+\item Test: quantify the predictivity.
 \end{enumerate}
 
-Avoid overfitting: we must be able 
+\emph{But}, we must avoid overfitting: we must be able 
 to predict datasets that have not been used to train the metamodel 
 (more on this topic later).
 
@@ -178,14 +199,8 @@ One solution is to use cross-validation.
 \item Test the metamodel on the test sample.
 \end{itemize}
 
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{frame}[t]{Training and validation}
-
 \begin{center}
- \includegraphics[width=0.7\textwidth]{train_test_cross_validation.pdf}
+ \includegraphics{train_test_cross_validation.pdf}
 \end{center}
 
 \end{frame}
@@ -194,31 +209,48 @@ One solution is to use cross-validation.
 
 \begin{frame}[t]{Training and validation}
 
+Assume that the output $y\in\RR$ is a scalar, i.e. $n_Y = 1$. 
+
 Let $\left\{\bx^{(j)}_t\right\}_{j=1,...,n}$ an i.i.d. sample 
 of the random vector $\bX$ that we use for training the 
 metamodel. 
 
 We denote by $g$ the model and $\tilde{g}$ the metamodel. 
 
-Let 
-
+For $j=1,...,n$, let 
 $$
 y^{(j)}_t = g\left(\bx^{(j)}_t\right), \qquad 
 \tilde{y}^{(j)}_t = \tilde{g}\left(\bx^{(j)}_t\right)
 $$
-
-for $j=1,...,n$ the outputs of the model and metamodel 
+ be the outputs of the model and metamodel 
 on the training set.
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[t]{Training and validation}
+
+The Root Mean Squared Error is: 
+$$
+RMSE
+= \left( \frac{1}{n} \sum_{j=1}^n \left( y^{(j)}_t - \tilde{y}^{(j)}_t \right)^2 \right)^{1/2}.
+$$
+
+A low RMSE is better. 
 
 The $R^2$ coefficient is: 
-
 $$
 R^2(g(\bx_t),\tilde{g}(\bx_t)) 
-= 1 - \frac{ \sum_{j=1}^N \left( y^{(j)}_t - \tilde{y}^{(j)}_t \right)^2}
-{ \sum_{j=1}^N \left( y^{(j)}_t - \bar{y}_t \right)^2 }
+= 1 - \frac{ \sum_{j=1}^n \left( y^{(j)}_t - \tilde{y}^{(j)}_t \right)^2}
+{ \sum_{j=1}^n \left( y^{(j)}_t - \bar{y}_t \right)^2 }
 $$
+where $\bar{y}_t = \frac{1}{n} \sum_{i=1}^n y^{(j)}_t$. 
 
-where $\bar{y}_t = \frac{1} {N} \sum_{i=1}^N y^{(j)}_t$. 
+We have $R^2 \in[0,1]$. $R^2$ close to 1 is better. 
+
+The coefficient quantifies the part of the variance which is predicted by the 
+model. It is the improvement of the metamodel with respect to the 
+mean prediction. 
 
 \end{frame}
 
@@ -271,7 +303,7 @@ training sample, but predicts poorly on new points.
 \begin{itemize}
 \item Any surrogate has coefficients tuned on the training sample.
 \item More coefficients generally reduce the error on the training sample 
-\item but may increase the error on the validation sample.
+\item \emph{but} may increase the error on the validation sample.
 \end{itemize}
 
 There is a bias-variance trade-off to solve:
@@ -287,6 +319,8 @@ There is a bias-variance trade-off to solve:
 \begin{frame}[t]{Overfitting: example}
 
 \begin{example}
+We least linear least squares with a polynomial (\cite{bishop1995neural}, 
+p.11). 
 \begin{itemize}
 \item We have 10 points on the [0,1] interval, produced by 
 adding a small noise to the sine function. 
@@ -385,6 +419,25 @@ Questions:
 \item How to set the polynomial degree $d$ ?
 \end{itemize}
 
+Method \cite{Gratiet2016}:
+\begin{itemize}
+\item Generate a training sample sample with size $n$ (e.g. $n=10$)
+\item Generate a validation sample with size 1000.
+\item Compute the $Q^2$. 
+\item Repeat this experiment 50 times: get 50 $Q^2$ coefficients 
+representing the variability of the $Q^2$ coefficient depending on the 
+sample. 
+\item We plot this sample of $Q^2$ coefficients in a boxplot: median, 
+first quartile (25\%) and third quartile (75\%). 
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[t]{Polynomial chaos example}
+
+Left: n=10, Right: n=20.
+
 \begin{center}
 \includegraphics[width=0.45\textwidth]{chaos-poutre-N10-various-degrees.pdf}
 \includegraphics[width=0.45\textwidth]{chaos-poutre-N20-various-degrees.pdf}
@@ -396,6 +449,8 @@ Questions:
 
 \begin{frame}[t]{Polynomial chaos example}
 
+Left: n=30, Right: n=40.
+
 \begin{center}
 \includegraphics[width=0.45\textwidth]{chaos-poutre-N30-various-degrees.pdf}
 \includegraphics[width=0.45\textwidth]{chaos-poutre-N40-various-degrees.pdf}
@@ -403,7 +458,7 @@ Questions:
 
 Answer:
 \begin{itemize}
-\item How to set the sample size $n$ ? $n>40$
+\item How to set the sample size $n$ ? $n\geq 40$
 \item How to set the polynomial degree $d$ ? $d=2$ is the smallest 
 degree with high $Q_2$
 \end{itemize}
@@ -416,17 +471,24 @@ degree with high $Q_2$
 
 \begin{example}
 \begin{itemize}
-\item Consider the Ishigami model $Y  = \sin(X_1) + a \sin(X_2)^2 + b X_3^4 \sin(X_1)$
+\item Consider the Ishigami model \cite{ishigami1990importance}: 
+$$
+Y  = \sin(X_1) + a \sin(X_2)^2 + b X_3^4 \sin(X_1)
+$$
 where $a=7$ and $b=0.1$, with independent marginals: $X_1,X_2,X_3 \sim \mathcal{U}(-\pi, \pi)$.
 
+\item Training sample size: 200, test sample size: 200.
 \item We approximate it with \emph{sparse} polynomial chaos: this limits 
 the number of coefficients in the model.
 \end{itemize}
-
 \end{example}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[t]{Polynomial chaos example}
 
 \begin{center}
- \includegraphics[width=0.5\textwidth]{chaos-ishigami-N200-various-degrees.pdf}
+ \includegraphics[width=0.8\textwidth]{chaos-ishigami-N200-various-degrees.pdf}
 \end{center}
 
 \end{frame}
