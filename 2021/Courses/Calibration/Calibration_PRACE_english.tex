@@ -23,8 +23,8 @@ M. Baudin
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-  \begin{frame}
-  \titlepage
+\begin{frame}
+\titlepage
   
 \begin{center}
 \includegraphics[height=0.2\textheight]{edf.jpg}
@@ -34,7 +34,7 @@ M. Baudin
 \includegraphics[height=0.2\textheight]{PRACE_LOGO.jpg}
 \end{center}
 
-  \end{frame}
+\end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -229,43 +229,39 @@ $$
 J(\btheta) = \frac{\partial \bh}{\partial \btheta}.
 $$
 
+Let $\bmu \in \RR^p$ be a reference value of the
+parameter $\btheta$. 
+
+Let us denote by $J=J(\bmu)$ the value of the Jacobian at the reference point
+$\bmu$. 
+
+Since the function is, by hypothesis, linear, the
+Jacobian is independent of the point where it is evaluated. 
+
+In the curve fitting framework, the matrix $J$ is the \emph{design matrix}, 
+and depends on the values of the function in the basis. 
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
-Let $\vect{\mu} \in \RR^p$ be a reference value of the
-parameter $\btheta$. 
-
-Let us denote by $J=J(\vect{\mu})$ the value of the Jacobian at the reference point
-$\vect{\mu}$. 
-
-Since the function is, by hypothesis, linear, the
-Jacobian is independent of the point where it is evaluated. Since
-$\bh$ is linear, it is equal to its Taylor expansion:
-
+Since $\bh$ is linear, it is equal to its Taylor expansion:
 $$
-       \bh(\btheta) = \bh(\vect{\mu}) + J (\btheta - \vect{\mu}),
+\bh(\btheta) = \bh(\bmu) + J (\btheta - \bmu),
 $$
 
 for any $\btheta \in \RR^p$.
 
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{frame}
 The corresponding linear least squares problem is:
-
 $$
-       \hat{\btheta} = \argmin_{\btheta \in \RR^p} \frac{1}{2} \|\by - \bh(\vect{\mu}) + J (\btheta - \vect{\mu})\|^2.
+\hat{\btheta} 
+= \argmin_{\btheta \in \RR^p} \frac{1}{2} \|\by - \bh(\bmu) + J (\btheta - \bmu)\|^2.
 $$
 
 The Gauss-Markov theorem applied to this problem states that the
 solution is:
-
 $$
-       \hat{\btheta} = \vect{\mu} + \left(J^T J\right)^{-1} J^T ( \by - \bh(\vect{\mu})).
+\hat{\btheta} = \bmu + \left(J^T J\right)^{-1} J^T ( \by - \bh(\bmu)).
 $$
 
 \end{frame}
@@ -304,7 +300,7 @@ $$
 Therefore, the distribution of $\hat{\btheta}$ is:
 
 $$
-\hat{\btheta} \sim \mathcal{N}(\btheta,\sigma^2 J^T J).
+\hat{\btheta} \sim \mathcal{N} \left(\btheta,\sigma^2 (J^T J)^{-1} \right).
 $$
 
 
@@ -436,10 +432,10 @@ More precisely, we make the hypothesis that the parameter
 $\btheta$ has the Gaussian distribution:
 
 $$
-\btheta \sim \mathcal{N}(\vect{\mu}, B),
+\btheta \sim \mathcal{N}(\bmu, B),
 $$
 
-where $\vect{\mu}\in\RR^p$ is the mean of the Gaussian prior
+where $\bmu\in\RR^p$ is the mean of the Gaussian prior
 distribution, which is named the \emph{background} and
 $B\in\RR^{p \times p}$ is the covariance matrix of the
 parameter.
@@ -468,10 +464,10 @@ Denote by $\|\cdot\|_B$ the Mahalanobis distance associated with
 the matrix $B$ :
 
 $$
-\|\btheta-\vect{\mu} \|^2_B = (\btheta-\vect{\mu} )^T B^{-1} (\btheta-\vect{\mu} ),
+\|\btheta-\bmu \|^2_B = (\btheta-\bmu )^T B^{-1} (\btheta-\bmu ),
 $$
 
-for any $\btheta,\vect{\mu} \in \RR^p$. Denote by
+for any $\btheta,\bmu \in \RR^p$. Denote by
 $\|\cdot\|_R$ the Mahalanobis distance associated with the matrix
 $R$ :
 
@@ -485,7 +481,7 @@ of $\btheta$ given the observations $\by$ is :
 
 $$
    p(\btheta|\by) \propto \exp\left( -\frac{1}{2} \left( \|\by-\bh(\btheta)\|^2_R 
-   + \|\btheta-\vect{\mu} \|^2_B \right) \right)
+   + \|\btheta-\bmu \|^2_B \right) \right)
 $$
 
 for any $\btheta\in\RR^p$.
@@ -500,7 +496,7 @@ the observations $\by$ is reached at :
 
 $$
    \hat{\btheta} = \argmin_{\btheta\in\RR^p} \frac{1}{2} \left( \|\by - \bh(\btheta)\|^2_R 
-   + \|\btheta-\vect{\mu} \|^2_B \right).
+   + \|\btheta-\bmu \|^2_B \right).
 $$
 
 It is called the \emph{maximum a posteriori} estimator or \emph{MAP}
@@ -513,13 +509,21 @@ estimator.
 
 The gaussian calibration is a tradeoff, so that the second expression
 acts as a \emph{spring} which pulls the parameter $\btheta$
-closer to the background $\vect{\mu}$ (depending on the "spring
+closer to the background $\bmu$ (depending on the "spring
 constant" $B$, meanwhile getting as close a possible to the
 observations. 
 
 Depending on the matrix $B$, the computation may
 have better regularity properties than the plain non linear least
 squares problem.
+
+This is similar to Tikhonov regularization, with identity 
+matrix $B$ and zero parameter $\bmu$ \cite{mueller2012linear} or to 
+the truncated SVD \cite{Hansen00thelcurve}, for some 
+regularization parameter value: the significant difference is that the 
+Bayesian framework considers that the regularization is an hypothesis with 
+known parameter, while regularization methods produce the minimum 
+required regularization parameter values on output. 
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -530,7 +534,7 @@ The cost function of the gaussian nonlinear calibration problem is :
 
 $$
 c(\btheta) = \frac{1}{2}\|\by-\bh(\btheta)\|^2_R 
-   + \frac{1}{2}\|\btheta-\vect{\mu} \|^2_B
+   + \frac{1}{2}\|\btheta-\bmu \|^2_B
 $$
 
 for any $\btheta\in\RR^p$.
@@ -545,7 +549,7 @@ the partial derivatives of $\bh$ with respect to
 $\btheta$:
 
 $$
-J(\btheta) = \frac{\partial \bh}{\partial \btheta}.
+J(\btheta) = \frac{\partial \bh (\btheta)}{\partial \btheta}.
 $$
 
 If the covariance matrix $B$ is positive definite, then the
@@ -557,15 +561,15 @@ Hessian matrix of the cost function is positive definite
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{Linear Gaussian Calibration : bayesian BLUE}
-We make the hypothesis that $h$ is linear with respect to
+We make the hypothesis that $\bh$ is linear with respect to
 $\btheta$, i.e., for any
 $\btheta\in\RR^p$, we have :
 
 $$
-h(\btheta) = h(\vect{\mu}) + J(\btheta-\vect{\mu} ),
+h(\btheta) = \bh(\bmu) + J(\btheta-\bmu ),
 $$
 
-where $J$ is the constant Jacobian matrix of $h$.
+where $J$ is the constant Jacobian matrix of $\bh$.
 
 Let $A$ be the matrix:
 
@@ -583,7 +587,7 @@ The maximum of the posterior distribution of $\btheta$ given
 the observations $\by$ is:
 
 $$
-\hat{\btheta} = \vect{\mu} + K (\by - \bh(\vect{\mu})).
+\hat{\btheta} = \bmu + K (\by - \bh(\bmu)).
 $$
 
 \end{frame}
@@ -592,10 +596,10 @@ $$
 \begin{frame}
 
 The previous equations are equivalent to the Kalman filter \cite{Asch2016}, 
-with the difference that the Kalman filter updates the parameters using 
-the observations one after the other.
+with the difference that the Kalman filter updates the parameters 
+sequentially using the observations one after the other.
 
-It can be proved that:
+It can be proved that (e.g. \cite{RasmussenWilliams}, p.9):
 
 $$
    p(\btheta | \by) \propto 
@@ -630,6 +634,9 @@ prior),
 code).
 \end{itemize}
 
+We generally do not know the posterior distribution, but we can 
+try to generate a sample from it. 
+
 One method is to create a Monte-Carlo Markov Chain ; the classical algorithm is then the 
 Metropolis-Hastings algorithm. 
 
@@ -641,14 +648,42 @@ In this case, using a surrogate model is \emph{mandatory}.
 
 \end{frame}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{References}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\section{Conclusion}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Conclusion}
+
+The following table presents a hierarchy of methods depending on the 
+prior and the linearity of the function $\bh$.
+
+\begin{center}
+\begin{tabular}{lll}
+                     & {\bf Linear}  & {\bf Non linear} \\
+\hline
+Without \emph{prior} & Linear        & Non Linear \\
+                     & Least squares & Least Squares \\
+\hline
+\emph{Prior}: Gaussian & BLUE & 3DVAR \\
+\hline
+\emph{Prior}: & MCMC & MCMC \\
+Non Gaussian &  &  \\
+\hline
+\end{tabular}
+\end{center}
+
+The previous methods define in-between solutions, 
 \begin{itemize}
-\item  N. H. Bingham and John M. Fry (2010). Regression, Linear Models in Statistics, Springer Undergraduate Mathematics Series. Springer.
-\item S. Huet, A. Bouvier, M.A. Poursat, and E. Jolivet (2004). Statistical Tools for Nonlinear Regression, Springer.
-\item C.E. Rasmussen and C. K. I. Williams (2006), Gaussian Processes for Machine Learning, The MIT Press.
+\item more complex than the least squares criterion, but more robust with 
+respect to rank deficiency, 
+\item less powerful than the MCMC simulation, but with less computational 
+cost. 
 \end{itemize}
+
+\end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Bibliography}
