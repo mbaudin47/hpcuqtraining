@@ -1,4 +1,4 @@
-% Copyright (C) 2018 - 2020 - Michael Baudin
+% Copyright (C) 2018 - 2021 - Michael Baudin
 
   \documentclass{beamer}
 
@@ -47,20 +47,21 @@ M. Baudin
 \begin{frame}
 \frametitle{Deterministic code calibration}
 
-We consider a computer model $\vect{h}$ (i.e. a deterministic
-function) to calibrate:
+We consider a deterministic model $g$ to calibrate:
 
 $$
-       \vect{z} = \vect{h}(\vect{x}, \vect{\theta}),
+z = g(\bx, \btheta),
 $$
 
 where
 
 \begin{itemize}
-\item  $\vect{x} \in \Rset^{d_x}$ is the input vector;
-\item  $\vect{z} \in \Rset^{d_z}$ is the output vector;
-\item  $\vect{\theta} \in \Rset^{d_h}$ are the unknown parameters of
-   $\vect{h}$ to calibrate.
+\item $p \in\NN$ is the number of parameters, 
+\item $m \in\NN$ is the number of inputs, 
+\item $\bx \in \RR^{m}$ is the input vector;
+\item $z \in \RR$ is the output;
+\item $\btheta \in \RR^p$ are the unknown parameters of 
+      $g$ to calibrate.
 \end{itemize}
 
 \end{frame}
@@ -68,44 +69,74 @@ where
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
-Let $n \in \Nset$ be the number of observations. The standard
-hypothesis of the probabilistic calibration is:
+Let $n \in \NN$ be the number of observations. 
+We assume that $m \geq p$, i.e. the problem is over-determined. 
+Let $\bx_1, \ldots, \bx_n \in \RR^{m}$ be the observed inputs. 
 
+Therefore, 
 $$
-       \vect{Y}^i = \vect{z}^i + \vect{\varepsilon}^i,
-$$
-
-for $i=1,...,n$ where $\vect{\varepsilon}^i$ is a random
-measurement error such that:
-
-$$
-       E(\varepsilon)=\vect{0} \in \Rset^{d_z}, \qquad Cov(\varepsilon)=\Sigma \in \Rset^{d_z\times d_z},
+z_i = g(\bx_i, \btheta),
 $$
 
-where $\Sigma$ is the error covariance matrix.
+for $i=1,...,n$. 
+The vector of predictions is $\bz \in \RR^{n}$. 
+
+Let $\bh : \RR^p \rightarrow \RR^{n}$ be the function:
+$$
+h_i(\btheta) = g(\bx_i, \btheta)
+$$
+for $i=1, \ldots, n$. 
+We write it in the vector form:
+$$
+\bz = \bh(\btheta)
+$$
+where $\bh(\btheta) = (h_1(\btheta), \ldots, h_n(\btheta))^T$.
 
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
-The goal of calibration is to estimate $\vect{\theta}$, based on
+The standard hypothesis of the probabilistic calibration is the following. 
+There is a \emph{true}, but unknown, value of the vector $\btheta$, 
+denoted by $\btheta^\star$ such that:
+
+$$
+\by = \bh(\btheta^\star) + \vect{\varepsilon},
+$$
+
+for $i=1,...,n$ where $\vect{\varepsilon}$ is a random
+measurement error vector such that:
+
+$$
+\esp(\vect{\varepsilon}) = \vect{0} \in \RR^{n}, \qquad 
+\cov(\vect{\varepsilon}) = R^\star \in \RR^{n\times n},
+$$
+
+where $R^\star$ is an unknown semi-positive definite covariance matrix.
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+The goal of calibration is to estimate $\btheta$, based on
 observations of $n$ inputs
-$(\vect{x}^1, \ldots, \vect{x}^n)$ and the associated $n$
-observations of the output $(\vect{y}^1, \ldots, \vect{y}^n)$. 
+$\bx_1, \ldots, \bx_n$ and the associated $n$
+observations of the output $\by$. 
 
 In other words, the calibration process reduces the discrepancy between 
 \begin{itemize}
-\item  the observations $(\vect{y}^1, \ldots, \vect{y}^n)$ and 
-\item  the predictions $\vect{h}(\vect{\theta})$. 
+\item  the observations $\by$ and 
+\item  the predictions $\bh(\btheta)$. 
 \end{itemize}
 
-Given that $(\vect{y}^1, \ldots, \vect{y}^n)$ are realizations of a random
-variable, the estimate of $\vect{\theta}$, denoted by
-$\hat{\vect{\theta}}$, is also a random variable. 
+Given that $\by$ is the realization of a random
+vector, the estimate of $\btheta$, denoted by
+$\hat{\btheta}$, is also a random variable. 
 
 Hence, the secondary goal of calibration is to estimate the distribution of
-$\hat{\vect{\theta}}$ representing the uncertainty of the
+$\hat{\btheta}$ representing the uncertainty of the
 calibration process.
 
 \end{frame}
@@ -113,24 +144,17 @@ calibration process.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
-The standard observation model makes the hypothesis that the covariance
+The standard observation model makes the hypothesis that the 
+observation error is Gaussian and that the covariance
 matrix of the error is diagonal, i.e.
 
 $$
-       \Sigma = \sigma^2 {\bf I}
+\vect{\varepsilon} = \mathcal{N}\left(\bzero, (\sigma^\star)^2 \imat\right)
 $$
 
-where $\sigma^2 \in \Rset$ is the constant observation error
+where $\sigma^\star > 0$ is the (unknown) constant observation error
 variance.
 
-In the remaining of this section, the input $\vect{x}$ is not
-involved anymore in the equations. 
-
-This is why we simplify the equation into:
-
-$$
-       \vect{z} = \vect{h}(\vect{\theta}).
-$$
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -138,22 +162,29 @@ $$
 \begin{frame}
 \frametitle{Least squares}
 
-The residuals is the difference between the observations and the
-predictions:
+The residuals vector is made of the differences between the observations 
+and the predictions:
 
 $$
-       \vect{r}^i = \vect{y}^i - \vect{h}(\vect{\theta})^i
+\vect{r}(\btheta) = \by - \bh(\btheta),
+$$
+for any $\btheta \in\RR^p$. 
+
+When the parameter $\btheta$ is the \emph{true} $\btheta^\star$, the residual 
+vector is:
+$$
+\vect{\varepsilon} = \by - \bh\left(\btheta^\star\right).
 $$
 
-for $i=1,...,n$. The method of least squares minimizes the square
-of the Euclidian norm of the residuals. This is why the least squares
-method is based on the cost function $C$ defined by:
 
+The method of least squares minimizes the square
+of the Euclidian norm of the residuals \cite{Bjorck1996}:
 $$
-       C(\vect{\theta}) = \frac{1}{2} \|\vect{y} - \vect{h}(\vect{\theta})\|^2 = \frac{1}{2} \sum_{i=1}^n \left( \vect{y}^i - \vect{h}(\vect{\theta})^i \right)^2,
+c(\btheta) 
+= \frac{1}{2} \|\by - \bh(\btheta)\|^2 
+= \frac{1}{2} \sum_{i=1}^n \left( y_i - h_i(\btheta) \right)^2,
 $$
-
-for any $\vect{\theta} \in \Rset^{d_h}$.
+for any $\btheta \in \RR^p$.
 
 
 \end{frame}
@@ -161,17 +192,16 @@ for any $\vect{\theta} \in \Rset^{d_h}$.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
-The least squares method minimizes the cost function $C$:
-
+The least squares method minimizes the cost function $c$:
 $$
-\hat{\vect{\theta}} 
-= \argmin_{\vect{\theta} \in \Rset^{d_h}} \frac{1}{2} \|\vect{y} - \vect{h}(\vect{\theta})\|^2.
+\hat{\btheta} 
+= \argmin_{\btheta \in \RR^p} \frac{1}{2} \|\by - \bh(\btheta)\|^2.
 $$
 
 The unbiased estimator of the variance is:
 
 $$
-       \hat{\sigma}^2 = \frac{\|\vect{y} - \vect{h}(\vect{\theta})\|^2}{n - d_h}.
+\hat{\sigma}^2 = \frac{\|\by - \bh(\btheta)\|^2}{n - p}.
 $$
 
 Notice that the previous estimator is not the maximum likelihood
@@ -183,16 +213,16 @@ estimator (which is biased).
 \begin{frame}
 \frametitle{Linear least squares}
 
-In the particular case where the deterministic function $\vect{h}$
-is linear with respect to the parameter $\vect{\theta}$, then the
+In the particular case where the deterministic function $\bh$
+is linear with respect to the parameter $\btheta$, then the
 method reduces to the linear least squares. 
 
-Let $J \in \Rset^{n \times d_h}$ be the Jacobian matrix made of the
-partial derivatives of $\vect{h}$ with respect to
-$\vect{\theta}$:
+Let $J \in \RR^{n \times p}$ be the Jacobian matrix made of the
+partial derivatives of $\bh$ with respect to
+$\btheta$:
 
 $$
-       J(\vect{\theta}) = \frac{\partial \vect{h}}{\partial \vect{\theta}}.
+J(\btheta) = \frac{\partial \bh}{\partial \btheta}.
 $$
 
 \end{frame}
@@ -200,21 +230,21 @@ $$
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
-Let $\vect{\mu} \in \Rset^{d_h}$ be a reference value of the
-parameter $\vect{\theta}$. 
+Let $\vect{\mu} \in \RR^p$ be a reference value of the
+parameter $\btheta$. 
 
 Let us denote by $J=J(\vect{\mu})$ the value of the Jacobian at the reference point
 $\vect{\mu}$. 
 
 Since the function is, by hypothesis, linear, the
 Jacobian is independent of the point where it is evaluated. Since
-$\vect{h}$ is linear, it is equal to its Taylor expansion:
+$\bh$ is linear, it is equal to its Taylor expansion:
 
 $$
-       \vect{h}(\vect{\theta}) = \vect{h}(\vect{\mu}) + J (\vect{\theta} - \vect{\mu}),
+       \bh(\btheta) = \bh(\vect{\mu}) + J (\btheta - \vect{\mu}),
 $$
 
-for any $\vect{\theta} \in \Rset^{d_h}$.
+for any $\btheta \in \RR^p$.
 
 \end{frame}
 
@@ -224,14 +254,14 @@ for any $\vect{\theta} \in \Rset^{d_h}$.
 The corresponding linear least squares problem is:
 
 $$
-       \hat{\vect{\theta}} = \argmin_{\vect{\theta} \in \Rset^{d_h}} \frac{1}{2} \|\vect{y} - \vect{h}(\vect{\mu}) + J (\vect{\theta} - \vect{\mu})\|^2.
+       \hat{\btheta} = \argmin_{\btheta \in \RR^p} \frac{1}{2} \|\by - \bh(\vect{\mu}) + J (\btheta - \vect{\mu})\|^2.
 $$
 
 The Gauss-Markov theorem applied to this problem states that the
 solution is:
 
 $$
-       \hat{\vect{\theta}} = \vect{\mu} + \left(J^T J\right)^{-1} J^T ( \vect{y} - \vect{h}(\vect{\mu})).
+       \hat{\btheta} = \vect{\mu} + \left(J^T J\right)^{-1} J^T ( \by - \bh(\vect{\mu})).
 $$
 
 \end{frame}
@@ -248,8 +278,10 @@ we generally do not compute and invert the Gram matrix $J^T J$.
 Alternatively, various orthogonalization methods such as the QR or the
 SVD decomposition can be used to solve the linear least squares problem
 so that potential ill-conditioning of the normal equations is
-mitigated.
+mitigated \cite{Bjorck1996}.
 
+When the problem is rank-deficient, a way to proceed is to truncate 
+the SVD \cite{Hansen00thelcurve}. 
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -257,18 +289,18 @@ mitigated.
 \begin{frame}
 This estimator can be proved to be the best linear unbiased estimator,
 the \emph{BLUE}, that is, among the unbiased linear estimators, it is the one
-which minimizes the variance of the estimator.
+which minimizes the variance of the estimator \cite{BinghamFry, Sen1990}.
 
 Assume that the random observations are gaussian:
 
 $$
-       \varepsilon \sim \mathcal{N}(\vect{0},\sigma^2 {\bf I}).
+\vect{\varepsilon} \sim \mathcal{N}(\vect{0},\sigma^2 {\bf I}).
 $$
 
-Therefore, the distribution of $\hat{\vect{\theta}}$ is:
+Therefore, the distribution of $\hat{\btheta}$ is:
 
 $$
-       \hat{\vect{\theta}} \sim \mathcal{N}(\vect{\theta},\sigma^2 J^T J).
+\hat{\btheta} \sim \mathcal{N}(\btheta,\sigma^2 J^T J).
 $$
 
 
@@ -279,8 +311,8 @@ $$
 \begin{frame}
 \frametitle{Non Linear Least squares}
 
-In the general case where the function $\vect{h}$ is non linear
-with respect to the parameter $\vect{\theta}$, then the resolution
+In the general case where the function $\bh$ is non linear
+with respect to the parameter $\btheta$, then the resolution
 involves a non linear least squares optimization algorithm. Instead of
 directly minimizing the squared Euclidian norm of the residuals, most
 implementations rely on the residual vector, which lead to an improved
@@ -288,12 +320,12 @@ accuracy.
 
 The difficulty in the nonlinear least squares is that, compared to the
 linear situation, the theory does not provide the distribution of
-$\hat{\vect{\theta}}$ anymore.
+$\hat{\btheta}$ anymore.
 
 There are two practical solutions to overcome this limitation.
 \begin{itemize}
 \item bootstrap (randomly resample within the observations),
-\item linearization (in the neighborhood of $\hat{\vect{\theta}}$).
+\item linearization (in the neighborhood of $\hat{\btheta}$).
 \end{itemize}
 
 \end{frame}
@@ -305,7 +337,7 @@ There are two practical solutions to overcome this limitation.
 Assume that the observation noise is gaussian with zero mean and constant 
 variance $\sigma^2$: 
 $$
-\epsilon\sim \mathcal{N}(\bzero,\sigma^2 \imat),
+\vect{\varepsilon} \sim \mathcal{N}(\bzero,\sigma^2 \imat),
 $$ 
 where $\sigma>0$ et $\imat\in\RR^{n\times n}$. 
 
@@ -313,9 +345,9 @@ This implies that the observations are independent.
 
 The likelihood of the i-th observation is:
 $$
-\ell(\by_i|\btheta,\sigma^2) = 
+\ell(y_i|\btheta,\sigma^2) = 
 \frac{1}{\sqrt{2\pi \sigma^2}} 
-\exp\left(-\frac{(y_i-H_i(\btheta))^2}{2 \sigma^2}\right)
+\exp\left(-\frac{(y_i - h_i(\btheta))^2}{2 \sigma^2}\right)
 $$
 for $i=1,...,n$. 
 \end{frame}
@@ -327,7 +359,7 @@ Since the observations are independent, the likelihood of the observations is
 the product:
 $$
 \ell(\by|\btheta,\sigma^2) = 
-\prod_{i=1}^n \ell(\by_i|\btheta,\sigma^2)
+\prod_{i=1}^n \ell(y_i|\btheta,\sigma^2)
 $$
 for $i=1,...,n$. 
 
@@ -335,19 +367,19 @@ This implies:
 \begin{align*}
 \log(\ell(\by|\btheta,\sigma^2)) 
 &= -\frac{n}{2} \log(2\pi \sigma^2)
--\frac{\|\by-H(\btheta)\|_2^2}{2 \sigma^2}
+-\frac{\|\by - \bh(\btheta)\|_2^2}{2 \sigma^2}
 \end{align*}
 for any $\btheta\in\RR^p$ and $\sigma>0$. 
 
 We maximize the likelihood with:
 \begin{align*}
 \hat{\btheta}
-= arg min_{\btheta\in\RR^p} \frac{1}{2} \| H(\btheta) - \by\|_2^2
+= \argmin_{\btheta\in\RR^p} \frac{1}{2} \| \bh(\btheta) - \by\|_2^2
 \end{align*}
 and:
 \begin{align*}
 \hat{\sigma}^2
-= \frac{1}{n} \| H(\hat{\btheta}) - \by\|_2^2.
+= \frac{1}{n} \| \bh(\hat{\btheta}) - \by\|_2^2.
 \end{align*}
 
 \end{frame}
@@ -357,25 +389,26 @@ and:
 
 \begin{frame}
 
-The bayesian calibration framework is based on two hypotheses.
+The bayesian calibration framework is based on two hypotheses 
+\cite{Tarantola2005, Asch2016}.
 
-The first hypothesis is that the parameter $\vect{\theta}$ has a
+The first hypothesis is that the parameter $\btheta$ has a
 known distribution, called the \emph{prior} distribution, and denoted by
-$p(\vect{\theta})$.
+$p(\btheta)$.
 
 The second hypothesis is that the output observations
-$(\vect{y}^1, \ldots, \vect{y}^n)$ are sampled from a known
-conditional distribution denoted by $p(\vect{y} | \vect{\theta})$.
+$\by$ are sampled from a known
+conditional distribution denoted by $p(\by | \btheta)$.
 
-For any $\vect{y}\in\Rset^{d_z}$ such that $p(\vect{y})>0$,
+For any $\by\in\RR^{n}$ such that $p(\by)>0$,
 the Bayes theorem implies that the conditional distribution of
-$\vect{\theta}$ given $\vect{y}$ is:
+$\btheta$ given $\by$ is:
 
 $$
-p(\vect{\theta} | \vect{y}) = \frac{p(\vect{y} | \vect{\theta}) p(\vect{\theta})}{p(\vect{y})}
+p(\btheta | \by) = \frac{p(\by | \btheta) p(\btheta)}{p(\by)}
 $$
 
-for any $\vect{\theta}\in\Rset^{d_h}$.
+for any $\btheta\in\RR^p$.
 
 \end{frame}
 
@@ -383,28 +416,28 @@ for any $\vect{\theta}\in\Rset^{d_h}$.
 \begin{frame}
 
 The denominator of the previous Bayes fraction is independent of
-$\vect{\theta}$, so that the posterior distribution is
+$\btheta$, so that the posterior distribution is
 proportional to the numerator:
 
 $$
-p(\vect{\theta} | \vect{y}) \propto  p(\vect{y} | \vect{\theta}) p(\vect{\theta}).
+p(\btheta | \by) \propto  p(\by | \btheta) p(\btheta).
 $$
 
-for any $\vect{\theta}\in\Rset^{d_h}$.
+for any $\btheta\in\RR^p$.
 
 In the Gaussian calibration, the two previous distributions are assumed
 to be Gaussian.
 
 More precisely, we make the hypothesis that the parameter
-$\vect{\theta}$ has the Gaussian distribution:
+$\btheta$ has the Gaussian distribution:
 
 $$
-\vect{\theta} \sim \mathcal{N}(\vect{\mu}, B),
+\btheta \sim \mathcal{N}(\vect{\mu}, B),
 $$
 
-where $\vect{\mu}\in\Rset^{d_h}$ is the mean of the Gaussian prior
+where $\vect{\mu}\in\RR^p$ is the mean of the Gaussian prior
 distribution, which is named the \emph{background} and
-$B\in\Rset^{d_h \times d_h}$ is the covariance matrix of the
+$B\in\RR^{p \times p}$ is the covariance matrix of the
 parameter.
 
 \end{frame}
@@ -415,10 +448,10 @@ Secondly, we make the hypothesis that the output observations have the
 conditional gaussian distribution:
 
 $$
-\vect{y} | \vect{\theta} \sim \mathcal{N}(\vect{h}(\vect{\theta}), R),
+\by | \btheta \sim \mathcal{N}(\bh(\btheta), R),
 $$
 
-where $R\in\Rset^{d_z \times d_z}$ is the covariance matrix of the
+where $R\in\RR^{n \times n}$ is the covariance matrix of the
 output observations.
 \end{frame}
 
@@ -431,39 +464,39 @@ Denote by $\|\cdot\|_B$ the Mahalanobis distance associated with
 the matrix $B$ :
 
 $$
-\|\vect{\theta}-\vect{\mu} \|^2_B = (\vect{\theta}-\vect{\mu} )^T B^{-1} (\vect{\theta}-\vect{\mu} ),
+\|\btheta-\vect{\mu} \|^2_B = (\btheta-\vect{\mu} )^T B^{-1} (\btheta-\vect{\mu} ),
 $$
 
-for any $\vect{\theta},\vect{\mu} \in \Rset^{d_h}$. Denote by
+for any $\btheta,\vect{\mu} \in \RR^p$. Denote by
 $\|\cdot\|_R$ the Mahalanobis distance associated with the matrix
 $R$ :
 
 $$
-\|\vect{y}-H(\vect{\theta})\|^2_R = (\vect{y}-H(\vect{\theta}))^T R^{-1} (\vect{y}-H(\vect{\theta})).
+\|\by-\bh(\btheta)\|^2_R = (\by-\bh(\btheta))^T R^{-1} (\by-\bh(\btheta)).
 $$
 
-for any $\vect{\theta} \in \Rset^{d_h}$ and any
-$\vect{y} \in \Rset^{d_z}$. Therefore, the posterior distribution
-of $\vect{\theta}$ given the observations $\vect{y}$ is :
+for any $\btheta \in \RR^p$ and any
+$\by \in \RR^{n}$. Therefore, the posterior distribution
+of $\btheta$ given the observations $\by$ is :
 
 $$
-   p(\vect{\theta}|\vect{y}) \propto \exp\left( -\frac{1}{2} \left( \|\vect{y}-H(\vect{\theta})\|^2_R 
-   + \|\vect{\theta}-\vect{\mu} \|^2_B \right) \right)
+   p(\btheta|\by) \propto \exp\left( -\frac{1}{2} \left( \|\by-\bh(\btheta)\|^2_R 
+   + \|\btheta-\vect{\mu} \|^2_B \right) \right)
 $$
 
-for any $\vect{\theta}\in\Rset^{d_h}$.
+for any $\btheta\in\RR^p$.
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{MAP estimator}
 
-The maximum of the posterior distribution of $\vect{\theta}$ given
-the observations $\vect{y}$ is reached at :
+The maximum of the posterior distribution of $\btheta$ given
+the observations $\by$ is reached at :
 
 $$
-   \hat{\vect{\theta}} = \argmin_{\vect{\theta}\in\Rset^{d_h}} \frac{1}{2} \left( \|\vect{y} - H(\vect{\theta})\|^2_R 
-   + \|\vect{\theta}-\vect{\mu} \|^2_B \right).
+   \hat{\btheta} = \argmin_{\btheta\in\RR^p} \frac{1}{2} \left( \|\by - \bh(\btheta)\|^2_R 
+   + \|\btheta-\vect{\mu} \|^2_B \right).
 $$
 
 It is called the \emph{maximum a posteriori} estimator or \emph{MAP}
@@ -475,7 +508,7 @@ estimator.
 \frametitle{Regularity of solutions of the Gaussian Calibration}
 
 The gaussian calibration is a tradeoff, so that the second expression
-acts as a \emph{spring} which pulls the parameter $\vect{\theta}$
+acts as a \emph{spring} which pulls the parameter $\btheta$
 closer to the background $\vect{\mu}$ (depending on the "spring
 constant" $B$, meanwhile getting as close a possible to the
 observations. 
@@ -492,23 +525,23 @@ squares problem.
 The cost function of the gaussian nonlinear calibration problem is :
 
 $$
-   C(\vect{\theta}) = \frac{1}{2}\|\vect{y}-H(\vect{\theta})\|^2_R 
-   + \frac{1}{2}\|\vect{\theta}-\vect{\mu} \|^2_B
+c(\btheta) = \frac{1}{2}\|\by-\bh(\btheta)\|^2_R 
+   + \frac{1}{2}\|\btheta-\vect{\mu} \|^2_B
 $$
 
-for any $\vect{\theta}\in\Rset^{d_h}$.
+for any $\btheta\in\RR^p$.
 
 The goal of the non linear gaussian calibration is to find the value of
-$\vect{\theta}$ which minimizes the cost function $C$. In
+$\btheta$ which minimizes the cost function $c$. In
 general, this involves using a nonlinear unconstrained optimization
 solver.
 
-Let $J \in \Rset^{n \times d_h}$ be the Jacobian matrix made of
-the partial derivatives of $\vect{h}$ with respect to
-$\vect{\theta}$:
+Let $J \in \RR^{n \times p}$ be the Jacobian matrix made of
+the partial derivatives of $\bh$ with respect to
+$\btheta$:
 
 $$
-J(\vect{\theta}) = \frac{\partial \vect{h}}{\partial \vect{\theta}}.
+J(\btheta) = \frac{\partial \bh}{\partial \btheta}.
 $$
 
 If the covariance matrix $B$ is positive definite, then the
@@ -521,11 +554,11 @@ Hessian matrix of the cost function is positive definite
 \begin{frame}
 \frametitle{Linear Gaussian Calibration : bayesian BLUE}
 We make the hypothesis that $h$ is linear with respect to
-$\vect{\theta}$, i.e., for any
-$\vect{\theta}\in\Rset^{d_h}$, we have :
+$\btheta$, i.e., for any
+$\btheta\in\RR^p$, we have :
 
 $$
-h(\vect{\theta}) = h(\vect{\mu}) + J(\vect{\theta}-\vect{\mu} ),
+h(\btheta) = h(\vect{\mu}) + J(\btheta-\vect{\mu} ),
 $$
 
 where $J$ is the constant Jacobian matrix of $h$.
@@ -542,30 +575,35 @@ $$
 K = A J^T R^{-1}.
 $$
 
-The maximum of the posterior distribution of $\vect{\theta}$ given
-the observations $\vect{y}$ is:
+The maximum of the posterior distribution of $\btheta$ given
+the observations $\by$ is:
 
 $$
-\hat{\vect{\theta}} = \vect{\mu} + K (\vect{y} - H(\vect{\mu})).
+\hat{\btheta} = \vect{\mu} + K (\by - \bh(\vect{\mu})).
 $$
 
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
+
+The previous equations are equivalent to the Kalman filter \cite{Asch2016}, 
+with the difference that the Kalman filter updates the parameters using 
+the observations one after the other.
+
 It can be proved that:
 
 $$
-   p(\vect{\theta} | \vect{y}) \propto 
-   \exp\left(\frac{1}{2} (\vect{\theta} - \hat{\vect{\theta}})^T A^{-1} (\vect{\theta} - \hat{\vect{\theta}}) \right)
+   p(\btheta | \by) \propto 
+   \exp\left(\frac{1}{2} (\btheta - \hat{\btheta})^T A^{-1} (\btheta - \hat{\btheta}) \right)
 $$
 
-for any $\vect{\theta}\in\Rset^{d_h}$.
+for any $\btheta\in\RR^p$.
 
 This implies:
 
 $$
-\hat{\vect{\theta}} \sim \mathcal{N}(\vect{\theta},A)
+\hat{\btheta} \sim \mathcal{N}(\btheta,A)
 $$
 \end{frame}
 
@@ -584,7 +622,7 @@ This allows to:
 \begin{itemize}
 \item use whatever (proper) prior distribution (no need to restrict to gaussian 
 prior),
-\item use whatever computer code $\vect{h}$ (no need to restrict to linear 
+\item use whatever computer code $\bh$ (no need to restrict to linear 
 code).
 \end{itemize}
 
@@ -593,7 +631,7 @@ Metropolis-Hastings algorithm.
 
 However, sampling from the posterior distribution 
 requires to generate a large sample size, which is impractical 
-when the $\vect{h}$ is costly. 
+when the $\bh$ is costly. 
 
 In this case, using a surrogate model is \emph{mandatory}. 
 
@@ -607,6 +645,16 @@ In this case, using a surrogate model is \emph{mandatory}.
 \item S. Huet, A. Bouvier, M.A. Poursat, and E. Jolivet (2004). Statistical Tools for Nonlinear Regression, Springer.
 \item C.E. Rasmussen and C. K. I. Williams (2006), Gaussian Processes for Machine Learning, The MIT Press.
 \end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Bibliography}
+\begin{frame}[allowframebreaks]
+\frametitle{Bibliography}
+\nocite{*}
+\bibliographystyle{plain}
+\bibliography{calibration}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \end{document}
 
