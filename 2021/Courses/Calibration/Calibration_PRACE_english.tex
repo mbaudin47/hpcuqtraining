@@ -56,13 +56,12 @@ $$
 where
 
 \begin{itemize}
+\item $p \in\NN$ is the number of parameters, 
+\item $m \in\NN$ is the number of inputs, 
 \item $\bx \in \RR^{m}$ is the input vector;
 \item $z \in \RR$ is the output;
 \item $\btheta \in \RR^p$ are the unknown parameters of 
-      $g$ to calibrate,
-\item $p \in\NN$ is the number of parameters, 
-\item $m \in\NN$ is the number of inputs. 
-
+      $g$ to calibrate.
 \end{itemize}
 
 \end{frame}
@@ -114,7 +113,7 @@ $$
 \cov(\vect{\varepsilon}) = R^\star \in \RR^{n\times n},
 $$
 
-where $R^\star$ is a semi-positive definite covariance matrix.
+where $R^\star$ is an unknown semi-positive definite covariance matrix.
 
 \end{frame}
 
@@ -179,7 +178,7 @@ $$
 
 
 The method of least squares minimizes the square
-of the Euclidian norm of the residuals:
+of the Euclidian norm of the residuals \cite{Bjorck1996}:
 $$
 c(\btheta) 
 = \frac{1}{2} \|\by - \bh(\btheta)\|^2 
@@ -279,8 +278,10 @@ we generally do not compute and invert the Gram matrix $J^T J$.
 Alternatively, various orthogonalization methods such as the QR or the
 SVD decomposition can be used to solve the linear least squares problem
 so that potential ill-conditioning of the normal equations is
-mitigated.
+mitigated \cite{Bjorck1996}.
 
+When the problem is rank-deficient, a way to proceed is to truncate 
+the SVD \cite{Hansen00thelcurve}. 
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -288,7 +289,7 @@ mitigated.
 \begin{frame}
 This estimator can be proved to be the best linear unbiased estimator,
 the \emph{BLUE}, that is, among the unbiased linear estimators, it is the one
-which minimizes the variance of the estimator.
+which minimizes the variance of the estimator \cite{BinghamFry, Sen1990}.
 
 Assume that the random observations are gaussian:
 
@@ -344,7 +345,7 @@ This implies that the observations are independent.
 
 The likelihood of the i-th observation is:
 $$
-\ell(\by_i|\btheta,\sigma^2) = 
+\ell(y_i|\btheta,\sigma^2) = 
 \frac{1}{\sqrt{2\pi \sigma^2}} 
 \exp\left(-\frac{(y_i - h_i(\btheta))^2}{2 \sigma^2}\right)
 $$
@@ -358,7 +359,7 @@ Since the observations are independent, the likelihood of the observations is
 the product:
 $$
 \ell(\by|\btheta,\sigma^2) = 
-\prod_{i=1}^n \ell(\by_i|\btheta,\sigma^2)
+\prod_{i=1}^n \ell(y_i|\btheta,\sigma^2)
 $$
 for $i=1,...,n$. 
 
@@ -373,7 +374,7 @@ for any $\btheta\in\RR^p$ and $\sigma>0$.
 We maximize the likelihood with:
 \begin{align*}
 \hat{\btheta}
-= arg min_{\btheta\in\RR^p} \frac{1}{2} \| \bh(\btheta) - \by\|_2^2
+= \argmin_{\btheta\in\RR^p} \frac{1}{2} \| \bh(\btheta) - \by\|_2^2
 \end{align*}
 and:
 \begin{align*}
@@ -388,7 +389,8 @@ and:
 
 \begin{frame}
 
-The bayesian calibration framework is based on two hypotheses.
+The bayesian calibration framework is based on two hypotheses 
+\cite{Tarantola2005, Asch2016}.
 
 The first hypothesis is that the parameter $\btheta$ has a
 known distribution, called the \emph{prior} distribution, and denoted by
@@ -584,6 +586,11 @@ $$
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
+
+The previous equations are equivalent to the Kalman filter \cite{Asch2016}, 
+with the difference that the Kalman filter updates the parameters using 
+the observations one after the other.
+
 It can be proved that:
 
 $$
@@ -638,6 +645,16 @@ In this case, using a surrogate model is \emph{mandatory}.
 \item S. Huet, A. Bouvier, M.A. Poursat, and E. Jolivet (2004). Statistical Tools for Nonlinear Regression, Springer.
 \item C.E. Rasmussen and C. K. I. Williams (2006), Gaussian Processes for Machine Learning, The MIT Press.
 \end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Bibliography}
+\begin{frame}[allowframebreaks]
+\frametitle{Bibliography}
+\nocite{*}
+\bibliographystyle{plain}
+\bibliography{calibration}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \end{document}
 
