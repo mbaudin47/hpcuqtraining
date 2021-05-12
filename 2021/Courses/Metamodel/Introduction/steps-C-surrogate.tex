@@ -237,7 +237,6 @@ RMSE
 $$
 
 A low RMSE is better. 
-
 The $R^2$ coefficient is: 
 $$
 R^2(g(\bx_t),\tilde{g}(\bx_t)) 
@@ -245,8 +244,9 @@ R^2(g(\bx_t),\tilde{g}(\bx_t))
 { \sum_{j=1}^n \left( y^{(j)}_t - \bar{y}_t \right)^2 }
 $$
 where $\bar{y}_t = \frac{1}{n} \sum_{i=1}^n y^{(j)}_t$. 
-
-We have $R^2 \in[0,1]$. $R^2$ close to 1 is better. 
+We usually have $R^2$ from 0 to 1, but a value $<0$ or $>1$ can occur. 
+A value lower than zero indicates a poor prediction: $R^2 \approx 1$ 
+is better. 
 
 The coefficient quantifies the part of the variance which is predicted by the 
 model. It is the improvement of the metamodel with respect to the 
@@ -330,7 +330,7 @@ canonical basis.
 \end{example}
 
 \begin{center}
- \includegraphics[width=0.45\textwidth]{overfitting-function-sample.pdf}
+ \includegraphics[width=0.40\textwidth]{overfitting-function-sample.pdf}
 \end{center}
 
 \end{frame}
