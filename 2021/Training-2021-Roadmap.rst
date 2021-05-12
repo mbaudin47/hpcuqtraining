@@ -122,5 +122,9 @@ Day 3 : HPC and Meta modeling
 
       https://github.com/mbaudin47/hpcuqtraining/blob/master/2021/Scripts/Metamodel/TP4b_Kriging.ipynb
 
+      http://openturns.github.io/openturns/master/auto_meta_modeling/kriging_metamodel/plot_kriging_sequential.html
+
+      http://openturns.github.io/openturns/master/auto_numerical_methods/optimization/plot_ego.html
+
 - Discussion /  Participants projects
 
