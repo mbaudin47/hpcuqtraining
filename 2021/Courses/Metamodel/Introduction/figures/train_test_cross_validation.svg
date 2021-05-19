@@ -9,9 +9,9 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="72.167999mm"
-   height="35.143051mm"
-   viewBox="0 0 72.167999 35.143051"
+   width="56.83012mm"
+   height="29.293156mm"
+   viewBox="0 0 56.83012 29.293155"
    version="1.1"
    id="svg2769"
    inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
@@ -42,8 +42,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="2.8"
-     inkscape:cx="142.82754"
-     inkscape:cy="53.178848"
+     inkscape:cx="71.398971"
+     inkscape:cy="62.107414"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -64,7 +64,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -72,95 +72,105 @@
      inkscape:label="Calque 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-18.042857,-30.865915)">
-    <g
-       id="g3724"
-       transform="translate(-1.3535649)">
-      <text
-         id="text3362"
-         y="45.929314"
-         x="52.183876"
-         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:3.52777767px;line-height:1.25;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif Medium';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-         xml:space="preserve"><tspan
-           style="stroke-width:0.26458332"
-           y="45.929314"
-           x="52.183876"
-           id="tspan3360"
-           sodipodi:role="line">split</tspan></text>
-      <path
-         inkscape:connector-curvature="0"
-         id="path3364"
-         d="m 48.703505,51.976935 h 13.04018"
-         style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Lend)" />
-    </g>
-    <g
-       id="g3713"
-       transform="translate(-5.2916685)">
-      <rect
-         y="35.389198"
-         x="70.680206"
-         height="20.263126"
-         width="24.722321"
-         id="rect3333-1"
-         style="opacity:1;fill:#9cccee;fill-opacity:1;stroke:#000000;stroke-width:0.2;stroke-miterlimit:10;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.92424245" />
-      <text
-         id="text3337-0"
-         y="33.275387"
-         x="70.456734"
-         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:3.52777767px;line-height:1.25;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif Medium';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-         xml:space="preserve"><tspan
-           style="stroke-width:0.26458332"
-           y="33.275387"
-           x="70.456734"
-           id="tspan3335-0"
-           sodipodi:role="line">Dataset</tspan></text>
-      <text
-         id="text3388"
-         y="46.402706"
-         x="74.379021"
-         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:3.52777767px;line-height:1.25;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif Medium';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-         xml:space="preserve"><tspan
-           style="stroke-width:0.26458332"
-           y="46.402706"
-           x="74.379021"
-           id="tspan3386"
-           sodipodi:role="line">Train (2/3)</tspan></text>
-      <rect
-         y="55.652325"
-         x="70.680206"
-         height="10.199511"
-         width="24.722321"
-         id="rect3333-1-4"
-         style="opacity:1;fill:#ffcca0;fill-opacity:1;stroke:#000000;stroke-width:0.2;stroke-miterlimit:10;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.92424245" />
-      <text
-         id="text3392"
-         y="61.634026"
-         x="75.254074"
-         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:3.52777767px;line-height:1.25;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif Medium';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-         xml:space="preserve"><tspan
-           style="stroke-width:0.26458332"
-           y="61.634026"
-           x="75.254074"
-           id="tspan3390"
-           sodipodi:role="line">Test (1/3)</tspan></text>
-    </g>
-    <rect
-       style="opacity:1;fill:#d1d1d1;fill-opacity:1;stroke:#000000;stroke-width:0.2;stroke-miterlimit:10;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.92424245"
-       id="rect3333"
-       width="24.722317"
-       height="30.468489"
-       x="18.142857"
-       y="35.440475" />
+     transform="translate(-16.152975,-39.456139)">
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:3.52777767px;line-height:1.25;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif Medium';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       x="17.919384"
-       y="33.275387"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:3.52777767px;line-height:1.25;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif Medium';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.19669263"
+       x="41.270832"
+       y="51.784801"
+       id="text3362"><tspan
+         sodipodi:role="line"
+         id="tspan3360"
+         x="41.270832"
+         y="51.784801"
+         style="font-style:italic;font-variant:normal;font-weight:500;font-stretch:normal;font-size:3.52777767px;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif Medium Italic';stroke-width:0.19669263">split</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.19669263px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
+       d="m 39.63965,56.280634 h 9.694138"
+       id="path3364"
+       inkscape:connector-curvature="0" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:3.52777767px;line-height:1.25;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif Medium';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.19669263"
+       x="52.588821"
+       y="42.377804"
+       id="text3337-0"><tspan
+         sodipodi:role="line"
+         id="tspan3335-0"
+         x="52.588821"
+         y="42.377804"
+         style="font-size:3.52777767px;stroke-width:0.19669263">Dataset</tspan></text>
+    <g
+       id="g892"
+       transform="translate(-2.1910308)">
+      <g
+         id="g882">
+        <rect
+           style="opacity:1;fill:#9cccee;fill-opacity:1;stroke:#000000;stroke-width:0.14868106;stroke-miterlimit:10;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.92424245"
+           id="rect3333-1"
+           width="18.378704"
+           height="15.063715"
+           x="54.977665"
+           y="43.722919" />
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:3.52777767px;line-height:1.25;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif Medium';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.19669263"
+           x="55.504669"
+           y="52.136723"
+           id="text3388"><tspan
+             sodipodi:role="line"
+             id="tspan3386"
+             x="55.504669"
+             y="52.136723"
+             style="font-size:3.52777767px;stroke-width:0.19669263">Train (2/3)</tspan></text>
+      </g>
+      <g
+         transform="translate(0.22453308)"
+         id="g877">
+        <rect
+           style="opacity:1;fill:#ffcca0;fill-opacity:1;stroke:#000000;stroke-width:0.14868106;stroke-miterlimit:10;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.92424245"
+           id="rect3333-1-4"
+           width="18.378704"
+           height="7.5823698"
+           x="54.753132"
+           y="58.786636" />
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:3.52777767px;line-height:1.25;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif Medium';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.19669263"
+           x="56.15519"
+           y="63.459766"
+           id="text3392"><tspan
+             sodipodi:role="line"
+             id="tspan3390"
+             x="56.15519"
+             y="63.459766"
+             style="font-size:3.52777767px;stroke-width:0.19669263">Test (1/3)</tspan></text>
+      </g>
+    </g>
+    <rect
+       style="opacity:1;fill:#d1d1d1;fill-opacity:1;stroke:#000000;stroke-width:0.14868106;stroke-miterlimit:10;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.92424245"
+       id="rect3333"
+       width="18.3787"
+       height="22.650434"
+       x="17.632263"
+       y="43.987343" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:3.52777767px;line-height:1.25;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif Medium';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.19669263"
+       x="17.466133"
+       y="42.377804"
        id="text3337"><tspan
          sodipodi:role="line"
          id="tspan3335"
-         x="17.919384"
-         y="33.275387"
-         style="stroke-width:0.26458332">Dataset</tspan></text>
+         x="17.466133"
+         y="42.377804"
+         style="font-size:3.52777767px;stroke-width:0.19669263">Dataset</tspan></text>
+    <rect
+       style="opacity:1;fill:none;fill-opacity:1;stroke:none;stroke-width:0.19669263;stroke-miterlimit:4;stroke-dasharray:0.19669264, 0.39338529;stroke-dashoffset:0;stroke-opacity:0.92424245"
+       id="rect842"
+       width="56.83012"
+       height="29.293156"
+       x="16.152975"
+       y="39.456139" />
   </g>
 </svg>
