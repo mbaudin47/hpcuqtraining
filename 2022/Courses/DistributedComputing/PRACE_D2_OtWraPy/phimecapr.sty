@@ -1,0 +1,240 @@
+% -*- coding: utf-8 -*-
+% Author: Felipe Aguirre Martinez 2016
+\ProvidesPackage{phimecapr}
+\RequirePackage{phimecagraphics} % Charte graphique Phimeca
+
+% =================================================================
+% ======================== Usefull imports ========================
+% =================================================================
+\usepackage{graphicx}
+\DeclareGraphicsExtensions{.pdf,.png,.jpg}
+\usepackage{tikz}
+\usepackage{booktabs} % Nice tables
+
+% =================================================================
+% ======================== Package options ========================
+% =================================================================
+\newif\if@french %\@frenchtrue
+\DeclareOption{french}{\@frenchtrue}
+\DeclareOption{english}{\@frenchfalse}
+
+\DeclareOption{colorheader}{
+	\definecolor{lightblue}{RGB}{220,230,242}
+	\setbeamercolor{frametitle}{bg=lightblue!90}
+	\typeout{Usig coloredheader}
+}
+
+\DeclareOption{whiteheader}{
+	\setbeamercolor{frametitle}{bg=white}
+	\typeout{Usig whiteheader}
+}
+
+\DeclareOption*{%
+	\PackageWarning{phimecacatalogue}{Unknown option: `\CurrentOption'}%
+}
+
+% Default options
+\ExecuteOptions{french}
+\ExecuteOptions{colorheader}
+\ProcessOptions\relax
+
+% =================================================================
+% ======================= Fonts and language ======================
+% =================================================================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+%\usepackage{lmodern}
+%\usepackage{amsmath}
+%\usepackage{amsfonts}
+%\usepackage{amssymb}
+%\usepackage{textcomp}
+\newcommand{\tableofcontentstitle}{Outline}
+\if@french
+  \usepackage[french]{babel} %ajouter l'option dans la classe pour
+  \uselanguage{French}
+  \languagepath{French}
+  \frenchbsetup{%
+    AutoSpacePunctuation=false,% ne pas ajouter automatique d'espace avant :, ;, ?, et !
+  }
+  \renewcommand{\tableofcontentstitle}{Sommaire}
+\fi
+
+\usefonttheme[onlylarge]{structurebold}
+\setbeamerfont{author}{size=\normalsize, family=\normalfont}
+\setbeamerfont{caption name}{size=\footnotesize}
+\setbeamerfont{caption}{size=\footnotesize}
+
+% =================================================================
+% ======================= Color definitions =======================
+% =================================================================
+\usecolortheme{orchid}
+\setbeamercolor{alerted text}       {fg=phi light blue}
+\setbeamercolor{example text}       {fg=dlilas!85!black}
+\setbeamercolor{structure}          {fg=phi dark blue}
+\setbeamercolor{title}              {fg=phi dark blue}
+\setbeamercolor{titlelike}          {fg=phi dark blue}
+
+\setbeamercolor{block title example} {fg=white,bg=dlilas!85!black}
+\setbeamercolor{block body example}  {fg=black,bg=dlilas!10}
+
+\mode<beamer>{
+\setbeamercolor{palette primary}    {fg=white,bg=phi dark blue}
+\setbeamercolor{palette secondary}  {fg=white,bg=phi dark blue}
+\setbeamercolor{palette tertiary}   {fg=white,bg=phi dark blue}
+\setbeamercolor{palette quaternary} {fg=white,bg=phi dark blue}}
+
+\mode<handout>{
+\setbeamercolor{palette primary}    {fg=black,bg=white}
+\setbeamercolor{palette secondary}  {fg=black,bg=white}
+\setbeamercolor{palette tertiary}   {fg=black,bg=white}
+\setbeamercolor{palette quaternary} {fg=black,bg=white}}
+
+\setbeamertemplate{bibliography item}[text]
+\setbeamercolor{bibliography item}{fg=black,bg=white}
+\setbeamercolor{bibliography entry author}{fg=black,bg=white}
+
+\setbeamercolor{subtitle}{fg=phi grey} % ?
+\setbeamercolor{title}{fg=phi dark blue} % ?
+\setbeamercolor{footline}{fg=black, bg=white}
+\setbeamercolor{title in head/foot}{fg=black, bg=white}
+
+% =================================================================
+% ===================== Beamer configuration =======================
+% =================================================================
+\useoutertheme{default}% Main mode
+\setbeamertemplate{navigation symbols}{}
+%-------------------------------------------------------------%
+% Print two slides per page when handout mode
+%-------------------------------------------------------------%
+\mode<handout>{
+  \usepackage{pgfpages}
+  \pgfpagesuselayout{2 on 1}[a4paper,border shrink=5mm]
+}
+
+%-------------------------------------------------------------%
+% Show table of contents before the beginning of a new section.
+%-------------------------------------------------------------%
+%\setcounter{tocdepth}{2}
+%\AtBeginSection[]{
+%	\begin{frame}
+%		\frametitle{\tableofcontentstitle}
+%		\tableofcontents[current,hideothersubsections]
+%	\end{frame}
+%}
+
+% =================================================================
+% ===================== Define the footline =======================
+% =================================================================
+\setbeamertemplate{footline}{%
+  \leavevmode%
+  \hbox{
+    \begin{beamercolorbox}[
+      wd=.2\paperwidth,
+      ht=2.5ex,dp=1.125ex]{title in head/foot}%
+      \textbf{\insertframenumber{}/ \inserttotalframenumber}
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[
+    wd=.6\paperwidth,
+    ht=2.5ex,dp=1.125ex
+    ]{title in head/foot}%
+    \centering
+    \textbf{\usebeamerfont{date in head/foot}\insertshortauthor{} -- \insertshortdate{}}
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[
+    wd=.2\paperwidth,
+    leftskip=.3cm,rightskip=.3cm plus1fil, center]{title in head/foot}
+    \logophimecadroite{0.65}
+  \end{beamercolorbox}
+}%
+  \vskip0pt%
+}
+
+% =================================================================
+% ==================== Define the frametitle ======================
+% =================================================================
+\setbeamertemplate{frametitle}
+{
+    \nointerlineskip
+    \begin{beamercolorbox}[sep=0.3cm,ht=1.8em,wd=\paperwidth]{frametitle}
+        \vbox{}\vskip-2ex%
+        \strut\insertframetitle\strut
+        \vskip-0.8ex%
+    \end{beamercolorbox}
+}
+
+% =================================================================
+% ============= Use Phimeca's logo as bullet point ================
+% =================================================================
+% Bullet point
+\defbeamertemplate{itemize item}{image}{\small\includegraphics[height=1.6ex]
+  {./figure/logo_phimeca/png/Logo_CD}}
+\setbeamertemplate{itemize item}[image]
+
+\newcommand\mytextbullet{\leavevmode%
+\structure{\usebeamertemplate{itemize item}}\hspace{.5em}}
+
+% Add Phimeca's logo before section on the table of contents
+\setbeamercolor{section in toc}{fg=phidarkblue}
+\setbeamertemplate{section in toc}{%
+  \mytextbullet \inserttocsection \par }
+
+
+% =================================================================
+% ================== Vertical copyright mention ===================
+% =================================================================
+\usepackage{rotating}
+\setbeamertemplate{background canvas}{
+	\begin{tikzpicture}[remember picture, overlay]
+	\node [yshift=2.5cm, rotate=90,anchor=north](iso9001) at (current page.south west) {\tiny \textcolor{phi grey}{\textcopyright{} Phimeca Engineering}};
+	\end{tikzpicture}
+}
+
+
+% =================================================================
+% ===================== Define the title page =====================
+% =================================================================
+% Add email command
+\newcommand{\insertemail}{}
+\newcommand*{\email}[2][]{%
+	\ifthenelse{\equal{#1}{}}%
+	{\renewcommand\insertemail{\scriptsize\href{mailto:#2}{#2}}}%
+	{\renewcommand\insertemail{\scriptsize\href{mailto:#2}{#1}}}}
+
+\setbeamertemplate{title page}{
+  \begin{tikzpicture}[remember picture, overlay]
+  \node [inner sep=0](verticalbar) at (current page.west) [anchor=west]{\masquebeamer{\paperwidth}};
+  \node [inner sep=0, xshift=0.22cm, yshift=0.13cm](iso9001) at (current page.south west) [anchor=south west]{\iso{.8cm}};
+  \node [inner sep=0, xshift=2.6cm, yshift=-1.2cm](phimeca) at (current page.north west) [anchor=north west]{\logophimecaplat{2.7}};
+  \node [inner sep=0, yshift=-1.5cm](gaussienne) at (current page.center) [anchor=center, opacity=0.2]{\gaussiennecouleurs{0.5\paperwidth}};
+  % ajout pour PRACE : logo
+  \node [inner sep=0, xshift=1.8cm, yshift=0.8cm](prace) at (current page.south west) [anchor=south west]{\includegraphics[width=2cm]{./figure/PRACE.png}};
+  \node [inner sep=0, xshift=-1.5cm, yshift=0.8cm](maison) at (current page.south east) [anchor=south east]{\includegraphics[width=1.7cm]{./figure/logo-Maison_Simulation.jpg}};
+  \end{tikzpicture}
+  \begin{picture}(0,0)
+    \put(0,-110.7){%
+      % \frame{
+        \begin{minipage}[b][45mm][t]{\textwidth}
+          \centering
+          \usebeamerfont{title}{\usebeamercolor[fg]{title}\inserttitle\par}\vfill
+          \usebeamerfont{subtitle}{\usebeamercolor[fg]{subtitle}\insertsubtitle\par}\vfill % TODO
+          \usebeamerfont{date}{\insertdate\par}\vfill
+          \usebeamerfont{author}{\insertauthor\par\insertemail}\vfill
+          \usebeamerfont{institute}{\insertinstitute\par}
+        \end{minipage}}
+    % }
+  \end{picture}
+}
+
+
+% =================================================================
+% ==================== Define thank you message ===================
+% =================================================================
+% Add thank you message
+\newcommand{\thankspage}[1]{
+	\vfill \centering
+	{\logophimecaplat{3}}\\
+	\vfill
+	\hfill{}{\Large\structure{#1}}\\[0.5cm]
+	\hfill{}{\usebeamerfont{author}{\insertauthor\par}}
+	\hfill{}{\usebeamerfont{institute}{\insertemail\par}}
+}

@@ -1,0 +1,15 @@
+# LaTeX
+*.log
+*.aux
+*.out
+*.blg
+*.bbl
+*.toc
+*.idx
+*.nav
+*.snm
+*~
+
+# Windows
+Thumbs.db
+

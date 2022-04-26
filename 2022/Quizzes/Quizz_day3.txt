@@ -1,0 +1,54 @@
+Reliability
+
+1) How many evaluations would you need to compute a probability of failure of approximatively 10^-4 with a brute Monte Carlo approach with a coefficient of variation of 10%?
+	10 000
+	1 000 000
+	100 000 000
+
+2) Let f(x) be the PDF of x, let F be the failure domain and let h(x) be the instrumental probability distribution used for Importance Sampling. What is the requirement for h(x):
+	h(x) = 0 => I_F(x)f(x) = 0
+	h(x) > 0 => I_F(x)f(x) > 0
+	I_F(x)f(x) = 0 => h(x) = 0 
+
+3) In the FORM/SORM framework, the PDF of g°(u) in the standard space is :
+	Multivariate and uniformely distributed 
+	Multivariate and normally distributed with an identity covariance matrix
+	Multivariate and normally distributed with a case dependent covariance matrix
+
+4) The most probable failure point in the standard space is :
+	The point of the failure region closest to the origin
+	The point of the failure region furthest from the origin
+	The point of the failure region where the constraint gradient is the largest
+
+Optimization
+
+5) A local optimum is characterized by a positive gradient vector and a null Hessian matrix (matrix containing the 2nd order derivatives)
+	True
+	False
+	
+6) Gradient-descent based methods are most suitable when dealing with multiple local optima
+	True
+	False
+
+7) If a function is strictly convex, it has a single local optimum equivalent to the global optimum
+	True
+	False
+
+Calibration
+
+8) In the calibration framework, the standard hypothesis considers the observation errors as
+	Independent and identically normally distributed
+	Independent and identically uniformely distributed
+	Normally distributed, with a user-defined covariance matrix
+
+9) Let us consider the calibration of g(x,theta). The application of the linear least squares approach implies the following hypothesis :
+	g() is linear w.r.t. x
+	g() is linear w.r.t. theta
+	g() is linear w.r.t. both x and theta
+
+10) When performing Gaussian Bayesian calibration, the following hypothesis is made:
+	The prior p(theta) is Gaussian
+	The likelihood p(y|theta) is Gaussian
+	Both the prior and the likelihood are Gaussian
+
+	

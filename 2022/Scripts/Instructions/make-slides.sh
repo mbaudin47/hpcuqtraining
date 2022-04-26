@@ -1,0 +1,3 @@
+pdflatex TP_PRACE_Enonce_2021
+pdflatex TP_PRACE_Enonce_2021
+

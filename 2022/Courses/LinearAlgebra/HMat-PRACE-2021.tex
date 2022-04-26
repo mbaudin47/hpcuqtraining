@@ -1,0 +1,181 @@
+\documentclass{beamer}
+\usetheme{Singapore}
+\usepackage{etex}
+
+\usepackage{listings}
+\usepackage{enumerate}
+\usepackage[ucs]{}
+\usepackage[utf8]{inputenc}
+\usepackage[francais]{babel}
+\usepackage{graphics}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{fancybox}
+\usepackage{algorithm,algorithmic}
+\usepackage{bbm} 
+\usepackage{pstricks}
+\usepackage{tikz}
+\usepackage{float}
+\usepackage[ucs]{}
+\usepackage[utf8]{inputenc}
+\usepackage[francais]{babel}
+\usepackage{amsmath,amssymb,amsfonts,amsthm}
+\usepackage{multirow}
+\usepackage{color}
+\definecolor{grisclair}{rgb}{0.85,0.85,0.85}
+\usepackage{graphics}
+\usetikzlibrary{arrows,decorations.pathmorphing,backgrounds,fit,positioning,shapes.symbols,chains}
+
+\usetikzlibrary{decorations.pathmorphing}
+\usepackage{tkz-euclide}
+\usetkzobj{all}
+
+\usepackage{stmaryrd}
+
+%% New commands
+\newcommand{\hh}{\ensuremath{\mathbf{\mathcal{H}}} \xspace}
+\newcommand{\hmat}{\ensuremath{\mathcal{H}}-matrix \xspace \xspace}
+\newcommand{\hmats}{\ensuremath{\mathcal{H}}-matrices\xspace}
+\newcommand{\plus}{+}
+
+\newcommand{\vecj}{\ensuremath{\protect \overrightarrow{\mathbf{j}}}\xspace}
+\newcommand{\vecm}{\ensuremath{\protect \overrightarrow{\mathbf{m}}}\xspace}
+\newcommand{\vecn}{\ensuremath{\protect \overrightarrow{\mathbf{n}}}\xspace}
+\newcommand{\veck}{\ensuremath{\protect \overrightarrow{\mathbf{k}}}\xspace}
+\newcommand{\vecd}{\ensuremath{\protect \overrightarrow{\mathbf{d}}}\xspace}
+\newcommand{\vecom}{\ensuremath{\protect \overrightarrow{\mathbf{w}}}\xspace}
+
+\newcommand{\vecE}{\ensuremath{\mathbf{E}}\xspace}
+\newcommand{\vecH}{\ensuremath{\mathbf{H}}\xspace}
+
+\newcommand{\rot}{\ensuremath{\protect \overrightarrow{\mathrm{rot}} }\xspace}
+\newcommand{\rotE}{\ensuremath{\protect \overrightarrow{\mathrm{rot}} \, \mathbf{E}}\xspace}
+\newcommand{\rotH}{\ensuremath{\protect \overrightarrow{\mathrm{rot}} \, \mathbf{H}}\xspace}
+
+\newcommand{\rotgE}{\ensuremath{\protect \overrightarrow{\mathrm{rot}}_{\Gamma} \, \mathbf{E}}\xspace}
+\newcommand{\rotgH}{\ensuremath{\protect \overrightarrow{\mathrm{rot}}_{\Gamma} \, \mathbf{H}}\xspace}
+\newcommand{\divgE}{\ensuremath{\mathrm{div}_{\Gamma} \, \mathbf{E}}\xspace}
+\newcommand{\divgH}{\ensuremath{\mathrm{div}_{\Gamma} \, \mathbf{H}}\xspace}
+\newcommand{\divg}{\ensuremath{\mathrm{div}_{\Gamma} }\xspace}
+\newcommand{\divgh}{\ensuremath{\mathrm{div}_{\Gamma_h} }\xspace}
+\newcommand{\Div}{\ensuremath{\mathrm{div}}\xspace}
+\newcommand{\divE}{\ensuremath{\mathrm{div} \, \mathbf{E}}\xspace}
+\newcommand{\divH}{\ensuremath{\mathrm{div} \, \mathbf{H}}\xspace}
+
+\newcommand{\gradg}{\ensuremath{\nabla_{\Gamma} }\xspace}
+
+\newcommand{\vecdpar}{\ensuremath{\protect \overrightarrow{\mathbf{d}_{\parallelslant}}} \xspace}
+\newcommand{\vecdperp}{\ensuremath{\protect \overrightarrow{\mathbf{d}_{\bot}}} \xspace}
+%\newcommand{\vecdperp}{\ensuremath{\nabla_{\Gamma} }\xspace}
+
+%% d\Gamma(y) for integration
+\newcommand{\dg}{\ensuremath{\, \mathrm{d}\Gamma}\xspace}
+\newcommand{\mintg}{\ensuremath{\displaystyle \int_{\Gamma}\!}\xspace}
+\newcommand{\dgh}{\ensuremath{\, \mathrm{d}\Gamma_h}\xspace}
+\newcommand{\mintgh}{\ensuremath{\displaystyle \int_{\Gamma_h}\!}\xspace}
+%%
+
+
+%Affichage graphique
+\graphicspath{{./img}}
+
+%En-tete
+%\title{Parallel Fast Direct Solver: applications to Uncertainty Management}
+%\subtitle{An overview of the \hmat framework}
+\title{
+Low-rank in Uncertainty Management
+}
+\subtitle{
+Efficient linear algebra and an overview of the $\hmat$ framework
+}
+
+\author{Kieran Delamotte}
+\institute{IMACS}
+\date{May, 2021}
+
+%Insertion des logos
+\usepackage{pgf}
+\titlegraphic{
+%\left
+\pgfimage[height=1.2cm]{./img/logoPrace}
+%\center
+\pgfimage[height=1.2cm]{./img/maisonSimulation}
+%\right
+\pgfimage[height=1.2cm]{./img/imacs}
+}
+
+
+%Affichage du plan a chaque section et sous-section
+\AtBeginSection[]
+{
+\begin{frame}<beamer>[noframenumbering]
+
+\tableofcontents[currentsection]
+\end{frame}
+}
+
+\makeatother
+\setbeamertemplate{footline}
+{
+  \leavevmode%
+%\hbox{%
+  %\begin{beamercolorbox}[wd=.4\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+  %  \usebeamerfont{author in head/foot}\insertshortauthor
+  %\end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.6\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+    \usebeamerfont{title in head/foot}\insertshorttitle\hspace*{1em}
+    \insertframenumber{} / \inserttotalframenumber\hspace*{1ex} %%HERE
+  \end{beamercolorbox}
+}%
+  \vskip0pt%
+%}
+\makeatletter
+\setbeamertemplate{navigation symbols}{}
+
+%% header slide
+\begin{document}
+
+\begin{frame}%[noframenumbering]
+\titlepage
+\end{frame}
+
+%%%
+
+\section*{}
+\begin{frame}
+\tableofcontents
+\end{frame}
+
+%% part 0: low rank and random linear algebra
+\section{First encounter with low rank}
+\include{random_methods}
+
+%% part 1: simple Kriging intro
+\section{Large and dense systems}
+\include{praceIntro}
+
+%% part 2: the H-matrix framework
+\section{$\hmats$}
+\include{admissibilityCondition}
+\include{matrixCompression}
+\include{clusteringFig}
+\include{blockClustering}
+\include{harith-summary}
+
+%% part 2: some results
+\section{Applications}
+
+%% 1D
+\include{numerical-1d}
+\include{performances}
+
+%% numerics
+\include{numerical-3d}
+
+%% part 4: conclusion
+\section{Conclusions \& perspectives}
+\include{hmat-summary}
+\include{ccl}
+
+\end{document}
+

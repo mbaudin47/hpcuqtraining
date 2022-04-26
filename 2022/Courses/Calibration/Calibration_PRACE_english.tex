@@ -1,0 +1,724 @@
+% Copyright (C) 2018 - 2022 - Michael Baudin & Julien Pelamatti
+
+\documentclass[aspectratio=169]{beamer}
+
+%\setbeameroption{hide notes}
+%\setbeameroption{show notes}
+%\setbeameroption{show only notes}
+
+  \include{macros}
+
+\title[PRACE/UQ: Calibration]{
+Calibration: deterministic and bayesian methods \\
+PRACE training on High Performance Computing in Uncertainty Quantification 
+}
+
+\author[Pelamatti]{
+J. Pelamatti, M. Baudin}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+  \begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\titlepage
+  
+\begin{center}
+\includegraphics[height=0.2\textheight]{edf.jpg}
+\hspace{1cm}
+\includegraphics[height=0.2\textheight]{Maison_Simulation_LOGO.jpg}
+\hspace{1cm}
+\includegraphics[height=0.2\textheight]{PRACE_LOGO.jpg}
+\end{center}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Contents}
+\tableofcontents
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Deterministic code calibration}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Deterministic code calibration}
+
+We consider a deterministic model $g$ to calibrate:
+
+$$
+z = g(\bx, \btheta),
+$$
+
+where
+
+\begin{itemize}
+\item $p \in\NN$ is the number of parameters, 
+\item $m \in\NN$ is the number of inputs, 
+\item $\bx \in \RR^{m}$ is the input vector;
+\item $z \in \RR$ is the output;
+\item $\btheta \in \RR^p$ are the unknown parameters of 
+      $g$ to calibrate.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Introduction}
+Let $n \in \NN$ be the number of observations. 
+We assume that $m \geq p$, i.e. the problem is over-determined. 
+Let $\bx_1, \ldots, \bx_n \in \RR^{m}$ be the observed inputs. 
+
+Therefore, 
+$$
+z_i = g(\bx_i, \btheta),
+$$
+
+for $i=1,...,n$. 
+The vector of predictions is $\bz \in \RR^{n}$. 
+
+Let $\bh : \RR^p \rightarrow \RR^{n}$ be the function:
+$$
+h_i(\btheta) = g(\bx_i, \btheta)
+$$
+for $i=1, \ldots, n$. 
+We write it in the vector form:
+$$
+\bz = \bh(\btheta)
+$$
+where $\bh(\btheta) = (h_1(\btheta), \ldots, h_n(\btheta))^T$.
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+The standard hypothesis of the probabilistic calibration is the following. 
+There is a \emph{true}, but unknown, value of the vector $\btheta$, 
+denoted by $\btheta^\star$ such that:
+
+$$
+\by = \bh(\btheta^\star) + \vect{\varepsilon},
+$$
+
+for $i=1,...,n$ where $\vect{\varepsilon}$ is a random
+measurement error vector such that:
+
+$$
+\esp(\vect{\varepsilon}) = \vect{0} \in \RR^{n}, \qquad 
+\cov(\vect{\varepsilon}) = R^\star \in \RR^{n\times n},
+$$
+
+where $R^\star$ is an unknown semi-positive definite covariance matrix.
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+The goal of calibration is to estimate $\btheta$, based on
+observations of $n$ inputs
+$\bx_1, \ldots, \bx_n$ and the associated $n$
+observations of the output $\by$. 
+
+In other words, the calibration process reduces the discrepancy between 
+\begin{itemize}
+\item  the observations $\by$ and 
+\item  the predictions $\bh(\btheta)$. 
+\end{itemize}
+
+\vspace{20pt}
+
+Given that $\by$ is the realization of a random
+vector, the estimate of $\btheta$, denoted by
+$\hat{\btheta}$, is also a random variable. 
+
+The secondary goal of calibration is to estimate the distribution of
+$\hat{\btheta}$ representing the uncertainty of the
+calibration process.
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Example : 2 parameters model}
+\begin{figure}
+\centering
+\includegraphics[width=.7\textwidth]{example.pdf}
+\end{figure}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+The standard observation model makes the hypothesis that the observation error is Gaussian, and that every observation has an independent error:
+
+$$
+\vect{\varepsilon} = \mathcal{N}\left(\bzero, (\sigma^\star)^2 \imat\right)
+$$
+
+where $\sigma^\star > 0$ is the (unknown) constant observation error
+variance.
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Least squares}
+
+The residuals vector is made of the differences between the observations 
+and the predictions:
+
+$$
+\vect{r}(\btheta) = \by - \bh(\btheta),
+$$
+for any $\btheta \in\RR^p$. 
+
+When the parameter $\btheta$ is the \emph{true} $\btheta^\star$, the residual 
+vector is:
+$$
+\vect{\varepsilon} = \by - \bh\left(\btheta^\star\right).
+$$
+
+
+The method of least squares minimizes the square
+of the Euclidian norm of the residuals \cite{Bjorck1996}:
+$$
+c(\btheta) 
+= \frac{1}{2} \|\by - \bh(\btheta)\|^2 
+= \frac{1}{2} \sum_{i=1}^n \left( y_i - h_i(\btheta) \right)^2,
+$$
+for any $\btheta \in \RR^p$.
+
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+The least squares method minimizes the cost function $c$:
+$$
+\hat{\btheta} 
+= \argmin_{\btheta \in \RR^p} \frac{1}{2} \|\by - \bh(\btheta)\|^2.
+$$
+
+\vspace{30pt}
+
+The unbiased estimator of the observation noise variance is:
+
+$$
+\hat{\sigma}^2 = \frac{\|\by - \bh(\btheta)\|^2}{n - p}.
+$$
+
+Notice that the previous estimator is not the maximum likelihood
+estimator (which is biased).
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Linear least squares}
+
+In the particular case where the deterministic function $\bh$
+is linear with respect to the parameter $\btheta$, then the
+method reduces to the \textbf{linear least squares}. 
+
+\vspace{15pt}
+
+Let $J \in \RR^{n \times p}$ be the Jacobian matrix made of the
+partial derivatives of $\bh$ with respect to
+$\btheta$:
+
+$$
+J(\btheta) = \frac{\partial \bh}{\partial \btheta}.
+$$
+
+\vspace{15pt}
+
+Let $\bmu \in \RR^p$ be a reference value of the
+parameter $\btheta$. 
+
+Let us denote by $J=J(\bmu)$ the value of the Jacobian at the reference point
+$\bmu$. 
+
+Since the function is, by hypothesis, linear, the
+Jacobian is independent of $\btheta$. 
+
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+Since $\bh$ is linear, it is equal to its Taylor expansion:
+$$
+\bh(\btheta) = \bh(\bmu) + J (\btheta - \bmu),
+$$
+
+for any $\btheta \in \RR^p$.
+
+The corresponding linear least squares problem is:
+$$
+\hat{\btheta} 
+= \argmin_{\btheta \in \RR^p} \frac{1}{2} \|\by - \bh(\bmu) + J (\btheta - \bmu)\|^2.
+$$
+
+The Gauss-Markov theorem applied to this problem states that the
+solution is:
+$$
+\hat{\btheta} = \bmu + \left(J^T J\right)^{-1} J^T ( \by - \bh(\bmu)).
+$$
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+The previous equations are the \emph{normal equations}. 
+
+Notice, however, that the previous linear system of equations 
+is not implemented as is, i.e.
+we generally do not compute and invert the Gram matrix $J^T J$.
+
+\vspace{30pt}
+
+Alternatively, various orthogonalization methods such as the QR or the
+SVD decomposition can be used to solve the linear least squares problem
+so that potential ill-conditioning of the normal equations is
+mitigated \cite{Bjorck1996}.
+
+\vspace{15pt}
+
+When the problem is rank-deficient, a way to proceed is to truncate 
+the SVD \cite{Hansen00thelcurve}. 
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+This estimator can be proved to be the best linear unbiased estimator, that is, among the unbiased linear estimators, it is the one
+which minimizes the variance of the estimator \cite{BinghamFry, Sen1990}.
+
+Assuming that the random observations are gaussian:
+
+$$
+\vect{\varepsilon} \sim \mathcal{N}(\vect{0},\sigma^2 {\bf I}).
+$$
+
+Therefore, the distribution of $\hat{\btheta}$ is:
+
+$$
+\hat{\btheta} \sim \mathcal{N} \left(\btheta,\sigma^2 (J^T J)^{-1} \right).
+$$
+
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Non Linear Least squares}
+
+In the general case where the function $\bh$ is non linear
+with respect to the parameter $\btheta$, then the resolution involves a non linear least squares optimization algorithm. 
+
+\vspace{20pt}
+
+The difficulty in the nonlinear least squares is that, compared to the
+linear situation, the theory does not provide the distribution of
+$\hat{\btheta}$ anymore.
+
+There are two practical solutions to overcome this limitation.
+\begin{itemize}
+\item bootstrap (randomly resample within the observations),
+\item linearization (in the neighborhood of $\hat{\btheta}$).
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Link with likelihood maximization}
+Assume that the observation noise is gaussian with zero mean and constant 
+variance $\sigma^2$: 
+$$
+\vect{\varepsilon} \sim \mathcal{N}(\bzero,\sigma^2 \imat),
+$$ 
+where $\sigma>0$ et $\imat\in\RR^{n\times n}$. 
+
+This implies that the observations are independent. 
+
+The likelihood of the i-th observation is:
+$$
+\ell(y_i|\btheta,\sigma^2) = 
+\frac{1}{\sqrt{2\pi \sigma^2}} 
+\exp\left(-\frac{(y_i - h_i(\btheta))^2}{2 \sigma^2}\right)
+$$
+for $i=1,...,n$. 
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+Since the observations are independent, the likelihood of the observations is 
+the product:
+$$
+\ell(\by|\btheta,\sigma^2) = 
+\prod_{i=1}^n \ell(y_i|\btheta,\sigma^2)
+$$
+for $i=1,...,n$. 
+
+This implies:
+\begin{align*}
+\log(\ell(\by|\btheta,\sigma^2)) 
+&= -\frac{n}{2} \log(2\pi \sigma^2)
+-\frac{\|\by - \bh(\btheta)\|_2^2}{2 \sigma^2}
+\end{align*}
+for any $\btheta\in\RR^p$ and $\sigma>0$. 
+
+We maximize the likelihood with:
+\begin{align*}
+\hat{\btheta}
+= \argmin_{\btheta\in\RR^p} \frac{1}{2} \| \bh(\btheta) - \by\|_2^2
+\end{align*}
+and:
+\begin{align*}
+\hat{\sigma}^2
+= \frac{1}{n} \| \bh(\hat{\btheta}) - \by\|_2^2.
+\end{align*}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Bayesian code calibration}
+
+\begin{frame}
+\frametitle{Bayesian Calibration}
+
+The bayesian calibration framework is based on two hypotheses 
+\cite{Tarantola2005, Asch2016} :
+
+\begin{itemize}
+\item The parameter $\btheta$ has a
+known distribution, called the \emph{prior} distribution, and denoted by
+$p(\btheta)$.
+\item The output observations
+$\by$ are sampled from a known
+conditional distribution denoted by $p(\by | \btheta)$.
+\end{itemize}
+
+
+\vspace{15pt}
+
+For any $\by\in\RR^{n}$ such that $p(\by)>0$,
+the Bayes theorem implies that the conditional distribution of
+$\btheta$ given $\by$ is:
+
+$$
+p(\btheta | \by) = \frac{p(\by | \btheta) p(\btheta)}{p(\by)}
+$$
+
+for any $\btheta\in\RR^p$.
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+
+The denominator of the previous Bayes fraction is independent of
+$\btheta$, so that the posterior distribution is
+proportional to the numerator:
+
+$$
+p(\btheta | \by) \propto  p(\by | \btheta) p(\btheta).
+$$
+
+for any $\btheta\in\RR^p$.
+
+\vspace{15pt}
+
+In the Gaussian calibration, the two previous distributions are assumed
+to be Gaussian.
+
+We make the hypothesis that the parameter
+$\btheta$ follows a Gaussian distribution:
+
+$$
+\btheta \sim \mathcal{N}(\bmu, B),
+$$
+
+where $\bmu\in\RR^p$ is the mean of the Gaussian prior
+distribution, which is named the \emph{background} and
+$B\in\RR^{p \times p}$ is the covariance matrix of the
+parameter.
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+We make the hypothesis that the output observations follow the
+conditional gaussian distribution:
+
+$$
+\by | \btheta \sim \mathcal{N}(\bh(\btheta), R),
+$$
+
+where $R\in\RR^{n \times n}$ is the covariance matrix of the
+output observations.
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Posterior distribution}
+
+Denote by $\|\cdot\|_B$ the Mahalanobis distance associated with
+the matrix $B$ :
+
+$$
+\|\btheta-\bmu \|^2_B = (\btheta-\bmu )^T B^{-1} (\btheta-\bmu ),
+$$
+
+for any $\btheta,\bmu \in \RR^p$. Denote by
+$\|\cdot\|_R$ the Mahalanobis distance associated with the matrix
+$R$ :
+
+$$
+\|\by-\bh(\btheta)\|^2_R = (\by-\bh(\btheta))^T R^{-1} (\by-\bh(\btheta)).
+$$
+
+for any $\btheta \in \RR^p$ and any
+$\by \in \RR^{n}$. Therefore, the posterior distribution
+of $\btheta$ given the observations $\by$ is :
+
+$$
+   p(\btheta|\by) \propto \exp\left( -\frac{1}{2} \left( \|\by-\bh(\btheta)\|^2_R 
+   + \|\btheta-\bmu \|^2_B \right) \right)
+$$
+
+for any $\btheta\in\RR^p$.
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{MAP estimator}
+
+The maximum of the posterior distribution of $\btheta$ given
+the observations $\by$ is reached at :
+
+$$
+   \hat{\btheta} = \argmin_{\btheta\in\RR^p} \frac{1}{2} \left( \|\by - \bh(\btheta)\|^2_R 
+   + \|\btheta-\bmu \|^2_B \right).
+$$
+
+It is called the \emph{maximum a posteriori} estimator or \emph{MAP}
+estimator.
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Regularity of solutions of the Gaussian Calibration}
+
+The gaussian calibration is a tradeoff, so that the second expression
+acts as a \emph{spring} which pulls the parameter $\btheta$
+closer to the background $\bmu$ (depending on the "spring
+constant" $B$, meanwhile getting as close a possible to the
+observations. 
+
+Depending on the matrix $B$, the computation may
+have better regularity properties than the plain non linear least
+squares problem.
+
+This is similar to Tikhonov regularization, with identity 
+matrix $B$ and zero parameter $\bmu$ \cite{mueller2012linear} or to 
+the truncated SVD \cite{Hansen00thelcurve}, for some 
+regularization parameter value: the significant difference is that the 
+Bayesian framework considers that the regularization is an hypothesis with 
+known parameter, while regularization methods produce the minimum 
+required regularization parameter values on output. 
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Linear Gaussian Calibration}
+We make the hypothesis that $\bh$ is linear with respect to
+$\btheta$, i.e., for any
+$\btheta\in\RR^p$, we have :
+
+$$
+h(\btheta) = \bh(\bmu) + J(\btheta-\bmu ),
+$$
+
+Let $J \in \RR^{n \times p}$ be the Jacobian matrix made of
+the partial derivatives of $\bh$ with respect to
+$\btheta$:
+
+$$
+J(\btheta) = \frac{\partial \bh (\btheta)}{\partial \btheta}.
+$$
+
+If the covariance matrix $B$ is positive definite, then the
+Hessian matrix of the cost function is positive definite 
+(no matter of the rank of $J$). 
+
+
+Let $A$ be the matrix:
+
+$$
+A^{-1} = B^{-1} + J^T R^{-1} J.
+$$
+
+
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+
+We denote by $K$ the Kalman matrix:
+
+$$
+K = A J^T R^{-1}.
+$$
+
+The maximum of the posterior distribution of $\btheta$ given
+the observations $\by$ is:
+
+$$
+\hat{\btheta} = \bmu + K (\by - \bh(\bmu)).
+$$
+
+
+It can be proved that (e.g. \cite{RasmussenWilliams}, p.9):
+
+$$
+   p(\btheta | \by) \propto 
+   \exp\left(\frac{1}{2} (\btheta - \hat{\btheta})^T A^{-1} (\btheta - \hat{\btheta}) \right)
+$$
+
+for any $\btheta\in\RR^p$.
+
+This implies:
+
+$$
+\hat{\btheta} \sim \mathcal{N}(\btheta,A)
+$$
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Non Linear Gaussian Calibration : 3DVAR}
+
+The cost function of the gaussian nonlinear calibration problem is :
+
+$$
+c(\btheta) = \frac{1}{2}\|\by-\bh(\btheta)\|^2_R 
+   + \frac{1}{2}\|\btheta-\bmu \|^2_B
+$$
+
+for any $\btheta\in\RR^p$.
+
+The goal of the non linear gaussian calibration is to find the value of
+$\btheta$ which minimizes the cost function $c$. In
+general, this involves using a nonlinear unconstrained optimization
+solver.
+
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{General bayesian calibration}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{General bayesian calibration}
+
+If the full posterior distribution is to be known, the 
+general bayesian framework may be used. 
+
+This allows to:
+\begin{itemize}
+\item use whatever (proper) prior distribution (no need to restrict to gaussian 
+prior),
+\item use whatever computer code $\bh$ (no need to restrict to linear 
+code).
+\end{itemize}
+
+We generally do not know the posterior distribution, but we can 
+try to generate a sample from it. 
+
+One method is to create a Monte-Carlo Markov Chain ; the classical algorithm is then the 
+Metropolis-Hastings algorithm. 
+
+However, sampling from the posterior distribution 
+requires to generate a large sample size, which is impractical 
+when the $\bh$ is costly. 
+
+In this case, using a surrogate model is \emph{mandatory}. 
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Conclusion}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Conclusion}
+
+The following table presents a hierarchy of methods depending on the 
+prior and the linearity of the function $\bh$.
+
+\begin{center}
+\begin{tabular}{lll}
+                     & {\bf Linear}  & {\bf Non linear} \\
+\hline
+Without \emph{prior} & Linear        & Non Linear \\
+                     & Least squares & Least Squares \\
+\hline
+\emph{Prior}: Gaussian & Linear Gaussian & 3DVAR \\
+\hline
+\emph{Prior}: & MCMC & MCMC \\
+Non Gaussian &  &  \\
+\hline
+\end{tabular}
+\end{center}
+
+The previous methods define in-between solutions, 
+\begin{itemize}
+\item more complex than the least squares criterion, but more robust with 
+respect to rank deficiency, 
+\item less powerful than the MCMC simulation, but with less computational 
+cost. 
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Bibliography}
+\begin{frame}[allowframebreaks]
+\frametitle{Bibliography}
+\nocite{*}
+\bibliographystyle{plain}
+\bibliography{calibration}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
+
