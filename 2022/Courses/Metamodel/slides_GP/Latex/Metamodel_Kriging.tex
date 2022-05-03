@@ -79,7 +79,7 @@
 %institute[EDF]{EDF R\&D}
 
 %\date\today
-\date{\textcolor{orange}{\begin{flushleft} May 2020 \end{flushleft}}}
+\date{\textcolor{orange}{\begin{flushleft} May 2022 \end{flushleft}}}
 
 
 %%% General options
@@ -167,7 +167,7 @@
 	\begin{column}{5.5cm}
   \titlepage
  % \vspace{5ex}
-   \textcolor{gray}{\tiny Copyright  EDF 2021 - Chu Mai (EDF R\&D/MMC)}
+   \textcolor{gray}{\tiny Copyright  EDF 2022 - Chu Mai (EDF R\&D/MMC), \\Julien Pelamatti (EDF R\&D/PRISME)}
   	\end{column}
 	\begin{column}{3.2cm}
 	  	\end{column}
@@ -276,8 +276,9 @@ y(\omega_0, x): x \in \mathcal{D}  \to \mathbb{R}
 \]
 \end{itemize}
 
+\vspace{-10pt}
 \begin{center}
-\includegraphics[width=0.45\linewidth]{realisations.png}
+\includegraphics[width=0.45\linewidth]{UncontionedGP.png}
 \end{center}
 
 \end{frame}
@@ -288,7 +289,7 @@ y(\omega_0, x): x \in \mathcal{D}  \to \mathbb{R}
 \textbf{Mean}:
 
 \[
-\mu_x = \Expectation{}{Y(x)}
+\mu (x) = \Expectation{}{Y(x)}
 \]
 
 %if $mu_x$ exists for all $x \in \mathcal{D}$: 
@@ -310,6 +311,72 @@ C(x, x') = C(x-x') = C(\tau)
 $\forall k, \forall \{x_1, \dots , x_k \} \in \mathcal{D}^k$, $\{ Y(x_1), \dots , Y(x_k) \} \sim \mathcal{N}( \bs{\mu}, \bs{C} ); \, \bs{C}_{ij} = C(x_i, x_j)$ 
 \end{center}
 
+
+\end{frame}
+
+
+%=======================================================================================================%
+\begin{frame}[t]{Random process}
+
+We start with a prior hypothesis on the parameterization of the mean function $\mu(x)$ and the covariance function $C(x,x')$
+
+\begin{center}
+\includegraphics[width=0.8\linewidth]{UncontionedGP.png}
+\end{center}
+
+\end{frame}
+
+%=======================================================================================================%
+\begin{frame}[t]{Random process}
+
+If we collect new data, we can update our model by forcing our process to pass through the data points
+
+\begin{center}
+\includegraphics[width=0.8\linewidth]{ConditionedGP1.png}
+\end{center}
+
+\end{frame}
+
+%=======================================================================================================%
+\begin{frame}[t]{Random process}
+
+If we collect new data, we can update our model by forcing our process to pass through the data points
+
+\begin{center}
+\includegraphics[width=0.8\linewidth]{ConditionedGP2.png}
+\end{center}
+
+\end{frame}
+
+%=======================================================================================================%
+\begin{frame}[t]{Random process}
+
+If we collect new data, we can update our model by forcing our process to pass through the data points
+
+\begin{center}
+\includegraphics[width=0.8\linewidth]{ConditionedGP3.png}
+\end{center}
+\end{frame}
+
+%=======================================================================================================%
+\begin{frame}[t]{Random process}
+
+If we collect new data, we can update our model by forcing our process to pass through the data points
+
+\begin{center}
+\includegraphics[width=0.8\linewidth]{ConditionedGP4.png}
+\end{center}
+
+\end{frame}
+
+%=======================================================================================================%
+\begin{frame}[t]{Random process}
+
+If we collect new data, we can update our model by forcing our process to pass through the data points
+
+\begin{center}
+\includegraphics[width=0.8\linewidth]{ConditionedGP5.png}
+\end{center}
 
 \end{frame}
 
@@ -511,8 +578,8 @@ H(x,\omega) \; \; = \; \; \boldsymbol{r}(x) \cdot \boldsymbol{\beta} \; + \; Z(x
 \]
 
 \begin{center}
-\includegraphics[width=0.49\linewidth]{krig_initial.png}
-\includegraphics[width=0.49\linewidth]{var_initial.png}
+\includegraphics[width=0.55\linewidth]{krig_step_1.png}
+\includegraphics[width=0.55\linewidth]{var_step_1.png}
 
 \begin{itemize}
 \item The conditional mean is used as a {\altx metamodel} (interpolator)
@@ -560,9 +627,22 @@ To apply the previous formulas, the parameters $(\bs{\beta}, \sigma, \bs{\theta}
 \begin{frame}{Sequential enrichment of the experimental design}
 
 \begin{center}
-\includegraphics[width=0.6\linewidth]{krig_initial.png}\\
-\includegraphics[width=0.6\linewidth]{var_initial.png}
+\includegraphics[width=0.55\linewidth]{krig_step_1.png}
+\includegraphics[width=0.55\linewidth]{var_step_1.png}
 \end{center}
+
+\end{frame}
+
+
+%=======================================================================================================%
+
+\begin{frame}{Sequential enrichment of the experimental design}
+
+\begin{center}
+\includegraphics[width=0.55\linewidth]{krig_step_2.png}
+\includegraphics[width=0.55\linewidth]{var_step_2.png}
+\end{center}
+
 
 \end{frame}
 
@@ -571,9 +651,10 @@ To apply the previous formulas, the parameters $(\bs{\beta}, \sigma, \bs{\theta}
 \begin{frame}{Sequential enrichment of the experimental design}
 
 \begin{center}
-\includegraphics[width=0.6\linewidth]{krig_step_1.png}\\
-\includegraphics[width=0.6\linewidth]{var_step_1.png}
+\includegraphics[width=0.55\linewidth]{krig_step_3.png}
+\includegraphics[width=0.55\linewidth]{var_step_3.png}
 \end{center}
+
 
 \end{frame}
 
@@ -582,9 +663,10 @@ To apply the previous formulas, the parameters $(\bs{\beta}, \sigma, \bs{\theta}
 \begin{frame}{Sequential enrichment of the experimental design}
 
 \begin{center}
-\includegraphics[width=0.6\linewidth]{krig_step_2.png}\\
-\includegraphics[width=0.6\linewidth]{var_step_2.png}
+\includegraphics[width=0.55\linewidth]{krig_step_4.png}
+\includegraphics[width=0.55\linewidth]{var_step_4.png}
 \end{center}
+
 
 \end{frame}
 
@@ -593,9 +675,10 @@ To apply the previous formulas, the parameters $(\bs{\beta}, \sigma, \bs{\theta}
 \begin{frame}{Sequential enrichment of the experimental design}
 
 \begin{center}
-\includegraphics[width=0.6\linewidth]{krig_step_3.png}\\
-\includegraphics[width=0.6\linewidth]{var_step_3.png}
+\includegraphics[width=0.55\linewidth]{krig_step_5.png}
+\includegraphics[width=0.55\linewidth]{var_step_5.png}
 \end{center}
+
 
 \end{frame}
 
@@ -603,23 +686,47 @@ To apply the previous formulas, the parameters $(\bs{\beta}, \sigma, \bs{\theta}
 
 \begin{frame}{Sequential enrichment of the experimental design}
 
-\begin{center}
-\includegraphics[width=0.6\linewidth]{krig_step_4.png}\\
-\includegraphics[width=0.6\linewidth]{var_step_4.png}
-\end{center}
+Alternative and more complex enrichment strategies exist, allowing to define optimal surrogate models for different purposes:
+
+\begin{itemize}
+\item Optimization
+\item Inversion (identification of critical areas)
+\item Global model exploration 
+\end{itemize}
+
+\vspace{10pt}
+
+Additionally, when dealing with computationally intensive but parallelizable codes, some of these criteria can be extended in order to define batches of enrichment points to be evaluated
+
 
 \end{frame}
 
 %=======================================================================================================%
 
-\begin{frame}{Sequential enrichment of the experimental design}
+\begin{frame}{Some limitations and drawbacks}
 
-\begin{center}
-\includegraphics[width=0.6\linewidth]{krig_step_5.png}\\
-\includegraphics[width=0.6\linewidth]{var_step_5.png}
-\end{center}
+The standard GP formulation relies on several hypotheses:
 
+\begin{itemize}
+\item The covariance function is stationary (only depend on $\tau = |x-x'|$)
+\item The covariance function is continous
+\end{itemize}
+$\rightarrow$ Gaussian processes are not suited to model non-stationary and/or non continuous functions
+
+\vspace{10pt}
+
+\begin{itemize}
+\item The evaluation of the likelihood requires the inversion of an $n \times n$ covariance matrix ($n$ being the training data set size) 
+\end{itemize}
+$\rightarrow$ The training computational cost becomes large at around $n = 1000$
+
+\vspace{10pt}
+
+\textbf{Some variants of this surrogate model exist in order to partially avoid these issues}
 \end{frame}
+
+
+%=======================================================================================================%
 
 \section{Conclusions}
 
