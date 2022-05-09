@@ -15,3 +15,7 @@ cd 2021
 python ../tests/find-ipynb-files.py
 cd ..
 
+# Notebooks in all subdirectories
+cd 2022
+python ../tests/find-ipynb-files.py
+cd ..

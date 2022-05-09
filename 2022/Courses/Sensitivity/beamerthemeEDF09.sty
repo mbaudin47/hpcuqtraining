@@ -1,0 +1,61 @@
+\ProvidesPackage{beamerthemeEDF09}[2009/10/23 Style EDF Juin 2009 J-F Rit]
+%%Time-stamp: <09/10/26 16:55:10 rit>
+  
+\pgfdeclareimage[width=\paperwidth]{fondTitre}{fond_EDF09Titre}
+\pgfdeclareimage[height=4mm]{EDF}{edf}
+\logo{\pgfuseimage{EDF}}
+\pgfdeclareimage[height=\textheight]{sommaire}{fond_EDF09Sommaire}
+\pgfdeclareimage[width=0.5\textwidth,height=0.9\textheight]{titre1}{fond_EDF09Titre1}
+\pgfdeclareimage[width=0.5\textwidth,height=0.9\textheight]{titre2}{fond_EDF09Titre2}
+
+\mode<presentation>
+
+  %% Changement M.Baudin : les bullet s'affichent mal.
+  %\useinnertheme[shadow]{rounded}
+  \useinnertheme{circles}
+
+  \def\beamer@theme@footline@datetitle{
+    \defbeamertemplate*{footline}{miniframes theme}
+    {%
+      \begin{beamercolorbox}[colsep=1.5pt]{upper separation line foot}
+      \end{beamercolorbox}
+      \begin{beamercolorbox}[ht=2.5ex,dp=1.125ex,%
+        leftskip=.3cm,rightskip=.3cm plus1fil]{date in head/foot}%
+        \leavevmode{\usebeamerfont{author in head/foot}\insertshortdate}%
+        \hspace{3em}%
+        {\usebeamerfont{title in head/foot}\usebeamercolor[fg]{title in
+            head/foot}\insertshorttitle}%
+      \end{beamercolorbox}%
+      \begin{beamercolorbox}[colsep=1.5pt]{lower separation line foot}
+      \end{beamercolorbox}
+    }
+  }
+
+ \def\beamer@theme@footline@slogan{
+    \defbeamertemplate*{footline}{miniframes theme}
+    {%
+      \begin{beamercolorbox}[colsep=1.5pt]{upper separation line foot}
+      \end{beamercolorbox}
+      \begin{beamercolorbox}[ht=2.5ex,dp=1.125ex,%
+        leftskip=1cm,rightskip=.3cm plus1fil]{date in head/foot}%
+        \leavevmode{\usebeamerfont{author in head/foot} EDF R\&D : Créer de la
+          valeur et préparer l'avenir}%
+      \end{beamercolorbox}%
+      \begin{beamercolorbox}[colsep=1.5pt]{lower separation line foot}
+      \end{beamercolorbox}
+    }
+  }
+
+  %\useoutertheme[subsection=false,footline=datetitle]{miniframes}
+  \useoutertheme[subsection=false,footline=slogan]{miniframes}
+
+  \usecolortheme{bleuorange}
+
+  \setbeamertemplate{title page}[default][left]
+  \setbeamertemplate{background canvas}{\pgfuseimage{fondTitre}}
+  \setbeamertemplate{navigation symbols}{}
+
+  \setbeamerfont{block title}{size={}}
+
+\mode
+<all>

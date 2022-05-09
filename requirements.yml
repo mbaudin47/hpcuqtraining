@@ -5,7 +5,7 @@ dependencies:
 - numpy>=1.16.*
 - matplotlib>=2.*
 - scipy>=1.*
-- openturns==1.16
+- openturns==1.18
 - otwrapy
 - jupyterlab
 - nbconvert

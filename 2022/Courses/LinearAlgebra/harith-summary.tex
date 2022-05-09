@@ -1,0 +1,70 @@
+\begin{frame}
+\frametitle{Operations: three kinds}
+
+\begin{itemize}
+  \item \textbf{\hh-BLAS1\&2:} Assembly, AXPY, GEMV \newline
+        Simple. Operating only on leaves.
+  \item \textbf{\hh-BLAS3:} GEMM, TRSV \newline 
+        More involved. Operations at many different levels of the same sub-tree.
+  \item \textbf{\hh-LAPACK:} Inverse, $LU$, $LL^T$.\newline
+        Uses BLAS2 and BLAS3 operations, harder to implement in parallel.
+\end{itemize}
+
+\begin{block}{Base operations}
+All operations use BLAS/LAPACK. Typical subroutines are: SVD, QR, 
+LU, TRSV, GEMM and GEMV.
+\end{block}
+\end{frame}
+
+%%%
+
+\begin{frame}
+\frametitle{Computation details}
+\begin{block}{Typical issues}
+The \hmat algorithms are not nice for the hardware:
+\begin{itemize}
+\item Very small operations; 
+\item Oddly-shaped matrices: "Tall \& skinny";
+\item High memory band.
+\end{itemize}
+\end{block}
+
+\begin{block}{Observations}
+  \begin{itemize}
+    \item Most (70-80\%) of the time spent in: 
+    \begin{itemize}
+      \item QR decompositions of T\&S matrices; 
+      \item SVD decompositions of small matrices.
+    \end{itemize}
+    \item BLAS implementions cannot reach the peak performance;
+    \item Very high memory bandwidth.
+  \end{itemize}
+\end{block}
+\end{frame}
+
+%%%
+
+\begin{frame}
+\frametitle{Complexity estimates}
+
+\begin{alert}{Useful pointers}
+\begin{itemize}
+\item Most complexity estimates assume a fixed upper bound $k$ for the 
+low-rank matrices involved;
+\item The structure of the matrix (as represented by a tree) is 
+important as well: a large depth with small blocks is typically a bad omen.
+\end{itemize}
+\end{alert}
+
+\begin{block}{Common operations}
+For a matrix size of $N \times N$ with the previous assumptions:
+\begin{itemize}
+\item assembly:  time and storage is in $\mathcal{O}(kN \log N)$;
+\item addition: $\mathcal{O}(k^2N \log N )$ operations;
+\item multiplication and Cholesky factorisation: $\mathcal{O}(k^3 N \log^3 N )$ operations;
+\item \textcolor{red}{in practice a $\mathcal{O}(N \log^2 N)$ complexity is observed.}
+\end{itemize}
+\end{block}
+
+\end{frame}
+
